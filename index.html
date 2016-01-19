@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>Duck's Bewery</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	</head>
+	<body>
+	
+		<div class="container col-sm-6" style="float: left;">
+		<fieldset>
+			<legend>Ressources</legend>
+			<table style="text-align: center;">
+				<tr>
+					<th id="ressource1">Canards</th><td><p id="affRessource1">0 / 50</p></td>
+				</tr>
+				<tr>
+					<th><button id="ressource2">Eau</button></th><td><button id="ajout2">Affecter</button><button id="retrait2">Retirer</button></td>
+				</tr>	
+				<tr>
+					<td id="affRessource2">0.00 / 500</td><td id="canards2">Travailleurs : 0</td>
+				</tr>
+				<tr>
+					<th><button id="ressource3">Nourriture</button></th><td><button id="ajout3">Affecter</button><button id="retrait3">Retirer</button></td>
+				</tr>
+				<tr>
+					<td id="affRessource3">0.00 / 100</td><td id="canards3">Travailleurs : 0</td>
+				</tr>
+				<tr>
+					<th><button id="ressource4">Bois</button></th><td><button id="ajout4">Affecter</button><button id="retrait4">Retirer</button></td>
+				</tr>
+				<tr>
+					<td id="affRessource4">0.00 / 100</td><td id="canards4">Travailleurs : 0</td>
+				</tr>
+				<tr>
+					<td id="travailleurs">Travailleurs actifs : 0</td>
+				</tr>
+			</table>
+		</fieldset>
+		</div>
+		
+		<div class="container col-sm-6" style="float: right;">
+		<fieldset>
+		<legend>Constructions</legend>
+		<table>
+			<tr><th>Constructions</th><th>Niveau Actuel</th><th>Acheter un Niveau</th><th>Coût du Niveau</th></tr>
+			<tr><td>Puit</td><td id="nivBat1"></td><td><button id="achatNivBat1">Construire</button></td><td id="prixBat1">bois : 300</td></tr>
+			<tr><td>Stock</td><td id="nivBat2"></td><td><button id="achatNivBat2">Construire</button></td><td id="prixBat2">bois : 600</td></tr>
+		</table>
+		</fieldset>
+		</div>
+		
+		<script src="idle2.js"></script>
+	</body>
+</html>
