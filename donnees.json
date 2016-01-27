@@ -1,0 +1,138 @@
+{
+    "conteneurs":  [
+        {
+            "nomConteneurs": "Habitation",
+            "utilite": "augmente la capacité max de canards",
+            "coutInitial": "0"
+        },
+        {
+            "nomConteneurs": "Citerne",
+            "utilite": "augmente la capacité max d'eau",
+            "coutInitial": "0"
+        },
+        {
+            "nomConteneurs": "Dépôt",
+            "utilite": "augmante la capacité max du bois et de la nourriture",
+            "coutInitial": "0"
+        },
+        {
+            "nomConteneurs": "Réserve de grain",
+            "utilite": "augmente la capacité max du malt, de l'houblon et des grains crus",
+            "coutInitial": "0"
+        },
+        {
+            "nomConteneurs": "Coffre",
+            "utilite": "augmante la capacité max de l'or",
+            "coutInitial": "0"
+        },
+        {
+            "nomConteneurs": "Cave",
+            "utilite": "augmente la capacité max de la bière",
+            "coutInitial": "0"
+        },
+        {
+            "nomConteneurs": "Caserne",
+            "utilite": "augmente la capacité max de guerriers",
+            "coutInitial": "0"
+        },
+        {
+            "nomConteneurs": "Approvisionnement",
+            "utilite": "augmente la capacité max de la levure et du sucre",
+            "coutInitial": "0"
+        },
+        {
+            "nomConteneurs": "Cimetière",
+            "utilite": "augmente la capacité max des canards morts",
+            "coutInitial": "0"
+        },
+        {
+            "nomConteneurs": "Réceptacle",
+            "utilite": "augmente la capacité max des âmes",
+            "coutInitial": "0"
+        }
+    ],
+    "constructions":[
+        {
+            "nomConstruction": "Nid",
+            "utilite": "augmente la production de canards par seconde",
+            "coutInitial": "0"
+        },
+        {
+            "nomConstruction": "Moulin à eau",
+            "utilite": "augmente la capacité max de travailleurs sur la ressource EAU",
+            "coutInitial": "0"
+        },
+        {
+            "nomConstruction": "Camp de bucherons",
+            "utilite": "augmente la capacité max de travailleurs sur la ressource BOIS",
+            "coutInitial": "0"
+        },
+        {
+            "nomConstruction": "Champs de croutons",
+            "utilite": "augmente la capacité max de travailleurs sur la ressource NOURRITURE",
+            "coutInitial": "0"
+        },
+        {
+            "nomConstruction": "Champs de malt",
+            "utilite": "augmente la capacité max de travailleurs sur la ressource MALT",
+            "coutInitial": "0"
+        },
+        {
+            "nomConstruction": "Champs de houblon",
+            "utilite": "augmente la capacité max de travailleurs sur la ressource HOUBLON",
+            "coutInitial": "0"
+        },
+        {
+            "nomConstruction": "Brasserie",
+            "utilite": "augmente la capacité max de travailleurs sur la ressource BIERE",
+            "coutInitial": "0"
+        },
+        {
+            "nomConstruction": "Quartiers",
+            "utilite": "augmente la capacité max de travailleurs sur la ressource GUERRIER",
+            "coutInitial": "0"
+        },
+        {
+            "nomConstruction": "Port",
+            "utilite": "permet les échanges maritimes",
+            "coutInitial": "0"
+        },
+        {
+            "nomConstruction": "Mairie",
+            "utilite": "permet l'affectation de travailleurs, augmente de 1 la capacité max de travailleurs sur toutes les ressources à chaque niveau et offre une affectation spéciale tous les 10 niveaus ",
+            "coutInitial": "0"
+        },
+        {
+            "nomConstruction": "Autel",
+            "utilite": "permet l'achat d'améliorations avec des âmes",
+            "coutInitial": "0"
+        },
+        {
+            "nomConstruction": "Puit sacrificiel",
+            "utilite": "permet le sacrifice de canards",
+            "coutInitial": "0"
+        },
+        {
+            "nomConstruction": "Supermarché",
+            "utilite": "permet d'acheter des ressources non productibles et de vendre de la bière contre de l'or",
+            "coutInitial": "0"
+        }
+    ],
+    "ressources":[
+        "Eau",
+        "Bois",
+        "Nourriture",
+        "Orge",
+        "Malt",
+        "Houblon",
+        "Grains crus",
+        "Bière",
+        "Or",
+        "Levure",
+        "Sucre",
+        "Âme",
+        "Canard",
+        "Canard mort",
+        "Guerrier"
+    ]
+}
