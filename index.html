@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 	<head>
+        <meta charset="UTF-8">
 		<link rel="stylesheet" type="text/css" href="interface.css" />
+        <script type="text/javascript" src="init.js"></script>
 	</head>
 	<body>
 		<div style="float: left;">
@@ -11,42 +13,41 @@
 				Canards actuels dans la ville : <span id="canard">0</span>/<span id="canardMax">5</span>
 				</br></br>
 				Total travailleurs : <span id="canTot">0</span>
-				<script type="text/javascript" src="main.js"></script>
 				</br>
 			</fieldset>
 			
 			
 			<fieldset>
-				<button onclick="eauClick(1)">Eau : </button> <span id="eau">0.0</span>/<span id="eauMax">5000</span> ( +<span id="eauSec">0</span>/s )
+				<button id="eauClick">Eau : </button> <span id="eau">0.0</span>/<span id="eauMax">5000</span> ( +<span id="eauSec">0</span>/s )
 				</br>
-				Travailleurs actifs : <span id="canard1">0</span> <button onclick="affectCanard(1)">+</button><button onclick="retCanard(1)">-</button>
+				Travailleurs actifs : <span id="canard1">0</span> <button id="affectCanard1">+</button><button id="retCanard1">-</button>
 				</br></br>
-				<button onclick="boisClick(1)">Bois : </button> <span id="bois">0.0</span>/<span id="boisMax">10000</span> ( +<span id="boisSec">0</span>/s )
+				<button id="boisClick">Bois : </button> <span id="bois">0.0</span>/<span id="boisMax">10000</span> ( +<span id="boisSec">0</span>/s )
 				</br>
-				Travailleurs actifs : <span id="canard2">0</span> <button onclick="affectCanard(2)">+</button><button onclick="retCanard(2)">-</button>
+				Travailleurs actifs : <span id="canard2">0</span> <button id="affectCanard2">+</button><button id="retCanard2">-</button>
 				</br></br>
-				<button onclick="nourritureClick(1)">Nourriture : </button> <span id="nourriture">0.0</span>/<span id="nourritureMax">5000</span> ( +<span id="nourritureSec">0</span>/s ) 
+				<button id="nourritureClick">Nourriture : </button> <span id="nourriture">0.0</span>/<span id="nourritureMax">5000</span> ( +<span id="nourritureSec">0</span>/s )
 				</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: red;">&#8618;&nbsp;Consommation : </span><span id="canTotSec" style="color: red;">( -0/s )</span>
 				</br>
-				Travailleurs actifs : <span id="canard3">0</span> <button onclick="affectCanard(3)">+</button><button onclick="retCanard(3)">-</button>
+				Travailleurs actifs : <span id="canard3">0</span> <button id="affectCanard3">+</button><button id="retCanard3">-</button>
 			</fieldset>
 			
 			<fieldset>
 				Malt : <span id="malt">0.0</span>/<span id="maltMax">3000</span> ( +<span id="maltSec">0</span>/s )
 				</br>
-				Travailleurs actifs : <span id="canard4">0</span> <button onclick="affectCanard(4)">+</button><button onclick="retCanard(4)">-</button>
+				Travailleurs actifs : <span id="canard4">0</span> <button id="affectCanard4">+</button><button id="retCanard4">-</button>
 				</br></br>
 				Houblon : <span id="houblon">0.0</span>/<span id="houblonMax">3000</span> ( +<span id="houblonSec">0</span>/s )
 				</br>
-				Travailleurs actifs : <span id="canard5">0</span> <button onclick="affectCanard(5)">+</button><button onclick="retCanard(5)">-</button>
+				Travailleurs actifs : <span id="canard5">0</span> <button id="affectCanard5">+</button><button id="retCanard5">-</button>
 				</br></br>
 				Biere : <span id="biere">0.0</span>/<span id="biereMax">1000</span> ( +<span id="biereSec">0</span>/s )
 				</br>
-				Travailleurs actifs : <span id="canard6">0</span> <button onclick="affectCanard(6)">+</button><button onclick="retCanard(6)">-</button>
+				Travailleurs actifs : <span id="canard6">0</span> <button id="affectCanard6">+</button><button id="retCanard6">-</button>
 				</br></br>
 				Or : <span id="or">0.0</span>/<span id="orMax">5000</span> ( +<span id="orSec">0</span>/s )
 				</br>
-				Travailleurs actifs : <span id="canard7">0</span> <button onclick="affectCanard(7)">+</button><button onclick="retCanard(7)">-</button>
+				Travailleurs actifs : <span id="canard7">0</span> <button id="affectCanard7">+</button><button id="retCanard7">-</button>
 				</br></br>
 				Grains crus : <span id="grain">0.0</span>/<span id="grainMax">500</span> ( +<span id="grainSec">0</span>/s )
 				</br></br>
@@ -59,6 +60,40 @@
 			
 			</fieldset>
 		</div>
+
+        <div style="float: left;">
+            <fieldset><legend>Brasserie</legend>
+                <button id="maltage">Etape 1 : Maltage</button>
+                </br>
+                Orge : <span id="orgeBrass">3000</span></br>
+                Eau : <span id="eauBrass1">4000</span></br>
+                Temps : <span id="tempsBrass1">0</span></br>
+                </br>
+                <button id="brassage">Etape 2 : Brassage</button>
+                </br>
+                Malt : <span id="maltBrass">2000</span></br>
+                Eau : <span id="eauBrass2">9000</span></br>
+                Temps : <span id="tempsBrass2">0</span></br>
+                </br>
+                <button id="aromatisation">Etape 3 : Aromatisation</button>
+                </br>
+                Houblon : <span id="houblonBrass">400</span></br>
+                Eau : <span id="eauBrass3">5000</span></br>
+                Temps : <span id="tempsBrass3">0</span></br>
+                </br>
+                <button id="fermentation">Etape 4 : Fermentation</button>
+                </br>
+                Levure : <span id="levureBrass">15</span></br>
+                Grain cru : <span id="grainBrass">30</span></br>
+                Biere : <span id="biereBrass">0</span></br>
+                Temps : <span id="tempsBrass4">0</span></br>
+                </br>
+                <button id="conditionnement">Etape 5 : Conditionnement</button>
+                </br>
+                Temps : <span id="tempsBrass5">0</span>
+                </br>
+            </fieldset>
+        </div>
 		
 		
 		
@@ -67,20 +102,22 @@
 			
 			<fieldset>
 			<table>
-				<tr><td>Puit</td><td><button id="achatNivBat1" onclick="achatLevel(1)">Construire</button></td><td id="prixBat1">bois : 500</td></tr>
-				<tr><td>Depot</td><td><button id="achatNivBat2" onclick="achatLevel(2)">Construire</button></td><td id="prixBat2">bois : 750</td></tr>
-				<tr><td>Reserve de grains</td><td><button id="achatNivBat3" onclick="achatLevel(3)">Construire</button></td><td id="prixBat3">bois : 750</td></tr>
-				<tr><td>Cave</td><td><button id="achatNivBat4" onclick="achatLevel(4)">Construire</button></td><td id="prixBat4">bois : 750</td></tr>
-				<tr><td>Coffre</td><td><button id="achatNivBat5" onclick="achatLevel(5)">Construire</button></td><td id="prixBat5">bois : 750</td></tr>
-				<tr><td>Approvisionnement</td><td><button id="achatNivBat6" onclick="achatLevel(6)">Construire</button></td><td id="prixBat6">bois : 750</td></tr>
-				<tr><td>Receptacle</td><td><button id="achatNivBat7" onclick="achatLevel(7)">Construire</button></td><td id="prixBat7">bois : 750</td></tr>
-				<tr><td>Habitation</td><td><button id="achatNivBat8" onclick="achatLevel(8)">Construire</button></td><td id="prixBat8">bois : 750</td></tr>
-				<tr><td>Caserne</td><td><button id="achatNivBat9" onclick="achatLevel(9)">Construire</button></td><td id="prixBat9">bois : 750</td></tr>
-				<tr><td>Cimetiere</td><td><button id="achatNivBat10" onclick="achatLevel(10)">Construire</button></td><td id="prixBat10">bois : 750</td></tr>
+				<tr><td>Puit</td><td><button id="achatNivBat1">Construire</button></td><td id="prixBat1">bois : 500</td></tr>
+				<tr><td>Depot</td><td><button id="achatNivBat2">Construire</button></td><td id="prixBat2">bois : 750</td></tr>
+				<tr><td>Reserve de grains</td><td><button id="achatNivBat3">Construire</button></td><td id="prixBat3">bois : 750</td></tr>
+				<tr><td>Cave</td><td><button id="achatNivBat4">Construire</button></td><td id="prixBat4">bois : 750</td></tr>
+				<tr><td>Coffre</td><td><button id="achatNivBat5">Construire</button></td><td id="prixBat5">bois : 750</td></tr>
+				<tr><td>Approvisionnement</td><td><button id="achatNivBat6">Construire</button></td><td id="prixBat6">bois : 750</td></tr>
+				<tr><td>Receptacle</td><td><button id="achatNivBat7">Construire</button></td><td id="prixBat7">bois : 750</td></tr>
+				<tr><td>Habitation</td><td><button id="achatNivBat8">Construire</button></td><td id="prixBat8">bois : 750</td></tr>
+				<tr><td>Caserne</td><td><button id="achatNivBat9">Construire</button></td><td id="prixBat9">bois : 750</td></tr>
+				<tr><td>Cimetiere</td><td><button id="achatNivBat10">Construire</button></td><td id="prixBat10">bois : 750</td></tr>
 			</table>
 			</fieldset>
 			
 			</fieldset>
 		</div>
+        <script type="text/javascript" src="main.js"></script>
+        <script type="text/javascript" src="appel.js"></script>
 	</body>
 </html>
