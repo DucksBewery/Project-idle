@@ -92,13 +92,16 @@ batAchat8.addEventListener("click", function(){achatLevel(8)});
 //etapes brasserie//
 
 var etapeMaltage = document.getElementById("maltage");
-etapeMaltage.addEventListener("click",function(){maltage(1)});
+etapeMaltage.addEventListener("click",function(){maltage()});
 
 var etapeBrassage = document.getElementById("brassage");
-etapeBrassage.addEventListener("click",function(){brassage(1)});
+etapeBrassage.addEventListener("click",function(){brassage()});
 
 var etapeAromatisation = document.getElementById("aromatisation");
-etapeAromatisation.addEventListener("click",function(){aromatisation(1)});
+etapeAromatisation.addEventListener("click",function(){aromatisation()});
 
 var etapeFermentation = document.getElementById("fermentation");
-etapeFermentation.addEventListener("click",function(){fermentation(1)});
+etapeFermentation.addEventListener("click",function(){fermentation()});
+
+var etapeConditionnement = document.getElementById("conditionnement");
+etapeConditionnement.addEventListener("click",function(){conditionnement()});

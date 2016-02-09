@@ -10,7 +10,7 @@
  conditions : calcul du malus > calcul incrémentation de nourriture.
  */
 function kill(){
-    canTot = canRess1 + canRess2 + canRess3 + canRess4 + canRess5 + canRess6 + canRess7 + canRess8;
+    canTot = canRess1 + canRess2 + canRess3 + canRess4 + canRess5 + canRess7;
     if((canTot * 0.13)>(canRess3 * 0.8)){
         document.getElementById("nourriture").style.color = "red";
         document.getElementById("nourritureMax").style.color = "red";
@@ -23,17 +23,13 @@ function kill(){
             canRess2 = 0;
             canRess4 = 0;
             canRess5 = 0;
-            canRess6 = 0;
             canRess7 = 0;
-            canRess8 = 0;
             document.getElementById('canard1').innerHTML = canRess1.toFixed();
             document.getElementById('canard2').innerHTML = canRess2.toFixed();
             document.getElementById('canard4').innerHTML = canRess4.toFixed();
             document.getElementById('canard5').innerHTML = canRess5.toFixed();
-            document.getElementById('canard6').innerHTML = canRess6.toFixed();
             document.getElementById('canard7').innerHTML = canRess7.toFixed();
-            document.getElementById('canard8').innerHTML = canRess8.toFixed();
-            canTot = canRess1 + canRess2 + canRess3 + canRess4 + canRess5 + canRess6 + canRess7 + canRess8;
+            canTot = canRess1 + canRess2 + canRess3 + canRess4 + canRess5 + canRess7;
             document.getElementById("canTot").innerHTML = canTot;
             document.getElementById("canTotSec").innerHTML = "( -" + (canTot * 0.13).toFixed(2) + "/s )";
         }
@@ -175,42 +171,82 @@ function incrementOrge(number){
  retour : -
  conditions : posséder suffisamment des ressources indiquée sur l'interface.
  */
-function maltage(number){
-    if(orge>orgeBrass && eau>eauBrass1){
-        orge = orge - orgeBrass;
-        eau = eau - eauBrass1;
-        completeBrass1 = true;
+ 
+ function reste(zetime, div, id) {
+    if (zetime>0) {
+        var heures = Math.floor(zetime / 3600);
+        var minutes = Math.floor(((zetime / 3600) - Math.floor(zetime / 3600)) * 60);
+        var secondes = zetime - ((Math.floor(zetime / 60)) * 60);
+        if(heures < 10){heures= "0"+ heures}
+        if(minutes < 10){minutes= "0"+ minutes}
+        if(secondes < 10){secondes="0"+ secondes }
+
+        document.getElementById(div).innerHTML = heures + ":" + minutes + ":" + secondes;
+        var restant = zetime - 1;
+		setTimeout("reste("+restant+",'"+div+"','"+id+"')", 1000);
+    }
+    else {
+        document.getElementById(div).innerHTML = "Termine";
+		tabComplete[id] = true;
     }
 }
 
-function brassage(number){
-    if(malt>maltBrass && eau>eauBrass2 && completeBrass1==true){
+function maltage(e){
+	if(tabComplete["completeBrass1"]==false && orge>orgeBrass && eau>eauBrass1){
+		orge = orge - orgeBrass;
+		eau = eau - eauBrass1;
+		reste(tempsBrass1,"tempsBrass1","completeBrass1");
+	}
+}
+
+function brassage(e){
+    if(tabComplete["completeBrass2"]==false && malt>maltBrass && eau>eauBrass2 && tabComplete["completeBrass1"]==true){
         malt = malt - maltBrass;
         eau = eau - eauBrass2;
-        completeBrass2 = true;
+		reste(tempsBrass2,"tempsBrass2","completeBrass2");
     }
 }
 
-function aromatisation(number){
-    if(houblon>houblonBrass && eau>eauBrass3 && completeBrass2==true){
+function aromatisation(e){
+    if(tabComplete["completeBrass3"]==false && houblon>houblonBrass && eau>eauBrass3 && tabComplete["completeBrass2"]==true){
         houblon = houblon - houblonBrass;
         eau = eau - eauBrass3;
-        completeBrass3 = true;
+		reste(tempsBrass3,"tempsBrass3","completeBrass3");
     }
 }
 
-function fermentation(number){
-    if(levure>levureBrass && grain>grainBrass && biere>biereBrass && completeBrass3==true){
-        houblon = houblon - houblonBrass;
-        eau = eau - eauBrass3;
-        completeBrass3 = true;
+function fermentation(e){
+    if(tabComplete["completeBrass4"]==false && levure>levureBrass && grain>grainBrass && tabComplete["completeBrass3"]==true){
+        levure = levure - levureBrass;
+        grain = grain - grainBrass;
+		reste(tempsBrass4,"tempsBrass4","completeBrass4");
     }
 }
 
-// function conditionnement(number){
+function conditionnement(e){
+	if(tabComplete["completeBrass5"]==false && tabComplete["completeBrass4"]==true){
+		reste(tempsBrass5,"tempsBrass5","completeBrass5");
+		biere = biere + (eauBrass1 + eauBrass2 + eauBrass3 + orgeBrass + maltBrass + houblonBrass + (levureBrass * 3) + (grainBrass * 2)) * ((Math.random() + 1) * 0.01);
+		if(biere > biereMax){
+			biere = biereMax;
+			document.getElementById("biere").innerHTML = biere.toFixed(1);
+		}
+	document.getElementById("biereMax").innerHTML = biereMax.toFixed();
+	}
+}
 
-// }
-
+function relance(){
+	tabComplete["completeBrass1"] = false;
+	tabComplete["completeBrass2"] = false;
+	tabComplete["completeBrass3"] = false;
+	tabComplete["completeBrass4"] = false;
+	tabComplete["completeBrass5"] = false;
+	document.getElementById("tempsBrass1").innerHTML = "00:02:30";
+	document.getElementById("tempsBrass2").innerHTML = "00:05:00";
+	document.getElementById("tempsBrass3").innerHTML = "00:04:00";
+	document.getElementById("tempsBrass4").innerHTML = "00:15:00";
+	document.getElementById("tempsBrass5").innerHTML = "01:30:00";
+}
 //--FONCTION AFFECTATION--//
 /*	action : Affecter un canard à une ressource en fonction de l'id de cette ressource.
  Retire un canard des places dispo dans la ville.
@@ -225,14 +261,14 @@ function affectCanard(id){
         canRess1 = canRess1 + 1;
         document.getElementById('canard1').innerHTML = canRess1.toFixed();
         document.getElementById("canard").innerHTML = canard.toFixed();
-        document.getElementById("eauSec").innerHTML = canRess1.toFixed(1);
+        document.getElementById("eauSec").innerHTML = (canRess1 * 0.55).toFixed(1);
     }
     if(id == 2 && canard > 0) {
         canard = canard - 1;
         canRess2 = canRess2 + 1;
         document.getElementById('canard2').innerHTML = canRess2.toFixed();
         document.getElementById("canard").innerHTML = canard.toFixed();
-        document.getElementById("boisSec").innerHTML = (canRess2 * 0.68).toFixed(2);
+        document.getElementById("boisSec").innerHTML = (canRess2 * 1.68).toFixed(2);
     }
     if(id == 3 && canard > 0) {
         canard = canard - 1;
@@ -255,26 +291,12 @@ function affectCanard(id){
         document.getElementById("canard").innerHTML = canard.toFixed();
         document.getElementById("houblonSec").innerHTML = (canRess5 * 0.03).toFixed(2);
     }
-    if(id == 6 && canard > 0) {
-        canard = canard - 1;
-        canRess6 = canRess6 + 1;
-        document.getElementById('canard6').innerHTML = canRess6.toFixed();
-        document.getElementById("canard").innerHTML = canard.toFixed();
-        document.getElementById("biereSec").innerHTML = (canRess6 * 0.38).toFixed(2);
-    }
     if(id == 7 && canard > 0) {
         canard = canard - 1;
         canRess7 = canRess7 + 1;
         document.getElementById('canard7').innerHTML = canRess7.toFixed();
         document.getElementById("canard").innerHTML = canard.toFixed();
-        document.getElementById("orSec").innerHTML = (canRess7 * 0.23).toFixed(2);
-    }
-    if(id == 8 && canard > 0) {
-        canard = canard - 1;
-        canRess8 = canRess8 + 1;
-        document.getElementById('canard8').innerHTML = canRess8.toFixed();
-        document.getElementById("canard").innerHTML = canard.toFixed();
-        document.getElementById("orgeSec").innerHTML = (canRess8 * 0.42).toFixed(2);
+        document.getElementById("orgeSec").innerHTML = (canRess7 * 0.42).toFixed(2);
     }
     kill();
 }
@@ -292,14 +314,14 @@ function retCanard(id){
         canRess1 = canRess1 - 1;
         document.getElementById('canard1').innerHTML = canRess1.toFixed();
         document.getElementById("canard").innerHTML = canard.toFixed();
-        document.getElementById("eauSec").innerHTML = canRess1.toFixed(2);
+        document.getElementById("eauSec").innerHTML = (canRess1 * 0.55).toFixed(2);
     }
     if(id == 2 && canRess2 >= 1 && canard != canardMax) {
         canard = canard + 1;
         canRess2 = canRess2 - 1;
         document.getElementById('canard2').innerHTML = canRess2.toFixed();
         document.getElementById("canard").innerHTML = canard.toFixed();
-        document.getElementById("boisSec").innerHTML = (canRess2 * 0.68).toFixed(2);
+        document.getElementById("boisSec").innerHTML = (canRess2 * 1.68).toFixed(2);
     }
     if(id == 3 && canRess3 >= 1 && canard != canardMax) {
         canard = canard + 1;
@@ -322,26 +344,12 @@ function retCanard(id){
         document.getElementById("canard").innerHTML = canard.toFixed();
         document.getElementById("houblonSec").innerHTML = (canRess5 * 0.03).toFixed(2);
     }
-    if(id == 6 && canRess6 >= 1 && canard != canardMax) {
-        canard = canard + 1;
-        canRess6 = canRess6 - 1;
-        document.getElementById('canard6').innerHTML = canRess6.toFixed();
-        document.getElementById("canard").innerHTML = canard.toFixed();
-        document.getElementById("biereSec").innerHTML = (canRess6 * 0.38).toFixed(2);
-    }
     if(id == 7 && canRess7 >= 1 && canard != canardMax) {
         canard = canard + 1;
         canRess7 = canRess7 - 1;
         document.getElementById('canard7').innerHTML = canRess7.toFixed();
         document.getElementById("canard").innerHTML = canard.toFixed();
-        document.getElementById("orSec").innerHTML = (canRess7 * 0.23).toFixed(2);
-    }
-    if(id == 8 && canRess8 >= 1 && canard != canardMax) {
-        canard = canard + 1;
-        canRess8 = canRess8 - 1;
-        document.getElementById('canard8').innerHTML = canRess8.toFixed();
-        document.getElementById("canard").innerHTML = canard.toFixed();
-        document.getElementById("orgeSec").innerHTML = (canRess8 * 0.42).toFixed(2);
+        document.getElementById("orgeSec").innerHTML = (canRess7 * 0.42).toFixed(2);
     }
     kill();
 }
@@ -412,7 +420,9 @@ function achatLevel(id) {
         niveauBat6 = niveauBat6 + 1;
         prixBat6 = (prixBat6 * 1.5^niveauBat6);
         levureMax = (levureMax * 1.2);
+		grainMax = (grainMax * 1.2);
         document.getElementById("levureMax").innerHTML = levureMax.toFixed();
+        document.getElementById("grainMax").innerHTML = grainMax.toFixed();
         document.getElementById("achatNivBat6").innerHTML = "lvl : " + niveauBat6;
         document.getElementById("prixBat6").innerHTML = "bois : " + prixBat6;
     }
@@ -477,8 +487,7 @@ window.setInterval(function(){ //timer 1 seconde
     incrementMalt(canRess4 * 0.36);
     incrementHoublon(canRess5 * 0.03);
     incrementGrain((canRess4 * 0.00012) + (canRess5 * 0.00010) + (canRess8 * 0.00013));
-    incrementBiere(canRess6 * 0.38);
-    incrementOr(canRess7 * 0.23);
-    incrementOrge(canRess8 * 0.42);
+    incrementOrge(canRess7 * 0.42);
+	if(tabComplete["completeBrass5"]==true){relance()};
 
 }, 1000);

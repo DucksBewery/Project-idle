@@ -2,8 +2,8 @@
 <html>
 	<head>
         <meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" href="interface.css" />
-        <script type="text/javascript" src="init.js"></script>
+		<link rel="stylesheet" type="text/css" href="style/interface.css" />
+        <script type="text/javascript" src="js/init.js"></script>
 	</head>
 	<body>
 		<div style="float: left;">
@@ -42,58 +42,55 @@
 				Travailleurs actifs : <span id="canard5">0</span> <button id="affectCanard5">+</button><button id="retCanard5">-</button>
 				</br></br>
 				Biere : <span id="biere">0.0</span>/<span id="biereMax">1000</span> ( +<span id="biereSec">0</span>/s )
-				</br>
-				Travailleurs actifs : <span id="canard6">0</span> <button id="affectCanard6">+</button><button id="retCanard6">-</button>
 				</br></br>
-				Or : <span id="or">0.0</span>/<span id="orMax">5000</span> ( +<span id="orSec">0</span>/s )
+				Orge : <span id="orge">0.0</span>/<span id="orgeMax">5000</span> ( +<span id="orgeSec">0</span>/s )
 				</br>
 				Travailleurs actifs : <span id="canard7">0</span> <button id="affectCanard7">+</button><button id="retCanard7">-</button>
 				</br></br>
+				Or : <span id="or">0.0</span>/<span id="orMax">5000</span> ( +<span id="orSec">0</span>/s )
+				</br></br>
 				Grains crus : <span id="grain">0.0</span>/<span id="grainMax">500</span> ( +<span id="grainSec">0</span>/s )
 				</br></br>
-				Ame : <span id="ame">0.0</span> ( +<span id="ameSec">0</span>/s )
+				Levure : <span id="levure">0.0</span>/<span id="levureMax">500</span> ( +<span id="levureSec">0</span>/s )
 				</br></br>
-				Levure : <span id="levure">0.0</span>
-				</br></br>
-				Sucre : <span id="sucre">0.0</span>
+				Ame : <span id="ame">0.0</span>/<span id="ameMax">500</span> ( +<span id="ameSec">0</span>/s )
 				</fieldset>
 			
 			</fieldset>
 		</div>
 
         <div style="float: left;">
-            <fieldset><legend>Brasserie</legend>
-                <button id="maltage">Etape 1 : Maltage</button>
-                </br>
-                Orge : <span id="orgeBrass">3000</span></br>
-                Eau : <span id="eauBrass1">4000</span></br>
-                Temps : <span id="tempsBrass1">0</span></br>
-                </br>
-                <button id="brassage">Etape 2 : Brassage</button>
-                </br>
-                Malt : <span id="maltBrass">2000</span></br>
-                Eau : <span id="eauBrass2">9000</span></br>
-                Temps : <span id="tempsBrass2">0</span></br>
-                </br>
-                <button id="aromatisation">Etape 3 : Aromatisation</button>
-                </br>
-                Houblon : <span id="houblonBrass">400</span></br>
-                Eau : <span id="eauBrass3">5000</span></br>
-                Temps : <span id="tempsBrass3">0</span></br>
-                </br>
-                <button id="fermentation">Etape 4 : Fermentation</button>
-                </br>
-                Levure : <span id="levureBrass">15</span></br>
-                Grain cru : <span id="grainBrass">30</span></br>
-                Biere : <span id="biereBrass">0</span></br>
-                Temps : <span id="tempsBrass4">0</span></br>
-                </br>
-                <button id="conditionnement">Etape 5 : Conditionnement</button>
-                </br>
-                Temps : <span id="tempsBrass5">0</span>
-                </br>
-            </fieldset>
-        </div>
+			<fieldset><legend>Brasserie</legend>
+				<button id="maltage">Etape 1 : Maltage</button>
+				</br>
+				Orge : <span id="orgeBrass">3000</span></br>
+				Eau : <span id="eauBrass1">4000</span></br>
+				Temps : <span id="tempsBrass1">00:02:30</span></br>
+				</br>
+				<button id="brassage">Etape 2 : Brassage</button>
+				</br>
+				Malt : <span id="maltBrass">2000</span></br>
+				Eau : <span id="eauBrass2">9000</span></br>
+				Temps : <span id="tempsBrass2">00:05:00</span></br>
+				</br>
+				<button id="aromatisation">Etape 3 : Aromatisation</button>
+				</br>
+				Houblon : <span id="houblonBrass">400</span></br>
+				Eau : <span id="eauBrass3">5000</span></br>
+				Temps : <span id="tempsBrass3">00:04:00</span></br>
+				</br>
+				<button id="fermentation">Etape 4 : Fermentation</button>
+				</br>
+				Levure : <span id="levureBrass">15</span></br>
+				Grain cru : <span id="grainBrass">30</span></br>
+				Temps : <span id="tempsBrass4">00:15:00</span></br>
+				</br>
+				<button id="conditionnement">Etape 5 : Conditionnement</button>
+				</br>
+				Temps : <span id="tempsBrass5">00:01:30</span>
+				</br>
+			</fieldset>
+		</div>
 		
 		
 		
@@ -117,7 +114,7 @@
 			
 			</fieldset>
 		</div>
-        <script type="text/javascript" src="main.js"></script>
-        <script type="text/javascript" src="appel.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+        <script type="text/javascript" src="js/appel.js"></script>
 	</body>
 </html>
