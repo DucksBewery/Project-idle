@@ -486,7 +486,7 @@ window.setInterval(function(){ //timer 1 seconde
     nourritureClick((canRess3 * 0.8)-(canTot * 0.13));
     incrementMalt(canRess4 * 0.36);
     incrementHoublon(canRess5 * 0.03);
-    incrementGrain((canRess4 * 0.00012) + (canRess5 * 0.00010) + (canRess8 * 0.00013));
+    incrementGrain((canRess4 * 0.00012) + (canRess5 * 0.00010) + (canRess7 * 0.00013));
     incrementOrge(canRess7 * 0.42);
 	if(tabComplete["completeBrass5"]==true){relance()};
 

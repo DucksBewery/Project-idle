@@ -4,6 +4,37 @@
         <meta charset="UTF-8">
 		<link rel="stylesheet" type="text/css" href="style/interface.css" />
         <script type="text/javascript" src="js/init.js"></script>
+		<script type="text/javascript" src="js/infobulle.js"></script>
+<style>
+/* Infobulle */
+ 
+#tooltip {
+    position:absolute;
+    z-index:9999;
+    color:#fff;
+    font-size:10px;
+    width:180px;
+ 
+}
+ 
+#tooltip .tipHeader {
+    height:8px;
+    background:url(images/tipHeader.gif) no-repeat;
+}
+ 
+/* hack IE */
+*html #tooltip .tipHeader {margin-bottom:-6px;}
+ 
+#tooltip .tipBody {
+    background-color:#000;
+    padding:5px;
+}
+ 
+#tooltip .tipFooter {
+    height:8px;
+    background:url(images/tipFooter.gif) no-repeat;
+}
+</style>
 	</head>
 	<body>
 		<div style="float: left;">
@@ -99,14 +130,31 @@
 			
 			<fieldset>
 			<table>
-				<tr><td>Puit</td><td><button id="achatNivBat1">Construire</button></td><td id="prixBat1">bois : 500</td></tr>
-				<tr><td>Depot</td><td><button id="achatNivBat2">Construire</button></td><td id="prixBat2">bois : 750</td></tr>
-				<tr><td>Reserve de grains</td><td><button id="achatNivBat3">Construire</button></td><td id="prixBat3">bois : 750</td></tr>
-				<tr><td>Cave</td><td><button id="achatNivBat4">Construire</button></td><td id="prixBat4">bois : 750</td></tr>
-				<tr><td>Coffre</td><td><button id="achatNivBat5">Construire</button></td><td id="prixBat5">bois : 750</td></tr>
-				<tr><td>Approvisionnement</td><td><button id="achatNivBat6">Construire</button></td><td id="prixBat6">bois : 750</td></tr>
-				<tr><td>Receptacle</td><td><button id="achatNivBat7">Construire</button></td><td id="prixBat7">bois : 750</td></tr>
-				<tr><td>Habitation</td><td><button id="achatNivBat8">Construire</button></td><td id="prixBat8">bois : 750</td></tr>
+				<tr><td><div name="tooltip" title="PUIT :
+Le puit permet aux canards de stocker plus d'eau.
+Eau max + 20% / Prix + 25%">Puit</div></td><td><button id="achatNivBat1">Construire</button></td><td id="prixBat1">bois : 500</td></tr>
+				<tr><td><div name="tooltip" title="DEPOT :
+Le dépot permet aux canards de stocker plus de bois.
+Bois max + 35% / Prix + 40%">Dépot</div></td><td><button id="achatNivBat2">Construire</button></td><td id="prixBat2">bois : 750</td></tr>
+				<tr><td><div name="tooltip" title="RESERVE DE GRAINS :
+La réserve de grains augmente la capacité de stockage
+du mal, de l'orge et du houblon.
+Orge,Malt,Houblon max + 35% / Prix + 40%">Reserve de grains</div></td><td><button id="achatNivBat3">Construire</button></td><td id="prixBat3">bois : 750</td></tr>
+				<tr><td><div name="tooltip" title="CAVE :
+Agrandir la cave permet de stocker plus de bière.
+Bière max + 55% / Prix + 60%">Cave</div></td><td><button id="achatNivBat4">Construire</button></td><td id="prixBat4">bois : 750</td></tr>
+				<tr><td><div name="tooltip" title="COFFRE :
+Le coffre permet de stocker plus d'or.
+Bois max + 40% / Prix + 100%">Coffre</div></td><td><button id="achatNivBat5">Construire</button></td><td id="prixBat5">bois : 750</td></tr>
+				<tr><td><div name="tooltip" title="APPROVISIONNEMENT :
+L'apprivionnement permet d'augmenter le stock de ressources rares.
+Levure,Grains crus max + 20% / Prix + 50%">Approvisionnement</div></td><td><button id="achatNivBat6">Construire</button></td><td id="prixBat6">bois : 750</td></tr>
+				<tr><td><div name="tooltip" title="RECEPTACLE :
+Augmenter la taille du receptacle permet de stocker plus d'âmes.
+Âmes max + 20% / Prix + 300%">Receptacle</div></td><td><button id="achatNivBat7">Construire</button></td><td id="prixBat7">bois : 750</td></tr>
+				<tr><td><div name="tooltip" title="HABITATION :
+Débloque une nouvelle habitation dans le village.
+Canards max + 2 / Prix + 40%">Habitation</div></td><td><button id="achatNivBat8">Construire</button></td><td id="prixBat8">bois : 750</td></tr>
 				<tr><td>Caserne</td><td><button id="achatNivBat9">Construire</button></td><td id="prixBat9">bois : 750</td></tr>
 				<tr><td>Cimetiere</td><td><button id="achatNivBat10">Construire</button></td><td id="prixBat10">bois : 750</td></tr>
 			</table>

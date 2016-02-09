@@ -28,9 +28,6 @@ canardAffect4.addEventListener("click", function(){affectCanard(4)});
 var canardAffect5 = document.getElementById("affectCanard5");
 canardAffect5.addEventListener("click", function(){affectCanard(5)});
 
-var canardAffect6 = document.getElementById("affectCanard6");
-canardAffect6.addEventListener("click", function(){affectCanard(6)});
-
 var canardAffect7 = document.getElementById("affectCanard7");
 canardAffect7.addEventListener("click", function(){affectCanard(7)});
 
@@ -50,9 +47,6 @@ canardRet4.addEventListener("click", function(){retCanard(4)});
 
 var canardRet5 = document.getElementById("retCanard5");
 canardRet5.addEventListener("click", function(){retCanard(5)});
-
-var canardRet6 = document.getElementById("retCanard6");
-canardRet6.addEventListener("click", function(){retCanard(6)});
 
 var canardRet7 = document.getElementById("retCanard7");
 canardRet7.addEventListener("click", function(){retCanard(7)});
