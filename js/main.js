@@ -20,11 +20,15 @@ function kill(){
             nourriture.quantite = 0;
             document.getElementById("nourriture").innerHTML = nourriture.quantite.toFixed(1);
             eau.nbCanardAffect = 0;
+            document.getElementById("eauSec").innerHTML = (eau.nbCanardAffect * 0.55).toFixed(1);
             bois.nbCanardAffect = 0;
-            nourriture.nbCanardAffect = 0;
+            document.getElementById("boisSec").innerHTML = (bois.nbCanardAffect * 1.68).toFixed(1);
             malt.nbCanardAffect = 0;
+            document.getElementById("maltSec").innerHTML = (malt.nbCanardAffect * 0.36).toFixed(1);
             houblon.nbCanardAffect = 0;
+            document.getElementById("houblonSec").innerHTML = (houblon.nbCanardAffect * 0.03).toFixed(1);
             orge.nbCanardAffect = 0;
+            document.getElementById("orgeSec").innerHTML = (orge.nbCanardAffect * 0.42).toFixed(1);
             document.getElementById('canardeau').innerHTML = eau.nbCanardAffect.toFixed();
             document.getElementById('canardbois').innerHTML = bois.nbCanardAffect.toFixed();
             document.getElementById('canardmalt').innerHTML = malt.nbCanardAffect.toFixed();
