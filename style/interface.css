@@ -1,0 +1,45 @@
+#ficheTravailleurs{
+    visibility: hidden;
+    display: none;
+}
+#carteBrasserie{
+    visibility: hidden;
+    display: none;
+}
+#cartePort{
+    visibility: hidden;
+    display: none;
+}
+#ficheConteneurs{
+    visibility: hidden;
+    display: none;
+}
+
+/* Infobulle */
+
+#tooltip {
+    position:absolute;
+    z-index:9999;
+    color:#fff;
+    font-size:10px;
+    width:180px;
+
+}
+
+#tooltip .tipHeader {
+    height:8px;
+    background:url(images/tipHeader.gif) no-repeat;
+}
+
+/* hack IE */
+*html #tooltip .tipHeader {margin-bottom:-6px;}
+
+#tooltip .tipBody {
+    background-color:#000;
+    padding:5px;
+}
+
+#tooltip .tipFooter {
+    height:8px;
+    background:url(images/tipFooter.gif) no-repeat;
+}

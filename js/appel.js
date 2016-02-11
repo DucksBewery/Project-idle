@@ -1,87 +1,109 @@
-//-- APPEL FONCTIONS AU CLICK --//
+//------------------- APPEL FONCTIONS AU CLICK ----------------------//
 
 //incrémenter une ressource//
 
 var clickEau = document.getElementById("eauClick");
-clickEau.addEventListener("click", function(){eauClick(1)});
+clickEau.addEventListener("click", function(){eau.incremente(1)});
 
 var clickBois = document.getElementById("boisClick");
-clickBois.addEventListener("click", function(){boisClick(1)});
+clickBois.addEventListener("click", function(){bois.incremente(1)});
 
 var clickNourriture = document.getElementById("nourritureClick");
-clickNourriture.addEventListener("click", function(){nourritureClick(1)});
+clickNourriture.addEventListener("click", function(){nourriture.incremente(1)});
 
 //affecter des cannards//
 
-var canardAffect1 = document.getElementById("affectCanard1");
-canardAffect1.addEventListener("click", function(){affectCanard(1)});
+var canardAffectEau = document.getElementById("affectCanardEau");
+canardAffectEau.addEventListener("click", function(){eau.affectCanard(0.55)});
 
-var canardAffect2 = document.getElementById("affectCanard2");
-canardAffect2.addEventListener("click", function(){affectCanard(2)});
+var canardAffectBois = document.getElementById("affectCanardBois");
+canardAffectBois.addEventListener("click", function(){bois.affectCanard(1.68)});
 
-var canardAffect3 = document.getElementById("affectCanard3");
-canardAffect3.addEventListener("click", function(){affectCanard(3)});
+var canardAffectNourriture = document.getElementById("affectCanardNourriture");
+canardAffectNourriture.addEventListener("click", function(){nourriture.affectCanard(0.8)});
 
-var canardAffect4 = document.getElementById("affectCanard4");
-canardAffect4.addEventListener("click", function(){affectCanard(4)});
+var canardAffectMalt = document.getElementById("affectCanardMalt");
+canardAffectMalt.addEventListener("click", function(){malt.affectCanard(0.36)});
 
-var canardAffect5 = document.getElementById("affectCanard5");
-canardAffect5.addEventListener("click", function(){affectCanard(5)});
+var canardAffectHoublon = document.getElementById("affectCanardHoublon");
+canardAffectHoublon.addEventListener("click", function(){houblon.affectCanard(0.03)});
 
-var canardAffect7 = document.getElementById("affectCanard7");
-canardAffect7.addEventListener("click", function(){affectCanard(7)});
+var canardAffectOrge = document.getElementById("affectCanardOrge");
+canardAffectOrge.addEventListener("click", function(){orge.affectCanard(0.42)});
 
 //retirer des canards//
 
-var canardRet1 = document.getElementById("retCanard1");
-canardRet1.addEventListener("click", function(){retCanard(1)});
+var canardRetEau = document.getElementById("retCanardEau");
+canardRetEau.addEventListener("click", function(){eau.retCanard(0.55)});
 
-var canardRet2 = document.getElementById("retCanard2");
-canardRet2.addEventListener("click", function(){retCanard(2)});
+var canardRetBois = document.getElementById("retCanardBois");
+canardRetBois.addEventListener("click", function(){bois.retCanard(1.68)});
 
-var canardRet3 = document.getElementById("retCanard3");
-canardRet3.addEventListener("click", function(){retCanard(3)});
+var canardRetNourriture = document.getElementById("retCanardNourriture");
+canardRetNourriture.addEventListener("click", function(){nourriture.retCanard(0.8)});
 
-var canardRet4 = document.getElementById("retCanard4");
-canardRet4.addEventListener("click", function(){retCanard(4)});
+var canardRetMalt = document.getElementById("retCanardMalt");
+canardRetMalt.addEventListener("click", function(){malt.retCanard(0.36)});
 
-var canardRet5 = document.getElementById("retCanard5");
-canardRet5.addEventListener("click", function(){retCanard(5)});
+var canardRetHoublon = document.getElementById("retCanardHoublon");
+canardRetHoublon.addEventListener("click", function(){houblon.retCanard(0.03)});
 
-var canardRet7 = document.getElementById("retCanard7");
-canardRet7.addEventListener("click", function(){retCanard(7)});
+var canardRetOrge = document.getElementById("retCanardOrge");
+canardRetOrge.addEventListener("click", function(){orge.retCanard(0.42)});
 
 //achat niveau batiments//
 
-var batAchat1 = document.getElementById("achatNivBat1");
-batAchat1.addEventListener("click", function(){achatLevel(1)});
+var batAchatPuit = document.getElementById("achatNivpuit");
+batAchatPuit.addEventListener("click", function(){
+    if(puit.achatLevel(1.25)){
+        puit.augmenteStock(eau,1.2);
+    }});
 
-var batAchat2 = document.getElementById("achatNivBat2");
-batAchat2.addEventListener("click", function(){achatLevel(2)});
+var batAchatDepot = document.getElementById("achatNivdepot");
+batAchatDepot.addEventListener("click", function(){
+    if(depot.achatLevel(1.4)){
+        depot.augmenteStock(bois,1.35);
+        depot.augmenteStock(nourriture,1.35);
+    }});
 
-var batAchat3 = document.getElementById("achatNivBat3");
-batAchat3.addEventListener("click", function(){achatLevel(3)});
+var batAchatReserve = document.getElementById("achatNivreserve");
+batAchatReserve.addEventListener("click", function(){
+    if(reserve.achatLevel(1.4)){
+        reserve.augmenteStock(malt,1.35);
+        reserve.augmenteStock(houblon,1.35);
+        reserve.augmenteStock(orge,1.35);
+    }});
 
-var batAchat4 = document.getElementById("achatNivBat4");
-batAchat4.addEventListener("click", function(){achatLevel(4)});
+var batAchatCave = document.getElementById("achatNivcave");
+batAchatCave.addEventListener("click", function(){
+    if(cave.achatLevel(1.6)){
+        cave.augmenteStock(biere,1.55);
+    }});
 
-var batAchat5 = document.getElementById("achatNivBat5");
-batAchat5.addEventListener("click", function(){achatLevel(5)});
+var batAchatCoffre = document.getElementById("achatNivcoffre");
+batAchatCoffre.addEventListener("click", function(){
+    if(coffre.achatLevel(2)){
+        coffre.augmenteStock(or,1.4);
+    }});
 
-var batAchat6 = document.getElementById("achatNivBat6");
-batAchat6.addEventListener("click", function(){achatLevel(6)});
+var batAchatApprovisionnement = document.getElementById("achatNivapprovisionnement");
+batAchatApprovisionnement.addEventListener("click", function(){
+    if(approvionnement.achatLevel(1.5)){
+        approvionnement.augmenteStock(levure,1.2);
+        approvionnement.augmenteStock(grain,1.2);
+    }});
 
-var batAchat7 = document.getElementById("achatNivBat7");
-batAchat7.addEventListener("click", function(){achatLevel(7)});
+var batAchatReceptacle = document.getElementById("achatNivreceptacle");
+batAchatReceptacle.addEventListener("click", function(){
+    if(receptacle.achatLevel(4)){
+        receptacle.augmenteStock(ame,1.2);
+    }});
 
-var batAchat8 = document.getElementById("achatNivBat8");
-batAchat8.addEventListener("click", function(){achatLevel(8)});
-
-//var batAchat9 = document.getElementById("achatNivBat9");
-//batAchat9.addEventListener("click", function(){achatLevel(9)});
-//
-//var batAchat10 = document.getElementById("achatNivBat10");
-//batAchat10.addEventListener("click", function(){achatLevel(10)});
+var batAchatHabitation = document.getElementById("achatNivhabitation");
+batAchatHabitation.addEventListener("click", function(){
+    if(habitation.achatLevel(1.4)){
+        habitation.augmenteStock(canard,1.2);
+    }});
 
 //etapes brasserie//
 
@@ -99,3 +121,63 @@ etapeFermentation.addEventListener("click",function(){fermentation()});
 
 var etapeConditionnement = document.getElementById("conditionnement");
 etapeConditionnement.addEventListener("click",function(){conditionnement()});
+
+//----------------------CHANGER D'ONGLET---------------------------//
+
+//--ressources-travailleurs--//
+var ficheRessources = document.getElementById("ficheRessources");
+var ficheTravailleurs = document.getElementById("ficheTravailleurs");
+
+var ressources = document.getElementById("ressources");
+ressources.addEventListener("click",function(){
+    ficheRessources.style.cssText = "visibility : visible; display : inline_block;";
+    ficheTravailleurs.style.cssText = "visibility : hidden; display : none;";
+});
+
+var travailleurs = document.getElementById("travailleurs");
+travailleurs.addEventListener("click",function(){
+    ficheRessources.style.cssText = "visibility : hidden; display : none;";
+    ficheTravailleurs.style.cssText = "visibility : visible; display : inline_block;";
+});
+
+//--carte--//
+var carteVille = document.getElementById("carteVille");
+var carteBrasserie = document.getElementById("carteBrasserie");
+var cartePort = document.getElementById("cartePort");
+
+var ville = document.getElementById("ville");
+ville.addEventListener("click", function(){
+    carteVille.style.cssText = "visibility : visible; display : inline-block;";
+    carteBrasserie.style.cssText = "visibility : hidden; display : none;";
+    cartePort.style.cssText = "visibility : hidden; display : none;";
+});
+
+var brasserie = document.getElementById("brasserie");
+brasserie.addEventListener("click", function(){
+    carteVille.style.cssText = "visibility : hidden; display : none;";
+    carteBrasserie.style.cssText = "visibility : visible; display : inline-block;";
+    cartePort.style.cssText = "visibility : hidden; display : none;";
+});
+
+var port = document.getElementById("port");
+port.addEventListener("click", function(){
+    carteVille.style.cssText = "visibility : hidden; display : none;";
+    carteBrasserie.style.cssText = "visibility : hidden; display : none;";
+    cartePort.style.cssText = "visibility : visible; display : inline-block;";
+});
+
+//--batiments-conteneurs--//
+var ficheConstructions = document.getElementById("ficheConstructions");
+var ficheConteneurs = document.getElementById("ficheConteneurs");
+
+var constructions = document.getElementById("constructions");
+constructions.addEventListener("click",function(){
+    ficheConstructions.style.cssText = "visibility : visible; display : inline-block;";
+    ficheConteneurs.style.cssText = "visibility : hidden; display : none;";
+});
+
+var conteneurs = document.getElementById("conteneurs");
+conteneurs.addEventListener("click",function(){
+    ficheConstructions.style.cssText = "visibility : hidden; display : none;";
+    ficheConteneurs.style.cssText = "visibility : visible; display : inline-block;";
+});

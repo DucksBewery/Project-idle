@@ -3,166 +3,153 @@
 	<head>
         <meta charset="UTF-8">
 		<link rel="stylesheet" type="text/css" href="style/interface.css" />
-        <script type="text/javascript" src="js/init.js"></script>
-		<script type="text/javascript" src="js/infobulle.js"></script>
-<style>
-/* Infobulle */
- 
-#tooltip {
-    position:absolute;
-    z-index:9999;
-    color:#fff;
-    font-size:10px;
-    width:180px;
- 
-}
- 
-#tooltip .tipHeader {
-    height:8px;
-    background:url(images/tipHeader.gif) no-repeat;
-}
- 
-/* hack IE */
-*html #tooltip .tipHeader {margin-bottom:-6px;}
- 
-#tooltip .tipBody {
-    background-color:#000;
-    padding:5px;
-}
- 
-#tooltip .tipFooter {
-    height:8px;
-    background:url(images/tipFooter.gif) no-repeat;
-}
-</style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	</head>
 	<body>
+    <!--RESSOURCES-->
 		<div style="float: left;">
-			<fieldset><legend>Ressources</legend>
-			
-			<fieldset>
-				Canards actuels dans la ville : <span id="canard">0</span>/<span id="canardMax">5</span>
-				</br></br>
-				Total travailleurs : <span id="canTot">0</span>
-				</br>
-			</fieldset>
-			
-			
-			<fieldset>
-				<button id="eauClick">Eau : </button> <span id="eau">0.0</span>/<span id="eauMax">5000</span> ( +<span id="eauSec">0</span>/s )
-				</br>
-				Travailleurs actifs : <span id="canard1">0</span> <button id="affectCanard1">+</button><button id="retCanard1">-</button>
-				</br></br>
-				<button id="boisClick">Bois : </button> <span id="bois">0.0</span>/<span id="boisMax">10000</span> ( +<span id="boisSec">0</span>/s )
-				</br>
-				Travailleurs actifs : <span id="canard2">0</span> <button id="affectCanard2">+</button><button id="retCanard2">-</button>
-				</br></br>
-				<button id="nourritureClick">Nourriture : </button> <span id="nourriture">0.0</span>/<span id="nourritureMax">5000</span> ( +<span id="nourritureSec">0</span>/s )
-				</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: red;">&#8618;&nbsp;Consommation : </span><span id="canTotSec" style="color: red;">( -0/s )</span>
-				</br>
-				Travailleurs actifs : <span id="canard3">0</span> <button id="affectCanard3">+</button><button id="retCanard3">-</button>
-			</fieldset>
-			
-			<fieldset>
-				Malt : <span id="malt">0.0</span>/<span id="maltMax">3000</span> ( +<span id="maltSec">0</span>/s )
-				</br>
-				Travailleurs actifs : <span id="canard4">0</span> <button id="affectCanard4">+</button><button id="retCanard4">-</button>
-				</br></br>
-				Houblon : <span id="houblon">0.0</span>/<span id="houblonMax">3000</span> ( +<span id="houblonSec">0</span>/s )
-				</br>
-				Travailleurs actifs : <span id="canard5">0</span> <button id="affectCanard5">+</button><button id="retCanard5">-</button>
-				</br></br>
-				Biere : <span id="biere">0.0</span>/<span id="biereMax">1000</span> ( +<span id="biereSec">0</span>/s )
-				</br></br>
-				Orge : <span id="orge">0.0</span>/<span id="orgeMax">5000</span> ( +<span id="orgeSec">0</span>/s )
-				</br>
-				Travailleurs actifs : <span id="canard7">0</span> <button id="affectCanard7">+</button><button id="retCanard7">-</button>
-				</br></br>
-				Or : <span id="or">0.0</span>/<span id="orMax">5000</span> ( +<span id="orSec">0</span>/s )
-				</br></br>
-				Grains crus : <span id="grain">0.0</span>/<span id="grainMax">500</span> ( +<span id="grainSec">0</span>/s )
-				</br></br>
-				Levure : <span id="levure">0.0</span>/<span id="levureMax">500</span> ( +<span id="levureSec">0</span>/s )
-				</br></br>
-				Ame : <span id="ame">0.0</span>/<span id="ameMax">500</span> ( +<span id="ameSec">0</span>/s )
-				</fieldset>
-			
+			<fieldset><legend><button id="ressources">Ressources</button> / <button id="travailleurs">Travailleurs</button></legend>
+                <div id="ficheRessources">
+                    <fieldset>
+                        Canards actuels dans la ville : <span id="canard">0</span>/<span id="canardMax">5</span>
+                        <br><br>
+                        Total travailleurs : <span id="canTot">0</span>
+                        <br>
+                    </fieldset>
+                    <fieldset>
+                        <button id="eauClick">Eau : </button> <span id="eau">0.0</span>/<span id="eauMax">5000</span> ( +<span id="eauSec">0</span>/s )
+                        <br>
+                        Travailleurs actifs : <span id="canardeau">0</span> <button id="affectCanardEau">+</button><button id="retCanardEau">-</button>
+                        <br><br>
+                        <button id="boisClick">Bois : </button> <span id="bois">0.0</span>/<span id="boisMax">10000</span> ( +<span id="boisSec">0</span>/s )
+                        <br>
+                        Travailleurs actifs : <span id="canardbois">0</span> <button id="affectCanardBois">+</button><button id="retCanardBois">-</button>
+                        <br><br>
+                        <button id="nourritureClick">Nourriture : </button> <span id="nourriture">0.0</span>/<span id="nourritureMax">5000</span> ( +<span id="nourritureSec">0</span>/s )
+                        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: red;">&#8618;&nbsp;Consommation : </span><span id="canTotSec" style="color: red;">( -0/s )</span>
+                        <br>
+                        Travailleurs actifs : <span id="canardnourriture">0</span> <button id="affectCanardNourriture">+</button><button id="retCanardNourriture">-</button>
+                    </fieldset>
+                    <fieldset>
+                        Malt : <span id="malt">0.0</span>/<span id="maltMax">3000</span> ( +<span id="maltSec">0</span>/s )
+                        <br>
+                        Travailleurs actifs : <span id="canardmalt">0</span> <button id="affectCanardMalt">+</button><button id="retCanardMalt">-</button>
+                        <br><br>
+                        Houblon : <span id="houblon">0.0</span>/<span id="houblonMax">1000</span> ( +<span id="houblonSec">0</span>/s )
+                        <br>
+                        Travailleurs actifs : <span id="canardhoublon">0</span> <button id="affectCanardHoublon">+</button><button id="retCanardHoublon">-</button>
+                        <br><br>
+                        Orge : <span id="orge">0.0</span>/<span id="orgeMax">5000</span> ( +<span id="orgeSec">0</span>/s )
+                        <br>
+                        Travailleurs actifs : <span id="canardorge">0</span> <button id="affectCanardOrge">+</button><button id="retCanardOrge">-</button>
+                        <br><br>
+                        Biere : <span id="biere">0.0</span>/<span id="biereMax">1000</span> ( +<span id="biereSec">0</span>/s )
+                        </br></br>
+                        Or : <span id="or">0.0</span>/<span id="orMax">5000</span> ( +<span id="orSec">0</span>/s )
+                        </br></br>
+                        Grains crus : <span id="grain">0.0</span>/<span id="grainMax">500</span> ( +<span id="grainSec">0</span>/s )
+                        </br></br>
+                        Levure : <span id="levure">0.0</span>/<span id="levureMax">500</span> ( +<span id="levureSec">0</span>/s )
+                        </br></br>
+                        Ame : <span id="ame">0.0</span>/<span id="ameMax">500</span> ( +<span id="ameSec">0</span>/s )
+                        </fieldset>
+                </div>
+			    <div id="ficheTravailleurs"></div>
 			</fieldset>
 		</div>
 
+    <!--CARTE-->
         <div style="float: left;">
-			<fieldset><legend>Brasserie</legend>
-				<button id="maltage">Etape 1 : Maltage</button>
-				</br>
-				Orge : <span id="orgeBrass">3000</span></br>
-				Eau : <span id="eauBrass1">4000</span></br>
-				Temps : <span id="tempsBrass1">00:02:30</span></br>
-				</br>
-				<button id="brassage">Etape 2 : Brassage</button>
-				</br>
-				Malt : <span id="maltBrass">2000</span></br>
-				Eau : <span id="eauBrass2">9000</span></br>
-				Temps : <span id="tempsBrass2">00:05:00</span></br>
-				</br>
-				<button id="aromatisation">Etape 3 : Aromatisation</button>
-				</br>
-				Houblon : <span id="houblonBrass">400</span></br>
-				Eau : <span id="eauBrass3">5000</span></br>
-				Temps : <span id="tempsBrass3">00:04:00</span></br>
-				</br>
-				<button id="fermentation">Etape 4 : Fermentation</button>
-				</br>
-				Levure : <span id="levureBrass">15</span></br>
-				Grain cru : <span id="grainBrass">30</span></br>
-				Temps : <span id="tempsBrass4">00:15:00</span></br>
-				</br>
-				<button id="conditionnement">Etape 5 : Conditionnement</button>
-				</br>
-				Temps : <span id="tempsBrass5">00:01:30</span>
-				</br>
-			</fieldset>
-		</div>
-		
-		
-		
-		<div style="float: right;">
-			<fieldset><legend>Constructions</legend>
-			
-			<fieldset>
-			<table>
-				<tr><td><div name="tooltip" title="PUIT :
+            <fieldset><legend><button id="ville">Ville</button> / <button id="brasserie">Brasserie</button> / <button id="port">Port</button></legend>
+                <div id="carteVille">
+                </div>
+                <div id="carteBrasserie">
+                    <button id="maltage">Etape 1 : Maltage</button>
+                    </br>
+                    Orge : <span id="orgeBrass">3000</span></br>
+                    Eau : <span id="eauBrass1">4000</span></br>
+                    Temps : <span id="tempsBrass1">00:02:30</span></br>
+                    </br>
+                    <button id="brassage">Etape 2 : Brassage</button>
+                    </br>
+                    Malt : <span id="maltBrass">2000</span></br>
+                    Eau : <span id="eauBrass2">9000</span></br>
+                    Temps : <span id="tempsBrass2">00:05:00</span></br>
+                    </br>
+                    <button id="aromatisation">Etape 3 : Aromatisation</button>
+                    </br>
+                    Houblon : <span id="houblonBrass">400</span></br>
+                    Eau : <span id="eauBrass3">5000</span></br>
+                    Temps : <span id="tempsBrass3">00:04:00</span></br>
+                    </br>
+                    <button id="fermentation">Etape 4 : Fermentation</button>
+                    </br>
+                    Levure : <span id="levureBrass">15</span></br>
+                    Grain cru : <span id="grainBrass">30</span></br>
+                    Temps : <span id="tempsBrass4">00:15:00</span></br>
+                    </br>
+                    <button id="conditionnement">Etape 5 : Conditionnement</button>
+                    </br>
+                    Temps : <span id="tempsBrass5">00:01:30</span>
+                    </br>
+                </div>
+                <div id="cartePort">
+                </div>
+            </fieldset>
+        </div>
+
+    <!--BATIMENT-->
+    <div style="float: right;">
+        <fieldset><legend><button id="constructions">Constructions</button> / <button id="conteneurs">Conteneurs</button></legend>
+            <div id="ficheConstructions">
+            <fieldset>
+                <table>
+                    <tr><td><div name="tooltip" title="PUIT :
 Le puit permet aux canards de stocker plus d'eau.
-Eau max + 20% / Prix + 25%">Puit</div></td><td><button id="achatNivBat1">Construire</button></td><td id="prixBat1">bois : 500</td></tr>
-				<tr><td><div name="tooltip" title="DEPOT :
+Eau max + 20% / Prix + 25%">Puit</div></td><td><button id="achatNivpuit">Construire</button></td><td id="prixpuit">bois : 3000</td></tr>
+
+                    <tr><td><div name="tooltip" title="DEPOT :
 Le dépot permet aux canards de stocker plus de bois.
-Bois max + 35% / Prix + 40%">Dépot</div></td><td><button id="achatNivBat2">Construire</button></td><td id="prixBat2">bois : 750</td></tr>
-				<tr><td><div name="tooltip" title="RESERVE DE GRAINS :
+Bois max + 35% / Prix + 40%">Dépot</div></td><td><button id="achatNivdepot">Construire</button></td><td id="prixdepot">bois : 3500</td></tr>
+
+                    <tr><td><div name="tooltip" title="RESERVE DE GRAINS :
 La réserve de grains augmente la capacité de stockage
 du mal, de l'orge et du houblon.
-Orge,Malt,Houblon max + 35% / Prix + 40%">Reserve de grains</div></td><td><button id="achatNivBat3">Construire</button></td><td id="prixBat3">bois : 750</td></tr>
-				<tr><td><div name="tooltip" title="CAVE :
+Orge,Malt,Houblon max + 35% / Prix + 40%">Reserve de grains</div></td><td><button id="achatNivreserve">Construire</button></td><td id="prixreserve">bois : 5000</td></tr>
+
+                    <tr><td><div name="tooltip" title="CAVE :
 Agrandir la cave permet de stocker plus de bière.
-Bière max + 55% / Prix + 60%">Cave</div></td><td><button id="achatNivBat4">Construire</button></td><td id="prixBat4">bois : 750</td></tr>
-				<tr><td><div name="tooltip" title="COFFRE :
+Bière max + 55% / Prix + 60%">Cave</div></td><td><button id="achatNivcave">Construire</button></td><td id="prixcave">bois : 12500</td></tr>
+
+                    <tr><td><div name="tooltip" title="COFFRE :
 Le coffre permet de stocker plus d'or.
-Bois max + 40% / Prix + 100%">Coffre</div></td><td><button id="achatNivBat5">Construire</button></td><td id="prixBat5">bois : 750</td></tr>
-				<tr><td><div name="tooltip" title="APPROVISIONNEMENT :
+Bois max + 40% / Prix + 100%">Coffre</div></td><td><button id="achatNivcoffre">Construire</button></td><td id="prixcoffre">bois : 150000</td></tr>
+
+                    <tr><td><div name="tooltip" title="APPROVISIONNEMENT :
 L'apprivionnement permet d'augmenter le stock de ressources rares.
-Levure,Grains crus max + 20% / Prix + 50%">Approvisionnement</div></td><td><button id="achatNivBat6">Construire</button></td><td id="prixBat6">bois : 750</td></tr>
-				<tr><td><div name="tooltip" title="RECEPTACLE :
+Levure,Grains crus max + 20% / Prix + 50%">Approvisionnement</div></td><td><button id="achatNivapprovisionnement">Construire</button></td><td id="prixapprovisionnement">bois : 7500</td></tr>
+
+                    <tr><td><div name="tooltip" title="RECEPTACLE :
 Augmenter la taille du receptacle permet de stocker plus d'âmes.
-Âmes max + 20% / Prix + 300%">Receptacle</div></td><td><button id="achatNivBat7">Construire</button></td><td id="prixBat7">bois : 750</td></tr>
-				<tr><td><div name="tooltip" title="HABITATION :
+Âmes max + 20% / Prix + 300%">Receptacle</div></td><td><button id="achatNivreceptacle">Construire</button></td><td id="prixreceptacle">bois : 7500</td></tr>
+
+                    <tr><td><div name="tooltip" title="HABITATION :
 Débloque une nouvelle habitation dans le village.
-Canards max + 2 / Prix + 40%">Habitation</div></td><td><button id="achatNivBat8">Construire</button></td><td id="prixBat8">bois : 750</td></tr>
-				<tr><td>Caserne</td><td><button id="achatNivBat9">Construire</button></td><td id="prixBat9">bois : 750</td></tr>
-				<tr><td>Cimetiere</td><td><button id="achatNivBat10">Construire</button></td><td id="prixBat10">bois : 750</td></tr>
-			</table>
-			</fieldset>
-			
-			</fieldset>
-		</div>
-        <script type="text/javascript" src="js/main.js"></script>
-        <script type="text/javascript" src="js/appel.js"></script>
+Canards max + 20% / Prix + 40%">Habitation</div></td><td><button id="achatNivhabitation">Construire</button></td><td id="prixhabitation">bois : 2500</td></tr>
+                    <!--<tr><td>Caserne</td><td><button id="achatNivBat9">Construire</button></td><td id="prixBat9">bois : 750</td></tr>-->
+                    <!--<tr><td>Cimetiere</td><td><button id="achatNivBat10">Construire</button></td><td id="prixBat10">bois : 750</td></tr>-->
+                </table>
+            </fieldset>
+            </div>
+            <div id="ficheconteneurs">
+            </div>
+        </fieldset>
+    </div>
+    <script type="text/javascript" src="js/Ressources.js"></script>
+    <script type="text/javascript" src="js/Structure.js"></script>
+    <script type="text/javascript" src="js/infobulle.js"></script>
+    <script type="text/javascript" src="js/init.js"></script>
+    <script type="text/javascript" src="js/appel.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
 	</body>
 </html>
