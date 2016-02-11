@@ -19,29 +19,29 @@
                     <fieldset>
                         <button id="eauClick">Eau : </button> <span id="eau">0.0</span>/<span id="eauMax">5000</span> ( +<span id="eauSec">0</span>/s )
                         <br>
-                        Travailleurs actifs : <span id="canardeau">0</span> <button id="affectCanardEau">+</button><button id="retCanardEau">-</button>
+                        Travailleurs actifs : <span id="canardeau">0</span>/<span id="canardeauMax">0</span> <button id="affectCanardEau">+</button><button id="retCanardEau">-</button>
                         <br><br>
                         <button id="boisClick">Bois : </button> <span id="bois">0.0</span>/<span id="boisMax">10000</span> ( +<span id="boisSec">0</span>/s )
                         <br>
-                        Travailleurs actifs : <span id="canardbois">0</span> <button id="affectCanardBois">+</button><button id="retCanardBois">-</button>
+                        Travailleurs actifs : <span id="canardbois">0</span>/<span id="canardboisMax">0</span> <button id="affectCanardBois">+</button><button id="retCanardBois">-</button>
                         <br><br>
                         <button id="nourritureClick">Nourriture : </button> <span id="nourriture">0.0</span>/<span id="nourritureMax">5000</span> ( +<span id="nourritureSec">0</span>/s )
                         <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: red;">&#8618;&nbsp;Consommation : </span><span id="canTotSec" style="color: red;">( -0/s )</span>
                         <br>
-                        Travailleurs actifs : <span id="canardnourriture">0</span> <button id="affectCanardNourriture">+</button><button id="retCanardNourriture">-</button>
+                        Travailleurs actifs : <span id="canardnourriture">0</span>/<span id="canardnourritureMax">0</span> <button id="affectCanardNourriture">+</button><button id="retCanardNourriture">-</button>
                     </fieldset>
                     <fieldset>
                         Malt : <span id="malt">0.0</span>/<span id="maltMax">3000</span> ( +<span id="maltSec">0</span>/s )
                         <br>
-                        Travailleurs actifs : <span id="canardmalt">0</span> <button id="affectCanardMalt">+</button><button id="retCanardMalt">-</button>
+                        Travailleurs actifs : <span id="canardmalt">0</span>/<span id="canardmaltMax">0</span> <button id="affectCanardMalt">+</button><button id="retCanardMalt">-</button>
                         <br><br>
                         Houblon : <span id="houblon">0.0</span>/<span id="houblonMax">1000</span> ( +<span id="houblonSec">0</span>/s )
                         <br>
-                        Travailleurs actifs : <span id="canardhoublon">0</span> <button id="affectCanardHoublon">+</button><button id="retCanardHoublon">-</button>
+                        Travailleurs actifs : <span id="canardhoublon">0</span>/<span id="canardhoublonMax">0</span> <button id="affectCanardHoublon">+</button><button id="retCanardHoublon">-</button>
                         <br><br>
                         Orge : <span id="orge">0.0</span>/<span id="orgeMax">5000</span> ( +<span id="orgeSec">0</span>/s )
                         <br>
-                        Travailleurs actifs : <span id="canardorge">0</span> <button id="affectCanardOrge">+</button><button id="retCanardOrge">-</button>
+                        Travailleurs actifs : <span id="canardorge">0</span>/<span id="canardorgeMax">0</span> <button id="affectCanardOrge">+</button><button id="retCanardOrge">-</button>
                         <br><br>
                         Biere : <span id="biere">0.0</span>/<span id="biereMax">1000</span> ( +<span id="biereSec">0</span>/s )
                         </br></br>
@@ -100,8 +100,8 @@
 
     <!--BATIMENT-->
     <div style="float: right;">
-        <fieldset><legend><button id="constructions">Conteneurs</button> / <button id="conteneurs">Constructions</button></legend>
-            <div id="ficheConstructions">
+        <fieldset><legend><button id="constructions">Constructions</button> / <button id="conteneurs">Conteneurs</button></legend>
+            <div id="ficheConteneurs">
             <fieldset>
                 <table>
                     <tr><td><div name="tooltip" title="PUIT :
@@ -141,7 +141,50 @@ Canards max + 20% / Prix + 40%">Habitation</div></td><td><button id="achatNivhab
                 </table>
             </fieldset>
             </div>
-            <div id="ficheconteneurs">
+            <div id="ficheConstructions">
+				<fieldset>
+                <table>
+                    <tr><td><div name="tooltip" title="NID :
+Améliorer le nid permet d'augmenter la production de canards.
+vitesse de production - 5% / Prix + 50%">Nid</div></td><td><button id="achatNivnid">Construire</button></td><td id="prixpuit">bois : 300</td></tr>
+
+                    <tr><td><div name="tooltip" title="MOULIN A EAU:
+Avec ce système de moulin à eau, vous pouvez faire travailler
+des canards et augmenter votre production d'eau.
+Meuniers max + 2 / Prix + 140%">Moulin à eau</div></td><td><button id="achatNivmoulin">Construire</button></td><td id="prixmoulin">bois : 500</td></tr>
+
+                    <tr><td><div name="tooltip" title="CAMP DE BUCHERON :
+Installer des camps de bucheron permet d'augmenter la production
+de bois on séparant les équipes dans la foret.
+Bucherons max + 3 / Prix + 140%">Camp de bucheron</div></td><td><button id="achatNivcamp">Construire</button></td><td id="prixcamp">bois : 250</td></tr>
+
+                    <tr><td><div name="tooltip" title="CHAMP DU CROUTON :
+Les croutons sont la nourriture principale des canards, preparez 
+quelques terres pour créer de nouveaux enplois de maréchés.
+Maréchés max + 4 / Prix + 140%">Champ de crouton</div></td><td><button id="achatNivchampCrouton">Construire</button></td><td id="prixchampCrouton">bois : 300</td></tr>
+
+                    <tr><td><div name="tooltip" title="CHAMP DE MALT :
+Le malt est une des ressources servant à la brasserie, aménager des
+champs de malt permet de créer des emplois de producteurs de malt.
+Producteurs de malt + 2 / Prix + 80%">Champ de malt</div></td><td><button id="achatNivchampMalt">Construire</button></td><td id="prixchampMalt">bois : 1500</td></tr>
+
+                    <tr><td><div name="tooltip" title="CHAMP DE HOUBLON :
+Le houblon est une des ressources servant à la brasserie, aménager des
+champs de houblon permet de créer des emplois de producteurs de houblon.
+Producteurs de houblon + 2 / Prix + 105%">Champ de houblon</div></td><td><button id="achatNivchampHoublon">Construire</button></td><td id="prixchampHoublon">bois : 2000</td></tr>
+
+                    <tr><td><div name="tooltip" title="CHAMP D'ORGE :
+L'orge est une des ressources servant à la brasserie, aménager des
+champs d'orge permet de créer des emplois de producteurs d'orge.
+Producteurs d'orge + 2 / Prix + 65%">Champ d'orge</div></td><td><button id="achatNivchampOrge">Construire</button></td><td id="prixchampOrge">bois : 2300</td></tr>
+
+                    <tr><td><div name="tooltip" title="BRASSERIE :
+Débloque la brasserie dans la ville, permettant la création de bière.
+Brasserie + 1 / Prix + 700%">Brasserie</div></td><td><button id="achatNivbrasserie">Construire</button></td><td id="prixbrasserie">bois : 50000</td></tr>
+                    <!--<tr><td>Caserne</td><td><button id="achatNivBat9">Construire</button></td><td id="prixBat9">bois : 750</td></tr>-->
+                    <!--<tr><td>Cimetiere</td><td><button id="achatNivBat10">Construire</button></td><td id="prixBat10">bois : 750</td></tr>-->
+                </table>
+				</fieldset>
             </div>
         </fieldset>
     </div>

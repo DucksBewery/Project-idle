@@ -39,10 +39,12 @@ Ressource.prototype.affectCanard = function(coef){
     if(canard.quantite > 0 && this.canardAffect < this.canardAffectMax) {
         canard.quantite = canard.quantite - 1;
         this.canardAffect = this.canardAffect + 1;
-        document.getElementById("canard"+this.nom).innerHTML = this.canardAffect.toFixed();
-        document.getElementById(canard.nom).innerHTML = canard.quantite.toFixed();
-        document.getElementById(this.nom+"Sec").innerHTML = (this.canardAffect * coef).toFixed(1);
+        
     }
+	document.getElementById("canard"+this.nom).innerHTML = this.canardAffect.toFixed();
+    document.getElementById("canard"+this.nom+"Max").innerHTML = this.canardAffectMax.toFixed();
+	document.getElementById(canard.nom).innerHTML = canard.quantite.toFixed();
+    document.getElementById(this.nom+"Sec").innerHTML = (this.canardAffect * coef).toFixed(2);
     kill();
 };
 
@@ -51,12 +53,15 @@ Ressource.prototype.affectCanard = function(coef){
 // param: -
 // return: -
 Ressource.prototype.retCanard = function(coef){
-    if(this.canardAffect >= 1 && canard.quantite != canard.quantiteMax) {
+    if(this.canardAffect >= 0 && canard.quantite != canard.quantiteMax) {
         canard.quantite = canard.quantite + 1;
         this.canardAffect = this.canardAffect - 1;
-        document.getElementById("canard"+this.nom).innerHTML = this.canardAffect.toFixed();
-        document.getElementById(canard.nom).innerHTML = canard.quantite.toFixed();
-        document.getElementById(this.nom+"Sec").innerHTML = (this.canardAffect * coef).toFixed(2);
-    }
+    } else {
+		this.canardAffect = 0;
+	}
+	document.getElementById("canard"+this.nom).innerHTML = this.canardAffect.toFixed();
+	document.getElementById("canard"+this.nom+"Max").innerHTML = this.canardAffectMax.toFixed();
+    document.getElementById(canard.nom).innerHTML = canard.quantite.toFixed();
+    document.getElementById(this.nom+"Sec").innerHTML = (this.canardAffect * coef).toFixed(2);
     kill();
 };

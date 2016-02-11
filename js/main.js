@@ -10,8 +10,8 @@
  conditions : calcul du malus > calcul incrémentation de nourriture.
  */
 function kill(){
-    canTot = eau.nbCanardAffect + bois.nbCanardAffect + nourriture.nbCanardAffect + malt.nbCanardAffect + houblon.nbCanardAffect + orge.nbCanardAffect;
-    if((canTot * 0.13)>(nourriture.nbCanardAffect * 0.8)){
+    canTot = eau.canardAffect + bois.canardAffect + nourriture.canardAffect + malt.canardAffect + houblon.canardAffect + orge.canardAffect;
+    if((canTot * 0.13)>(nourriture.canardAffect * 0.8)){
         document.getElementById("nourriture").style.color = "red";
         document.getElementById("nourritureMax").style.color = "red";
         document.getElementById("canTot").innerHTML = canTot;
@@ -19,22 +19,22 @@ function kill(){
         if(nourriture.quantite < 0){
             nourriture.quantite = 0;
             document.getElementById("nourriture").innerHTML = nourriture.quantite.toFixed(1);
-            eau.nbCanardAffect = 0;
-            document.getElementById("eauSec").innerHTML = (eau.nbCanardAffect * 0.55).toFixed(1);
-            bois.nbCanardAffect = 0;
-            document.getElementById("boisSec").innerHTML = (bois.nbCanardAffect * 1.68).toFixed(1);
-            malt.nbCanardAffect = 0;
-            document.getElementById("maltSec").innerHTML = (malt.nbCanardAffect * 0.36).toFixed(1);
-            houblon.nbCanardAffect = 0;
-            document.getElementById("houblonSec").innerHTML = (houblon.nbCanardAffect * 0.03).toFixed(1);
-            orge.nbCanardAffect = 0;
-            document.getElementById("orgeSec").innerHTML = (orge.nbCanardAffect * 0.42).toFixed(1);
-            document.getElementById('canardeau').innerHTML = eau.nbCanardAffect.toFixed();
-            document.getElementById('canardbois').innerHTML = bois.nbCanardAffect.toFixed();
-            document.getElementById('canardmalt').innerHTML = malt.nbCanardAffect.toFixed();
-            document.getElementById('canardhoublon').innerHTML = houblon.nbCanardAffect.toFixed();
-            document.getElementById('canardorge').innerHTML = orge.nbCanardAffect.toFixed();
-            canTot = eau.nbCanardAffect + bois.nbCanardAffect + nourriture.nbCanardAffect + malt.nbCanardAffect + houblon.nbCanardAffect + orge.nbCanardAffect;
+            eau.canardAffect = 0;
+            document.getElementById("eauSec").innerHTML = (eau.canardAffect * 0.55).toFixed(1);
+            bois.canardAffect = 0;
+            document.getElementById("boisSec").innerHTML = (bois.canardAffect * 1.68).toFixed(1);
+            malt.canardAffect = 0;
+            document.getElementById("maltSec").innerHTML = (malt.canardAffect * 0.36).toFixed(1);
+            houblon.canardAffect = 0;
+            document.getElementById("houblonSec").innerHTML = (houblon.canardAffect * 0.03).toFixed(1);
+            orge.canardAffect = 0;
+            document.getElementById("orgeSec").innerHTML = (orge.canardAffect * 0.42).toFixed(1);
+            document.getElementById('canardeau').innerHTML = eau.canardAffect.toFixed();
+            document.getElementById('canardbois').innerHTML = bois.canardAffect.toFixed();
+            document.getElementById('canardmalt').innerHTML = malt.canardAffect.toFixed();
+            document.getElementById('canardhoublon').innerHTML = houblon.canardAffect.toFixed();
+            document.getElementById('canardorge').innerHTML = orge.canardAffect.toFixed();
+            canTot = eau.canardAffect + bois.canardAffect + nourriture.canardAffect + malt.canardAffect + houblon.canardAffect + orge.canardAffect;
             document.getElementById("canTot").innerHTML = canTot;
             document.getElementById("canTotSec").innerHTML = "( -" + (canTot * 0.13).toFixed(2) + "/s )";
         }
@@ -151,14 +151,14 @@ window.setInterval(function(){ //timer 5 secondes
 
 window.setInterval(function(){ //timer 1 seconde
 
-    eau.incremente(eau.nbCanardAffect * 0.55);
-    bois.incremente(bois.nbCanardAffect * 1.68);
-    nourriture.incremente((nourriture.nbCanardAffect * 0.8)-(canTot * 0.13));
-    malt.incremente(malt.nbCanardAffect * 0.36);
-    houblon.incremente(houblon.nbCanardAffect * 0.03);
-    grain.incremente((malt.nbCanardAffect * 0.0003) + (houblon.nbCanardAffect * 0.005) + (orge.nbCanardAffect * 0.0004));
-    orge.incremente(orge.nbCanardAffect * 0.42);
-    levure.incremente((eau.nbCanardAffect * 0.0004)+(nourriture.nbCanardAffect * 0.0003));
+    eau.incremente(eau.canardAffect * 0.55);
+    bois.incremente(bois.canardAffect * 1.68);
+    nourriture.incremente((nourriture.canardAffect * 0.8)-(canTot * 0.13));
+    malt.incremente(malt.canardAffect * 0.36);
+    houblon.incremente(houblon.canardAffect * 0.03);
+    grain.incremente((malt.canardAffect * 0.0003) + (houblon.canardAffect * 0.005) + (orge.canardAffect * 0.0004));
+    orge.incremente(orge.canardAffect * 0.42);
+    levure.incremente((eau.canardAffect * 0.0004)+(nourriture.canardAffect * 0.0003));
     if(tabComplete["completeBrass5"]==true){relance()}
 
 }, 1000);

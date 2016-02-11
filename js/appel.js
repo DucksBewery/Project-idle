@@ -49,7 +49,7 @@ canardRetHoublon.addEventListener("click", function(){houblon.retCanard(0.03)});
 var canardRetOrge = document.getElementById("retCanardOrge");
 canardRetOrge.addEventListener("click", function(){orge.retCanard(0.42)});
 
-//achat niveau batiments//
+//achat niveau batiments Conteneurs//
 
 var batAchatPuit = document.getElementById("achatNivpuit");
 batAchatPuit.addEventListener("click", function(){
@@ -103,7 +103,45 @@ batAchatHabitation.addEventListener("click", function(){
         habitation.augmenteStock(canard,1.2);
     }});
 
+//achat niveau batiments Constructions//
 
+var batAchatMoulin = document.getElementById("achatNivmoulin");
+batAchatMoulin.addEventListener("click", function(){
+    if(moulin.achatLevel(2.4)){
+        moulin.augmenteTravailleur(eau,2);
+    }});
+
+var batAchatCamp = document.getElementById("achatNivcamp");
+batAchatCamp.addEventListener("click", function(){
+    if(camp.achatLevel(2.4)){
+        camp.augmenteTravailleur(bois,3);
+    }});
+
+var batAchatChampCrouton = document.getElementById("achatNivchampCrouton");
+batAchatChampCrouton.addEventListener("click", function(){
+    if(champCrouton.achatLevel(2.4)){
+        champCrouton.augmenteTravailleur(nourriture,4);
+    }});
+	
+var batAchatChampMalt = document.getElementById("achatNivchampMalt");
+batAchatChampMalt.addEventListener("click", function(){
+    if(champMalt.achatLevel(1.8)){
+        champMalt.augmenteTravailleur(malt,2);
+    }});
+	
+var batAchatChampHoublon = document.getElementById("achatNivchampHoublon");
+batAchatChampHoublon.addEventListener("click", function(){
+    if(champHoublon.achatLevel(2.05)){
+        champHoublon.augmenteTravailleur(houblon,2);
+    }});
+	
+var batAchatChampOrge = document.getElementById("achatNivchampOrge");
+batAchatChampOrge.addEventListener("click", function(){
+    if(champOrge.achatLevel(1.65)){
+        champOrge.augmenteTravailleur(orge,2);
+    }});
+
+	
 //etapes brasserie//
 
 var etapeMaltage = document.getElementById("maltage");
@@ -167,17 +205,20 @@ btnPort.addEventListener("click", function(){
 
 //-- batiments-conteneurs --//
 
-var ficheConstructions = document.getElementById("ficheConstructions");
 var ficheConteneurs = document.getElementById("ficheConteneurs");
-
-var constructions = document.getElementById("constructions");
-constructions.addEventListener("click",function(){
-    ficheConstructions.style.cssText = "visibility : visible; display : inline-block;";
-    ficheConteneurs.style.cssText = "visibility : hidden; display : none;";
-});
 
 var conteneurs = document.getElementById("conteneurs");
 conteneurs.addEventListener("click",function(){
     ficheConstructions.style.cssText = "visibility : hidden; display : none;";
     ficheConteneurs.style.cssText = "visibility : visible; display : inline-block;";
+});
+
+//-- batiments-consructions --//
+
+var ficheConstructions = document.getElementById("ficheConstructions");
+
+var constructions = document.getElementById("constructions");
+constructions.addEventListener("click",function(){
+    ficheConstructions.style.cssText = "visibility : visible; display : inline-block;";
+    ficheConteneurs.style.cssText = "visibility : hidden; display : none;";
 });
