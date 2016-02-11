@@ -8,7 +8,7 @@ var Structure = function(nom,prix,niveau){
 //--- ACHAT NIVEAU ---//
 // augmente le niveau du batiment et le cout du prochain niveau
 // param: coefficeint d'augmentation
-// return: -
+// return: true si la condition est respectée
 Structure.prototype.achatLevel = function(coefBat){
     if (bois.quantite > this.prix) {
         bois.quantite = bois.quantite - this.prix;
@@ -27,4 +27,13 @@ Structure.prototype.achatLevel = function(coefBat){
 Structure.prototype.augmenteStock = function(resMax,coefRes){
     resMax.quantiteMax = resMax.quantiteMax * coefRes;
     document.getElementById(resMax.nom+"Max").innerHTML = resMax.quantiteMax.toFixed();
+};
+
+//--- AUGMENTE TRAVAILLEUR MAX ---//
+// augmente le nombre de travailleurs maximum que l'on peut affecter à une ressource
+// param: quels travailleurs sont augmentés et le coefficient d'augmentation
+// return: -
+Structure.prototype.augmenteTravailleur = function(travMax,coefTrav){
+    travMax.canardAffectMax = travMax.canardAffectMax + coefTrav;
+    document.getElementById("canard"+travMax.nom+"Max").innerHTML = travMax.canardAffectMax.toFixed();
 };

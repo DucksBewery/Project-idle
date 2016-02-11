@@ -1,5 +1,3 @@
-//------------------- APPEL FONCTIONS AU CLICK ----------------------//
-
 //incrémenter une ressource//
 
 var clickEau = document.getElementById("eauClick");
@@ -105,6 +103,7 @@ batAchatHabitation.addEventListener("click", function(){
         habitation.augmenteStock(canard,1.2);
     }});
 
+
 //etapes brasserie//
 
 var etapeMaltage = document.getElementById("maltage");
@@ -122,9 +121,8 @@ etapeFermentation.addEventListener("click",function(){fermentation()});
 var etapeConditionnement = document.getElementById("conditionnement");
 etapeConditionnement.addEventListener("click",function(){conditionnement()});
 
-//----------------------CHANGER D'ONGLET---------------------------//
+//-- ressources-travailleurs --//
 
-//--ressources-travailleurs--//
 var ficheRessources = document.getElementById("ficheRessources");
 var ficheTravailleurs = document.getElementById("ficheTravailleurs");
 
@@ -140,33 +138,35 @@ travailleurs.addEventListener("click",function(){
     ficheTravailleurs.style.cssText = "visibility : visible; display : inline_block;";
 });
 
-//--carte--//
+//-- carte --//
+
 var carteVille = document.getElementById("carteVille");
 var carteBrasserie = document.getElementById("carteBrasserie");
 var cartePort = document.getElementById("cartePort");
 
-var ville = document.getElementById("ville");
-ville.addEventListener("click", function(){
+var btnVille = document.getElementById("ville");
+btnVille.addEventListener("click", function(){
     carteVille.style.cssText = "visibility : visible; display : inline-block;";
     carteBrasserie.style.cssText = "visibility : hidden; display : none;";
     cartePort.style.cssText = "visibility : hidden; display : none;";
 });
 
-var brasserie = document.getElementById("brasserie");
-brasserie.addEventListener("click", function(){
+var btnBrasserie = document.getElementById("brasserie");
+btnBrasserie.addEventListener("click", function(){
     carteVille.style.cssText = "visibility : hidden; display : none;";
     carteBrasserie.style.cssText = "visibility : visible; display : inline-block;";
     cartePort.style.cssText = "visibility : hidden; display : none;";
 });
 
-var port = document.getElementById("port");
-port.addEventListener("click", function(){
+var btnPort = document.getElementById("port");
+btnPort.addEventListener("click", function(){
     carteVille.style.cssText = "visibility : hidden; display : none;";
     carteBrasserie.style.cssText = "visibility : hidden; display : none;";
     cartePort.style.cssText = "visibility : visible; display : inline-block;";
 });
 
-//--batiments-conteneurs--//
+//-- batiments-conteneurs --//
+
 var ficheConstructions = document.getElementById("ficheConstructions");
 var ficheConteneurs = document.getElementById("ficheConteneurs");
 
