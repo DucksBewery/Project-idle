@@ -10,7 +10,7 @@ var Ressource = function(nom,nomMax,quantiteMax,canardAffectMax){
 
 //--- INCREMENTER ---//
 // incrementer ressource
-// param: quelle ressource on augmente et de combien on l'augmente
+// param: de combien on augmente la ressource
 // return: -
 Ressource.prototype.incremente = function(number){
     this.quantite = this.quantite + number;

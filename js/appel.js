@@ -9,6 +9,30 @@ clickBois.addEventListener("click", function(){bois.incremente(1)});
 var clickNourriture = document.getElementById("nourritureClick");
 clickNourriture.addEventListener("click", function(){nourriture.incremente(1)});
 
+var clickLevure = document.getElementById("levureClick");
+clickLevure.addEventListener("click", function(){
+    if(eau.quantite >= 35 && nourriture.quantite >= 20){
+        levure.incremente(0.872);
+        eau.quantite = eau.quantite - 35;
+        nourriture.quantite = nourriture.quantite - 20;
+        document.getElementById("eau").innerHTML = eau.quantite.toFixed(2);
+        document.getElementById("nourriture").innerHTML = nourriture.quantite.toFixed(2);
+    }
+});
+
+var clickGrain = document.getElementById("grainClick");
+clickGrain.addEventListener("click", function(){
+    if(malt.quantite >= 30 && houblon.quantite >= 15 && orge.quantite >= 60){
+        levure.incremente(1.483);
+        malt.quantite = malt.quantite - 30;
+        houblon.quantite = houblon.quantite - 15;
+        orge.quantite = orge.quantite - 60;
+        document.getElementById("malt").innerHTML = malt.quantite.toFixed(2);
+        document.getElementById("houblon").innerHTML = houblon.quantite.toFixed(2);
+        document.getElementById("orge").innerHTML = orge.quantite.toFixed(2);
+    }
+});
+
 //affecter des cannards//
 
 var canardAffectEau = document.getElementById("affectCanardEau");
@@ -51,10 +75,10 @@ canardRetOrge.addEventListener("click", function(){orge.retCanard(0.42)});
 
 //achat niveau batiments Conteneurs//
 
-var batAchatPuit = document.getElementById("achatNivpuit");
-batAchatPuit.addEventListener("click", function(){
-    if(puit.achatLevel(1.25)){
-        puit.augmenteStock(eau,1.2);
+var batAchatCiterne = document.getElementById("achatNivciterne");
+batAchatCiterne.addEventListener("click", function(){
+    if(citerne.achatLevel(1.25)){
+        citerne.augmenteStock(eau,1.2);
     }});
 
 var batAchatDepot = document.getElementById("achatNivdepot");
@@ -104,6 +128,45 @@ batAchatHabitation.addEventListener("click", function(){
     }});
 
 //achat niveau batiments Constructions//
+<<<<<<< HEAD
+
+var batAchatPuit = document.getElementById("achatNivpuit");
+batAchatPuit.addEventListener("click", function(){
+    if(puit.achatLevel(1.9)){
+        puit.augmenteTravailleur(eau,2);
+    }});
+
+var batAchatCamp = document.getElementById("achatNivcamp");
+batAchatCamp.addEventListener("click", function(){
+    if(camp.achatLevel(1.9)){
+        camp.augmenteTravailleur(bois,3);
+    }});
+
+var batAchatChampCrouton = document.getElementById("achatNivchampCrouton");
+batAchatChampCrouton.addEventListener("click", function(){
+    if(champCrouton.achatLevel(1.9)){
+        champCrouton.augmenteTravailleur(nourriture,4);
+    }});
+	
+var batAchatChampMalt = document.getElementById("achatNivchampMalt");
+batAchatChampMalt.addEventListener("click", function(){
+    if(champMalt.achatLevel(1.8)){
+        champMalt.augmenteTravailleur(malt,2);
+    }});
+	
+var batAchatChampHoublon = document.getElementById("achatNivchampHoublon");
+batAchatChampHoublon.addEventListener("click", function(){
+    if(champHoublon.achatLevel(2.05)){
+        champHoublon.augmenteTravailleur(houblon,2);
+    }});
+	
+var batAchatChampOrge = document.getElementById("achatNivchampOrge");
+batAchatChampOrge.addEventListener("click", function(){
+    if(champOrge.achatLevel(1.65)){
+        champOrge.augmenteTravailleur(orge,2);
+    }});
+
+=======
 
 var batAchatMoulin = document.getElementById("achatNivmoulin");
 batAchatMoulin.addEventListener("click", function(){
@@ -141,6 +204,7 @@ batAchatChampOrge.addEventListener("click", function(){
         champOrge.augmenteTravailleur(orge,2);
     }});
 
+>>>>>>> origin/master
 	
 //etapes brasserie//
 

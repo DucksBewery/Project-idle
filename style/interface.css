@@ -16,30 +16,15 @@
 }
 
 /* Infobulle */
-
-#tooltip {
+#tooltip{
     position:absolute;
     z-index:9999;
     color:#fff;
-    font-size:10px;
+    background-color: #000000;
+    font-size:11px;
     width:180px;
-
+    text-align: left;
+    padding: 5px;
 }
-
-#tooltip .tipHeader {
-    height:8px;
-    background:url(images/tipHeader.gif) no-repeat;
-}
-
 /* hack IE */
 *html #tooltip .tipHeader {margin-bottom:-6px;}
-
-#tooltip .tipBody {
-    background-color:#000;
-    padding:5px;
-}
-
-#tooltip .tipFooter {
-    height:8px;
-    background:url(images/tipFooter.gif) no-repeat;
-}
