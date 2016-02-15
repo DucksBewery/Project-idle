@@ -53,7 +53,7 @@ Ressource.prototype.affectCanard = function(coef){
 // param: -
 // return: -
 Ressource.prototype.retCanard = function(coef){
-    if(this.canardAffect >= 0 && canard.quantite != canard.quantiteMax) {
+    if(this.canardAffect > 0 && canard.quantite != canard.quantiteMax) {
         canard.quantite = canard.quantite + 1;
         this.canardAffect = this.canardAffect - 1;
     } else {

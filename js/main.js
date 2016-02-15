@@ -147,7 +147,7 @@ window.setInterval(function(){ //timer 5 secondes
 
     canard.incremente(Math.round((Math.random() * (4 - 1)) + 1));
 
-}, 3000);
+}, 30000);
 
 window.setInterval(function(){ //timer 1 seconde
 
