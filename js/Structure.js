@@ -20,6 +20,20 @@ Structure.prototype.achatLevel = function(coefBat){
     }
 };
 
+//-- AFFICHER BATIMENT SPECIAL --//
+// affiche la carte du batiment special quand il est achete (au moins au niveau 1)
+// param: -
+// return: -
+Structure.prototype.afficheBatSpe = function(){
+  if(this.niveau > 0){
+      document.getElementById("btnbrasserie").style.cssText = "visibility : visible; display: inline-block";
+      document.getElementById("carteBrasserie").style.cssText = "visibility : visible; display: inline-block";
+  } else{
+      document.getElementById("btnbrasserie").style.cssText = "visibility : hidden; display: none";
+      document.getElementById("carteBrasserie").style.cssText = "visibility : hidden; display: none";
+  }
+};
+
 //--- AUGMENTE RESSOURCE MAX ---//
 // augmente le stock maximum de la ressource
 // param: la ressource et son coefficient d'augmentation

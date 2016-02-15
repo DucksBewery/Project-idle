@@ -165,6 +165,12 @@ batAchatChampOrge.addEventListener("click", function(){
         champOrge.augmenteTravailleur(orge,2);
     }});
 
+var batAchatBrasserie = document.getElementById("achatNivbrasserie");
+batAchatBrasserie.addEventListener("click", function(){
+    if(brasserie.achatLevel(1.65)){
+        brasserie.augmenteTravailleur(orge,2);
+    }});
+
 	
 //etapes brasserie//
 
@@ -206,21 +212,21 @@ var carteVille = document.getElementById("carteVille");
 var carteBrasserie = document.getElementById("carteBrasserie");
 var cartePort = document.getElementById("cartePort");
 
-var btnVille = document.getElementById("ville");
+var btnVille = document.getElementById("btnville");
 btnVille.addEventListener("click", function(){
     carteVille.style.cssText = "visibility : visible; display : inline-block;";
     carteBrasserie.style.cssText = "visibility : hidden; display : none;";
     cartePort.style.cssText = "visibility : hidden; display : none;";
 });
 
-var btnBrasserie = document.getElementById("brasserie");
+var btnBrasserie = document.getElementById("btnbrasserie");
 btnBrasserie.addEventListener("click", function(){
     carteVille.style.cssText = "visibility : hidden; display : none;";
     carteBrasserie.style.cssText = "visibility : visible; display : inline-block;";
     cartePort.style.cssText = "visibility : hidden; display : none;";
 });
 
-var btnPort = document.getElementById("port");
+var btnPort = document.getElementById("btnport");
 btnPort.addEventListener("click", function(){
     carteVille.style.cssText = "visibility : hidden; display : none;";
     carteBrasserie.style.cssText = "visibility : hidden; display : none;";
@@ -231,7 +237,7 @@ btnPort.addEventListener("click", function(){
 
 var ficheConteneurs = document.getElementById("ficheConteneurs");
 
-var conteneurs = document.getElementById("conteneurs");
+var conteneurs = document.getElementById("btnconteneurs");
 conteneurs.addEventListener("click",function(){
     ficheConstructions.style.cssText = "visibility : hidden; display : none;";
     ficheConteneurs.style.cssText = "visibility : visible; display : inline-block;";
@@ -241,8 +247,10 @@ conteneurs.addEventListener("click",function(){
 
 var ficheConstructions = document.getElementById("ficheConstructions");
 
-var constructions = document.getElementById("constructions");
+var constructions = document.getElementById("btnconstructions");
 constructions.addEventListener("click",function(){
     ficheConstructions.style.cssText = "visibility : visible; display : inline-block;";
     ficheConteneurs.style.cssText = "visibility : hidden; display : none;";
 });
+
+//-- FAIRE APPARAITRE LA BRASSERIE QUAND ON L'A CONSTRUITE ET PAS AVANT !!!! conard :) --//

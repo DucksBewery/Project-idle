@@ -31,7 +31,7 @@ var champCrouton = new Structure("champCrouton",320,0);
 var champMalt = new Structure("champMalt",1500,0);
 var champHoublon = new Structure("champHoublon",2000,0);
 var champOrge = new Structure("champOrge",2300,0);
-var brasserie = new Structure("brasserie",2,0);
+var brasserie = new Structure("brasserie",20000,0);
 //--- brasserie ---//
 var maltBrass = 2000;
 var orgeBrass = 3000;
