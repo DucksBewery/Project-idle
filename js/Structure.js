@@ -33,6 +33,21 @@ Structure.prototype.afficheBatSpe = function(){
       document.getElementById("carteBrasserie").style.cssText = "visibility : hidden; display: none";
   }
 };
+Structure.prototype.affichage = function(){
+	
+		if(this.niveau == 0){
+			document.getElementById(this.nom).style.cssText = "visibility : hidden; display : none;";
+			if(bois.quantite > (this.prix * 0.75)){
+				document.getElementById(this.nom).style.cssText = "visibility : visible; color : grey; display : table-row;";
+				if(bois.quantite > this.prix || this.niveau > 0){
+					document.getElementById(this.nom).style.cssText = "visibility : visible; color : black; display : table-row;";
+				}
+			}
+		}else{
+			document.getElementById(this.nom).style.cssText = "visibility : visible; color : black; display : table-row;";
+		}
+}
+		
 
 //--- AUGMENTE RESSOURCE MAX ---//
 // augmente le stock maximum de la ressource

@@ -158,7 +158,5 @@ window.setInterval(function(){ //timer 1 seconde
     houblon.incremente(houblon.canardAffect * 0.03);
     orge.incremente(orge.canardAffect * 0.42);
     if(tabComplete["completeBrass5"]==true){relance()}
-    //-- A METTRE DANS AFFICHAGE --//
-    brasserie.afficheBatSpe();
 
 }, 1000);

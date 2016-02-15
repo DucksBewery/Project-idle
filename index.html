@@ -8,7 +8,7 @@
 	<body>
     <!--RESSOURCES-->
 		<div style="float: left;">
-			<fieldset><legend><button id="ressources">Ressources</button> / <button id="travailleurs">Travailleurs</button></legend>
+			<fieldset><legend><button id="btnressources">Ressources</button> / <button id="btntravailleurs">Travailleurs</button></legend>
                 <div id="ficheRessources">
                     <fieldset>
                         Canards actuels dans la ville : <span id="canard">0</span>/<span id="canardMax">5</span>
@@ -17,35 +17,35 @@
                         <br>
                     </fieldset>
                     <fieldset>
-                        <button id="eauClick">Eau : </button> <span id="eau">0.0</span>/<span id="eauMax">5000</span> ( +<span id="eauSec">0</span>/s )
+                        <button id="eauClick">Eau : </button> <span id="eau">0.0</span>/<span id="eauMax">5000</span> ( +<span id="eauSec">0.00</span>/s )
                         <br>
                         Travailleurs actifs : <span id="canardeau">0</span>/<span id="canardeauMax">2</span> <button id="affectCanardEau">+</button><button id="retCanardEau">-</button>
                         <br><br>
-                        <button id="boisClick">Bois : </button> <span id="bois">0.0</span>/<span id="boisMax">10000</span> ( +<span id="boisSec">0</span>/s )
+                        <button id="boisClick">Bois : </button> <span id="bois">0.0</span>/<span id="boisMax">10000</span> ( +<span id="boisSec">0.00</span>/s )
                         <br>
-                        Travailleurs actifs : <span id="canardbois">0</span>/<span id="canardboisMax">3</span> <button id="affectCanardBois">+</button><button id="retCanardBois">-</button>
+                        Travailleurs actifs : <span id="canardbois">0</span>/<span id="canardboisMax">2</span> <button id="affectCanardBois">+</button><button id="retCanardBois">-</button>
                         <br><br>
-                        <button id="nourritureClick">Nourriture : </button> <span id="nourriture">0.0</span>/<span id="nourritureMax">5000</span> ( +<span id="nourritureSec">0</span>/s )
-                        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: red;">&#8618;&nbsp;Consommation : </span><span id="canTotSec" style="color: red;">( -0/s )</span>
+                        <button id="nourritureClick">Nourriture : </button> <span id="nourriture">0.0</span>/<span id="nourritureMax">5000</span> ( +<span id="nourritureSec">0.00</span>/s )
+                        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: red;">&#8618;&nbsp;Consommation : </span><span id="canTotSec" style="color: red;">( -0.00/s )</span>
                         <br>
-                        Travailleurs actifs : <span id="canardnourriture">0</span>/<span id="canardnourritureMax">4</span> <button id="affectCanardNourriture">+</button><button id="retCanardNourriture">-</button>
+                        Travailleurs actifs : <span id="canardnourriture">0</span>/<span id="canardnourritureMax">2</span> <button id="affectCanardNourriture">+</button><button id="retCanardNourriture">-</button>
                     </fieldset>
                     <fieldset>
-                        Malt : <span id="malt">0.0</span>/<span id="maltMax">3000</span> ( +<span id="maltSec">0</span>/s )
+                        Malt : <span id="malt">0.0</span>/<span id="maltMax">4500</span> ( +<span id="maltSec">0.00</span>/s )
                         <br>
                         Travailleurs actifs : <span id="canardmalt">0</span>/<span id="canardmaltMax">0</span> <button id="affectCanardMalt">+</button><button id="retCanardMalt">-</button>
                         <br><br>
-                        Houblon : <span id="houblon">0.0</span>/<span id="houblonMax">1000</span> ( +<span id="houblonSec">0</span>/s )
+                        Houblon : <span id="houblon">0.0</span>/<span id="houblonMax">500</span> ( +<span id="houblonSec">0.00</span>/s )
                         <br>
                         Travailleurs actifs : <span id="canardhoublon">0</span>/<span id="canardhoublonMax">0</span> <button id="affectCanardHoublon">+</button><button id="retCanardHoublon">-</button>
                         <br><br>
-                        Orge : <span id="orge">0.0</span>/<span id="orgeMax">5000</span> ( +<span id="orgeSec">0</span>/s )
+                        Orge : <span id="orge">0.0</span>/<span id="orgeMax">5000</span> ( +<span id="orgeSec">0.00</span>/s )
                         <br>
                         Travailleurs actifs : <span id="canardorge">0</span>/<span id="canardorgeMax">0</span> <button id="affectCanardOrge">+</button><button id="retCanardOrge">-</button>
                         <br><br>
-                        Biere : <span id="biere">0.0</span>/<span id="biereMax">1000</span> ( +<span id="biereSec">0</span>/s )
+                        Biere : <span id="biere">0.0</span>/<span id="biereMax">1000</span> ( +<span id="biereSec">0.00</span>/s )
                         </br></br>
-                        Or : <span id="or">0.0</span>/<span id="orMax">5000</span> ( +<span id="orSec">0</span>/s )
+                        Or : <span id="or">0.0</span>/<span id="orMax">5000</span> ( +<span id="orSec">0.00</span>/s )
                         </br></br>
                         <a rel="tooltip" title="GRAINS CRUS :<br>Le grain cru est utile à la conception de la bière.<br>
                         Il nécessite 30 Malt - 15 Houblon - 60 Orge"><button id="grainClick">Grains crus : </button></a><span id="grain">0.0</span>/<span id="grainMax">500</span>
@@ -54,7 +54,7 @@
                         Pour être créée elle demande 20 Nourriture - 35 Eau">
                         <button id="levureClick">Levure : </button></a><span id="levure">0.0</span>/<span id="levureMax">500</span>
                         </br></br>
-                        Ame : <span id="ame">0.0</span>/<span id="ameMax">500</span> ( +<span id="ameSec">0</span>/s )
+                        Ame : <span id="ame">0.0</span>/<span id="ameMax">500</span> ( +<span id="ameSec">0.00</span>/s )
                         </fieldset>
                 </div>
 			    <div id="ficheTravailleurs"></div>
@@ -107,28 +107,28 @@
             <div id="ficheConteneurs">
             <fieldset>
                 <table>
-                    <tr><td><a rel="tooltip" title="CITERNE :<br>Le citerne permet aux canards de stocker plus d'eau.<br>
-                            Eau max + 20% / Prix + 25%">Citerne</a></td><td><button id="achatNivciterne">Construire</button></td><td id="prixciterne">bois : 3000
+                    <tr id="citerne"><td><a rel="tooltip" title="CITERNE :<br>Le citerne permet aux canards de stocker plus d'eau.<br>
+					Eau max + 20% / Prix + 25%">Citerne</a></td><td><button id="achatNivciterne">Construire</button></td><td id="prixciterne">bois : 3000
                     </td></tr>
-                    <tr><td><a rel="tooltip" title="DEPOT :<br>Le dépot permet aux canards de stocker plus de bois.<br>
+                    <tr id="depot"><td><a rel="tooltip" title="DEPOT :<br>Le dépot permet aux canards de stocker plus de bois.<br>
                     Bois max + 35% / Prix + 40%">Dépot</a></td><td><button id="achatNivdepot">Construire</button></td><td id="prixdepot">bois : 3500
                     </td></tr>
-                    <tr><td><a rel="tooltip" title="RESERVE DE GRAINS :<br>La réserve de grains augmente la capacité de stockage du mal, de l'orge et du houblon.<br>
+                    <tr id="reserve"><td><a rel="tooltip" title="RESERVE DE GRAINS :<br>La réserve de grains augmente la capacité de stockage du mal, de l'orge et du houblon.<br>
                     Orge,Malt,Houblon max + 35% / Prix + 40%">Reserve de grains</a></td><td><button id="achatNivreserve">Construire</button></td><td id="prixreserve">bois : 5000
                     </td></tr>
-                    <tr><td><a rel="tooltip" title="CAVE :<br>Agrandir la cave permet de stocker plus de bière.<br>
+                    <tr id="cave"><td><a rel="tooltip" title="CAVE :<br>Agrandir la cave permet de stocker plus de bière.<br>
                     Bière max + 55% / Prix + 60%">Cave</a></td><td><button id="achatNivcave">Construire</button></td><td id="prixcave">bois : 12500
                     </td></tr>
-                    <tr><td><a rel="tooltip" title="COFFRE :<br>Le coffre permet de stocker plus d'or.<br>
+                    <tr id="coffre"><td><a rel="tooltip" title="COFFRE :<br>Le coffre permet de stocker plus d'or.<br>
                     Bois max + 40% / Prix + 100%">Coffre</a></td><td><button id="achatNivcoffre">Construire</button></td><td id="prixcoffre">bois : 150000
                     </td></tr>
-                    <tr><td><a rel="tooltip" title="APPROVISIONNEMENT :<br>L'apprivionnement permet d'augmenter le stock de ressources rares.<br>
+                    <tr id="approvisionnement"><td><a rel="tooltip" title="APPROVISIONNEMENT :<br>L'apprivionnement permet d'augmenter le stock de ressources rares.<br>
                     Levure,Grains crus max + 20% / Prix + 50%">Approvisionnement</a></td><td><button id="achatNivapprovisionnement">Construire</button></td><td id="prixapprovisionnement">bois : 7500
                     </td></tr>
-                    <tr><td><a rel="tooltip" title="RECEPTACLE :<br>Augmenter la taille du receptacle permet de stocker plus d'âmes.<br>
+                    <tr id="receptacle"><td><a rel="tooltip" title="RECEPTACLE :<br>Augmenter la taille du receptacle permet de stocker plus d'âmes.<br>
                     Âmes max + 20% / Prix + 300%">Receptacle</a></td><td><button id="achatNivreceptacle">Construire</button></td><td id="prixreceptacle">bois : 7500
                     </td></tr>
-                    <tr><td><a rel="tooltip" title="HABITATION :<br>Débloque une nouvelle habitation dans le village.<br>
+                    <tr id="habitation"><td><a rel="tooltip" title="HABITATION :<br>Débloque une nouvelle habitation dans le village.<br>
                     Canards max + 20% / Prix + 40%">Habitation</a></td><td><button id="achatNivhabitation">Construire</button></td><td id="prixhabitation">bois : 2500
                     </td></tr>
                     <!--<tr><td>Caserne</td><td><button id="achatNivBat9">Construire</button></td><td id="prixBat9">bois : 750</td></tr>-->
@@ -139,29 +139,29 @@
             <div id="ficheConstructions">
 				<fieldset>
                 <table>
-                    <tr><td><a rel="tooltip" title="NID :<br>Améliorer le nid permet d'augmenter la production de canards.<br>
-                    vitesse de production - 5% / Prix + 50%">Nid</a></td><td><button id="achatNivnid">Construire</button></td><td id="prixnid">bois : 300
+                    <tr id="nid"><td><a rel="tooltip" title="NID :<br>Améliorer le nid permet d'augmenter la production de canards.<br>
+                    vitesse de production - 5% / Prix + 100%">Nid</a></td><td><button id="achatNivnid">Construire</button></td><td id="prixnid">bois : 300
                     </td></tr>
-                    <tr><td><a rel="tooltip" title="PUIT:<br>Avec ce système de puit, vous pouvez faire travailler des canards et augmenter votre production d'eau.<br>
-                    Meuniers max + 2 / Prix + 90%">Puit</a></td><td><button id="achatNivpuit">Construire</button></td><td id="prixpuit">bois : 500
+                    <tr id="puit"><td><a rel="tooltip" title="PUIT:<br>Avec ce système de puit, vous pouvez faire travailler des canards et augmenter votre production d'eau.<br>
+                    Meuniers max + 4 / Prix + 80%">Puit</a></td><td><button id="achatNivpuit">Construire</button></td><td id="prixpuit">bois : 250
                     </td></tr>
-                    <tr><td><a rel="tooltip" title="CAMP DE BUCHERON :<br>Installer des camps de bucheron permet d'augmenter la production de bois on séparant les équipes dans la foret.<br>
-                    Bucherons max + 3 / Prix + 90%">Camp de bucheron</a></td><td><button id="achatNivcamp">Construire</button></td><td id="prixcamp">bois : 250
+                    <tr id="camp"><td><a rel="tooltip" title="CAMP DE BUCHERON :<br>Installer des camps de bucheron permet d'augmenter la production de bois on séparant les équipes dans la foret.<br>
+                    Bucherons max + 3 / Prix + 80%">Camp de bucheron</a></td><td><button id="achatNivcamp">Construire</button></td><td id="prixcamp">bois : 200
                     </td></tr>
-                    <tr><td><a rel="tooltip" title="CHAMP DE CROUTON :<br>Les croutons sont la nourriture principale des canards, preparez quelques terres pour créer de nouveaux enplois de maréchés.<br>
-                    Maréchés max + 4 / Prix + 90%">Champ de crouton</a></td><td><button id="achatNivchampCrouton">Construire</button></td><td id="prixchampCrouton">bois : 300
+                    <tr id="champCrouton"><td><a rel="tooltip" title="CHAMP DE CROUTON :<br>Les croutons sont la nourriture principale des canards, preparez quelques terres pour créer de nouveaux enplois de maréchés.<br>
+                    Maréchés max + 2 / Prix + 80%">Champ de crouton</a></td><td><button id="achatNivchampCrouton">Construire</button></td><td id="prixchampCrouton">bois : 300
                     </td></tr>
-                    <tr><td><a rel="tooltip" title="CHAMP DE MALT :<br>Le malt est une des ressources servant à la brasserie, aménager des champs de malt permet de créer des emplois de producteurs de malt.<br>
+                    <tr id="champMalt"><td><a rel="tooltip" title="CHAMP DE MALT :<br>Le malt est une des ressources servant à la brasserie, aménager des champs de malt permet de créer des emplois de producteurs de malt.<br>
                     Producteurs de malt + 2 / Prix + 80%">Champ de malt</a></td><td><button id="achatNivchampMalt">Construire</button></td><td id="prixchampMalt">bois : 1500
                     </td></tr>
-                    <tr><td><a rel="tooltip" title="CHAMP DE HOUBLON :<br>Le houblon est une des ressources servant à la brasserie, aménager des champs de houblon permet de créer des emplois de producteurs de houblon.<br>
+                    <tr id="champHoublon"><td><a rel="tooltip" title="CHAMP DE HOUBLON :<br>Le houblon est une des ressources servant à la brasserie, aménager des champs de houblon permet de créer des emplois de producteurs de houblon.<br>
                     Producteurs de houblon + 2 / Prix + 105%">Champ de houblon</a></td><td><button id="achatNivchampHoublon">Construire</button></td><td id="prixchampHoublon">bois : 2000
                     </td></tr>
-                    <tr><td><a rel="tooltip" title="CHAMP D'ORGE :<br>L'orge est une des ressources servant à la brasserie, aménager des champs d'orge permet de créer des emplois de producteurs d'orge.<br>
+                    <tr id="champOrge"><td><a rel="tooltip" title="CHAMP D'ORGE :<br>L'orge est une des ressources servant à la brasserie, aménager des champs d'orge permet de créer des emplois de producteurs d'orge.<br>
                     Producteurs d'orge + 2 / Prix + 65%">Champ d'orge</a></td><td><button id="achatNivchampOrge">Construire</button></td><td id="prixchampOrge">bois : 2300
                     </td></tr>
-                    <tr><td><a rel="tooltip" title="BRASSERIE :<br>Débloque la brasserie dans la ville, permettant la création de bière.<br>
-                    Brasserie + 1 / Prix + 700%">Brasserie</a></td><td><button id="achatNivbrasserie">Construire</button></td><td id="prixbrasserie">bois : 50000
+                    <tr id="brasserie"><td><a rel="tooltip" title="BRASSERIE :<br>Débloque la brasserie dans la ville, permettant la création de bière.<br>
+                    Brasserie + 1 / Prix + 700%">Brasserie</a></td><td><button id="achatNivbrasserie">Construire</button></td><td id="prixbrasserie">bois : 20000
                     </td></tr>
                     <!--<tr><td>Caserne</td><td><button id="achatNivBat9">Construire</button></td><td id="prixBat9">bois : 750</td></tr>-->
                     <!--<tr><td>Cimetiere</td><td><button id="achatNivBat10">Construire</button></td><td id="prixBat10">bois : 750</td></tr>-->
@@ -176,5 +176,6 @@
     <script type="text/javascript" src="js/init.js"></script>
     <script type="text/javascript" src="js/appel.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/affichage.js"></script>
 	</body>
 </html>

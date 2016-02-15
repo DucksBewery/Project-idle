@@ -2,8 +2,8 @@
 //--- ressources ---//
 var canard = new Ressource("canard","canardMax",5,0);
 var eau = new Ressource("eau","eauMax",5000,2);
-var bois = new Ressource("bois","boisMax",10000,3);
-var nourriture = new Ressource("nourriture","nourritureMax",5000,4);
+var bois = new Ressource("bois","boisMax",10000,2);
+var nourriture = new Ressource("nourriture","nourritureMax",5000,2);
 var malt = new Ressource("malt","maltMax",4500,0);
 var houblon = new Ressource("houblon","houblonMax",500,0);
 var grain = new Ressource("grain","grainMax",500,0);
@@ -20,14 +20,14 @@ var depot = new Structure("depot",3500,0);
 var reserve = new Structure("reserve",5000,0);
 var cave = new Structure("cave",12500,0);
 var coffre = new Structure("coffre",150000,0);
-var approvionnement = new Structure("approvisionnement",7500,0);
+var approvisionnement = new Structure("approvisionnement",7500,0);
 var receptacle = new Structure("receptacle",7500,0);
 var habitation = new Structure("habitation",2500,0);
 //constructions//
-var nid = new Structure("puit",300,0);
-var puit = new Structure("moulin",270,0);
-var camp = new Structure("camp",300,0);
-var champCrouton = new Structure("champCrouton",320,0);
+var nid = new Structure("nid",300,0);
+var puit = new Structure("puit",250,0);
+var camp = new Structure("camp",200,0);
+var champCrouton = new Structure("champCrouton",300,0);
 var champMalt = new Structure("champMalt",1500,0);
 var champHoublon = new Structure("champHoublon",2000,0);
 var champOrge = new Structure("champOrge",2300,0);
