@@ -156,13 +156,7 @@ window.setInterval(function(){ //timer 1 seconde
     nourriture.incremente((nourriture.canardAffect * 0.8)-(canTot * 0.13));
     malt.incremente(malt.canardAffect * 0.36);
     houblon.incremente(houblon.canardAffect * 0.03);
-<<<<<<< HEAD
     orge.incremente(orge.canardAffect * 0.42);
-=======
-    grain.incremente((malt.canardAffect * 0.0003) + (houblon.canardAffect * 0.005) + (orge.canardAffect * 0.0004));
-    orge.incremente(orge.canardAffect * 0.42);
-    levure.incremente((eau.canardAffect * 0.0004)+(nourriture.canardAffect * 0.0003));
->>>>>>> origin/master
     if(tabComplete["completeBrass5"]==true){relance()}
 
 }, 1000);

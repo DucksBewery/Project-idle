@@ -1,17 +1,10 @@
 //--VARIABLES GLOBALES--//
 //--- ressources ---//
 var canard = new Ressource("canard","canardMax",5,0);
-<<<<<<< HEAD
 var eau = new Ressource("eau","eauMax",5000,2);
 var bois = new Ressource("bois","boisMax",10000,3);
 var nourriture = new Ressource("nourriture","nourritureMax",5000,4);
 var malt = new Ressource("malt","maltMax",4500,0);
-=======
-var eau = new Ressource("eau","eauMax",5000,0);
-var bois = new Ressource("bois","boisMax",10000,0);
-var nourriture = new Ressource("nourriture","nourritureMax",5000,2);
-var malt = new Ressource("malt","maltMax",3000,0);
->>>>>>> origin/master
 var houblon = new Ressource("houblon","houblonMax",500,0);
 var grain = new Ressource("grain","grainMax",500,0);
 var biere = new Ressource("biere","biereMax",1000,0);
@@ -22,11 +15,7 @@ var levure = new Ressource("levure","levureMax",500,0);
 var canardMort = new Ressource("canardMort","canardMortMax",5,0);
 //--- structures ---//
 //conteneurs//
-<<<<<<< HEAD
 var citerne = new Structure("citerne",3000,0);
-=======
-var puit = new Structure("puit",3000,0);
->>>>>>> origin/master
 var depot = new Structure("depot",3500,0);
 var reserve = new Structure("reserve",5000,0);
 var cave = new Structure("cave",12500,0);
@@ -35,17 +24,10 @@ var approvionnement = new Structure("approvisionnement",7500,0);
 var receptacle = new Structure("receptacle",7500,0);
 var habitation = new Structure("habitation",2500,0);
 //constructions//
-<<<<<<< HEAD
 var nid = new Structure("puit",300,0);
 var puit = new Structure("moulin",270,0);
 var camp = new Structure("camp",300,0);
 var champCrouton = new Structure("champCrouton",320,0);
-=======
-var nid = new Structure("nid",300,0);
-var moulin = new Structure("moulin",500,0);
-var camp = new Structure("camp",250,0);
-var champCrouton = new Structure("champCrouton",300,1);
->>>>>>> origin/master
 var champMalt = new Structure("champMalt",1500,0);
 var champHoublon = new Structure("champHoublon",2000,0);
 var champOrge = new Structure("champOrge",2300,0);

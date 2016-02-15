@@ -128,7 +128,6 @@ batAchatHabitation.addEventListener("click", function(){
     }});
 
 //achat niveau batiments Constructions//
-<<<<<<< HEAD
 
 var batAchatPuit = document.getElementById("achatNivpuit");
 batAchatPuit.addEventListener("click", function(){
@@ -166,45 +165,6 @@ batAchatChampOrge.addEventListener("click", function(){
         champOrge.augmenteTravailleur(orge,2);
     }});
 
-=======
-
-var batAchatMoulin = document.getElementById("achatNivmoulin");
-batAchatMoulin.addEventListener("click", function(){
-    if(moulin.achatLevel(2.4)){
-        moulin.augmenteTravailleur(eau,2);
-    }});
-
-var batAchatCamp = document.getElementById("achatNivcamp");
-batAchatCamp.addEventListener("click", function(){
-    if(camp.achatLevel(2.4)){
-        camp.augmenteTravailleur(bois,3);
-    }});
-
-var batAchatChampCrouton = document.getElementById("achatNivchampCrouton");
-batAchatChampCrouton.addEventListener("click", function(){
-    if(champCrouton.achatLevel(2.4)){
-        champCrouton.augmenteTravailleur(nourriture,4);
-    }});
-	
-var batAchatChampMalt = document.getElementById("achatNivchampMalt");
-batAchatChampMalt.addEventListener("click", function(){
-    if(champMalt.achatLevel(1.8)){
-        champMalt.augmenteTravailleur(malt,2);
-    }});
-	
-var batAchatChampHoublon = document.getElementById("achatNivchampHoublon");
-batAchatChampHoublon.addEventListener("click", function(){
-    if(champHoublon.achatLevel(2.05)){
-        champHoublon.augmenteTravailleur(houblon,2);
-    }});
-	
-var batAchatChampOrge = document.getElementById("achatNivchampOrge");
-batAchatChampOrge.addEventListener("click", function(){
-    if(champOrge.achatLevel(1.65)){
-        champOrge.augmenteTravailleur(orge,2);
-    }});
-
->>>>>>> origin/master
 	
 //etapes brasserie//
 
