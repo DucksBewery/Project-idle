@@ -23,13 +23,14 @@ clickLevure.addEventListener("click", function(){
 var clickGrain = document.getElementById("grainClick");
 clickGrain.addEventListener("click", function(){
     if(malt.quantite >= 30 && houblon.quantite >= 15 && orge.quantite >= 60){
-        levure.incremente(1.483);
+        grain.incremente(1.483);
         malt.quantite = malt.quantite - 30;
         houblon.quantite = houblon.quantite - 15;
         orge.quantite = orge.quantite - 60;
         document.getElementById("malt").innerHTML = malt.quantite.toFixed(2);
         document.getElementById("houblon").innerHTML = houblon.quantite.toFixed(2);
         document.getElementById("orge").innerHTML = orge.quantite.toFixed(2);
+		document.getElementById("grain").innerHTML = grain.quantite.toFixed(2);
     }
 });
 
@@ -110,9 +111,9 @@ batAchatCoffre.addEventListener("click", function(){
 
 var batAchatApprovisionnement = document.getElementById("achatNivapprovisionnement");
 batAchatApprovisionnement.addEventListener("click", function(){
-    if(approvionnement.achatLevel(1.5)){
-        approvionnement.augmenteStock(levure,1.2);
-        approvionnement.augmenteStock(grain,1.2);
+    if(approvisionnement.achatLevel(1.5)){
+        approvisionnement.augmenteStock(levure,1.2);
+        approvisionnement.augmenteStock(grain,1.2);
     }});
 
 var batAchatReceptacle = document.getElementById("achatNivreceptacle");
@@ -165,6 +166,11 @@ batAchatChampOrge.addEventListener("click", function(){
         champOrge.augmenteTravailleur(orge,2);
     }});
 
+var batAchatBrasserie = document.getElementById("achatNivbrasserie");
+batAchatBrasserie.addEventListener("click", function(){
+    if(brasserie.achatLevel(8)){
+        champOrge.afficheBatSpe();
+    }});
 	
 //etapes brasserie//
 

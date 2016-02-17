@@ -29,8 +29,8 @@ Structure.prototype.afficheBatSpe = function(){
       document.getElementById("btnbrasserie").style.cssText = "visibility : visible; display: inline-block";
       document.getElementById("carteBrasserie").style.cssText = "visibility : visible; display: inline-block";
   } else{
-      document.getElementById("btnbrasserie").style.cssText = "visibility : hidden; display: none";
-      document.getElementById("carteBrasserie").style.cssText = "visibility : hidden; display: none";
+      document.getElementById("btnbrasserie").style.cssText = "visibility : hidden !imortant; display: none";
+      document.getElementById("carteBrasserie").style.cssText = "visibility : hidden !imortant; display: none";
   }
 };
 
@@ -40,15 +40,15 @@ Structure.prototype.afficheBatSpe = function(){
 // return: -
 Structure.prototype.affichage = function(){
 		if(this.niveau == 0){
-			document.getElementById(this.nom).style.cssText = "visibility : hidden; display : none;";
+			document.getElementById(this.nom).style.cssText = "visibility : hidden !imortant; display : none;";
 			if(bois.quantite > (this.prix * 0.75)){
-				document.getElementById(this.nom).style.cssText = "visibility : visible; color : grey; display : table-row;";
+				document.getElementById(this.nom).style.cssText = "visibility : visible; color : grey; display : table-row !imortant;";
 				if(bois.quantite > this.prix || this.niveau > 0){
-					document.getElementById(this.nom).style.cssText = "visibility : visible; color : black; display : table-row;";
+					document.getElementById(this.nom).style.cssText = "visibility : visible; color : black; display : table-row !imortant;";
 				}
 			}
 		}else{
-			document.getElementById(this.nom).style.cssText = "visibility : visible; color : black; display : table-row;";
+			document.getElementById(this.nom).style.cssText = "visibility : visible; color : black; display : table-row !imortant;";
 		}
 };
 
