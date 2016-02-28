@@ -1,18 +1,30 @@
 /* displays tests */
 
-#ficheTravailleurs{
+#fichetravailleurs{
     visibility: hidden;
     display: none;
 }
-#carteBrasserie{
+#btnbrasserie{
     visibility: hidden;
     display: none;
 }
-#cartePort{
+#cartebrasserie{
     visibility: hidden;
     display: none;
 }
-#ficheConteneurs{
+/*#cartePort{*/
+    /*visibility: hidden;*/
+    /*display: none;*/
+/*}*/
+#btnautel{
+    visibility: hidden;
+    display: none;
+}
+#carteautel{
+    visibility: hidden;
+    display: none;
+}
+#ficheconteneurs{
     visibility: hidden;
     display: none;
 }

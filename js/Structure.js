@@ -26,11 +26,11 @@ Structure.prototype.achatLevel = function(coefBat){
 // return: -
 Structure.prototype.afficheBatSpe = function(){
   if(this.niveau > 0){
-      document.getElementById("btnbrasserie").style.cssText = "visibility : visible; display: inline-block";
-      document.getElementById("carteBrasserie").style.cssText = "visibility : visible; display: inline-block";
-  } else{
-      document.getElementById("btnbrasserie").style.cssText = "visibility : hidden !imortant; display: none";
-      document.getElementById("carteBrasserie").style.cssText = "visibility : hidden !imortant; display: none";
+      document.getElementById("carteville").style.cssText = "visibility : hidden; display : none;";
+      document.getElementById("cartebrasserie").style.cssText = "visibility : hidden; display : none;";
+      document.getElementById("carteautel").style.cssText = "visibility : hidden; display : none;";
+      document.getElementById("btn"+this.nom).style.cssText = "visibility : visible; display: inline-block";
+      document.getElementById("carte"+this.nom).style.cssText = "visibility : visible; display: inline-block";
   }
 };
 

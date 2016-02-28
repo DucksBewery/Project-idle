@@ -54,6 +54,9 @@ canardAffectHoublon.addEventListener("click", function(){houblon.affectCanard(0.
 var canardAffectOrge = document.getElementById("affectCanardOrge");
 canardAffectOrge.addEventListener("click", function(){orge.affectCanard(0.42)});
 
+var canardAffectMort = document.getElementById("sacrificeClick");
+canardAffectMort.addEventListener("click", function(){canardMort.affectCanard(0.005)});
+
 //retirer des canards//
 
 var canardRetEau = document.getElementById("retCanardEau");
@@ -122,6 +125,12 @@ batAchatReceptacle.addEventListener("click", function(){
         receptacle.augmenteStock(ame,1.2);
     }});
 
+var batAchatCimetiere = document.getElementById("achatNivcimetiere");
+batAchatCimetiere.addEventListener("click", function(){
+    if(cimetiere.achatLevel(1.35)){
+        cimetiere.augmenteStock(canardMort,1.2);
+    }});
+	
 var batAchatHabitation = document.getElementById("achatNivhabitation");
 batAchatHabitation.addEventListener("click", function(){
     if(habitation.achatLevel(1.4)){
@@ -169,7 +178,13 @@ batAchatChampOrge.addEventListener("click", function(){
 var batAchatBrasserie = document.getElementById("achatNivbrasserie");
 batAchatBrasserie.addEventListener("click", function(){
     if(brasserie.achatLevel(8)){
-        champOrge.afficheBatSpe();
+        brasserie.afficheBatSpe();
+    }});
+	
+var batAchatAutel = document.getElementById("achatNivautel");
+batAchatAutel.addEventListener("click", function(){
+    if(autel.achatLevel(4)){
+        autel.afficheBatSpe();
     }});
 	
 //etapes brasserie//

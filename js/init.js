@@ -23,6 +23,7 @@ var coffre = new Structure("coffre",150000,0);
 var approvisionnement = new Structure("approvisionnement",7500,0);
 var receptacle = new Structure("receptacle",7500,0);
 var habitation = new Structure("habitation",2500,0);
+var cimetiere = new Structure("cimetiere",9000,0);
 //constructions//
 var camp = new Structure("camp",125,0);
 var puit = new Structure("puit",280,0);
@@ -32,6 +33,7 @@ var champMalt = new Structure("champMalt",1500,0);
 var champHoublon = new Structure("champHoublon",2000,0);
 var champOrge = new Structure("champOrge",2300,0);
 var brasserie = new Structure("brasserie",20000,0);
+var autel = new Structure("autel",50000,0);
 //--- brasserie ---//
 var maltBrass = 2000;
 var orgeBrass = 3000;

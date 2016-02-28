@@ -9,7 +9,7 @@
     <!--RESSOURCES-->
 		<div style="float: left;">
 			<fieldset><legend><button id="btnressources">Ressources</button><!-- / <button id="btntravailleurs">Travailleurs</button>--></legend>
-                <div id="ficheRessources">
+                <div id="ficheressources">
                     <fieldset>
                         <a rel="tooltip" title="Le nid génère des canards toutes les minutes">Canards actuels dans la ville : </a><span id="canard">0</span>/<span id="canardMax">5</span>
 						<br><br>
@@ -58,18 +58,21 @@
                         <button id="levureClick">Levure </button> : </a><span id="levure">0.0</span>/<span id="levureMax">500</span>
                         </br></br>
                         Ame : <span id="ame">0.0</span>/<span id="ameMax">500</span> ( +<span id="ameSec">0.00</span>/s )
+						</br></br>
+						Canards Morts : <span id="canardMort">0</span>/<span id="canardMortMax">50</span> ( +<span id="canardMortSec">0.00</span>/s )
+                        <br>
                         </fieldset>
                 </div>
-			    <div id="ficheTravailleurs"></div>
+			    <!--<div id="fichetravailleurs"></div>-->
 			</fieldset>
 		</div>
 
     <!--CARTE-->
         <div style="float: left;">
-            <fieldset id="carteBrasserie"><legend><!--<button id="btnville">Ville</button> /--> <button id="btnbrasserie">Brasserie</button> <!--/ <button id="btnport">Port</button>--></legend>
-                <!--<div id="carteVille">
-                </div>-->
-                <div>
+            <fieldset><legend><button id="btnville">Ville</button> <span id="btnbrasserie"> / <button>Brasserie</button></span> <span id="btnautel"> / <button>Autel</button></span> <!--/ <button id="btnport">Port</button>--></legend>
+                <div id="carteville">
+                </div>
+                <div id="cartebrasserie">
                     <button id="maltage">Etape 1 : Maltage</button>
                     </br>
                     Orge : <span id="orgeBrass">3000</span></br>
@@ -101,15 +104,42 @@
                 </div>
                 <!--<div id="cartePort">
                 </div>-->
+				<div id="carteautel">
+					<a rel="tooltip" title="SACRIFICE :<br>L'autel débloque l'accès à de nombreuses amélioration grâce
+					à l'utilisation de la magie noire. Pour y avoir accès, il va falloir sacrifier des canards et récolter leurs âmes.">
+                    <button id="sacrificeClick">SACRIFIER UN CANARD</button></a>
+                    </br>
+                    <fieldset><legend><button id="btnupresp">Ressources principales</button><button id="btnupress">Ressources secondaires</button></legend>
+						<div id="carteUpResP">
+							<table>
+								<tr id="sceauxenchantes"><td><a rel="tooltip" title="SCEAUX ENCHANTES :<br>Grâce aux âmes de vos défunts canards, vous apprenez une magie permettant
+								de étendre l'espace qui vous entoure et par conséquent augmenter la taille de vos sceaux.<br><br>
+								Bonus à la production d'eau : +5% par travailleur / Prix + 50%">Sceaux Enchantés</a></td><td><button id="achatNivsceauxenchantes">Acheter</button></td><td id="prixsceauxenchantes">âmes : 500
+								</td></tr>
+								<tr id="hachesenchantes"><td><a rel="tooltip" title="HACHES ENCHANTES :<br>Les âmes des canards sont d'une étonnante pureté. Cette découverte va permettre<br>
+								à vos bucherons d'aiguiser leurs haches à l'aide d'âmes pour prévenir de l'usure.<br><br>
+								Bonus à la production de bois : +5% par travailleur / Prix + 50%">Haches Enchantés</a></td><td><button id="achatNivhachesenchantes">Acheter</button></td><td id="prixhachesenchantes">âmes : 500
+								</td></tr>
+								<tr id="croutonsenchantes"><td><a rel="tooltip" title="CROUTONS ENCHANTES :<br>En injectant directement dans la terre des âmes de canards,<br>
+								la terre deviens plus meulble et plus apte à produire des croutons pour nourrir le peuple.<br><br>
+								Bonus à la production de nourriture : +5% par travailleur / Prix + 50%">Croutons Enchantés</a></td><td><button id="achatNivcroutonsenchantes">Acheter</button></td><td id="prixcroutonsenchantes">âmes : 500
+								</td></tr>
+							</table>
+						</div>
+					</fieldset>
+				</div>
             </fieldset>
         </div>
 
     <!--BATIMENT-->
     <div style="float: right;">
         <fieldset><legend><button id="btnconstructions">Constructions</button> / <button id="btnconteneurs">Conteneurs</button></legend>
-            <div id="ficheConteneurs">
+            <div id="ficheconteneurs">
             <fieldset>
                 <table>
+					<tr id="habitation"><td><a rel="tooltip" title="HABITATION :<br>Débloque une nouvelle habitation dans le village.<br>
+                    Canards max + 20% / Prix + 40%">Habitation</a></td><td><button id="achatNivhabitation">Construire</button></td><td id="prixhabitation">bois : 2500
+                    </td></tr>
                     <tr id="citerne"><td><a rel="tooltip" title="CITERNE :<br>Le citerne permet aux canards de stocker plus d'eau.<br>
 					Eau max + 20% / Prix + 25%">Citerne</a></td><td><button id="achatNivciterne">Construire</button></td><td id="prixciterne">bois : 3000
                     </td></tr>
@@ -119,27 +149,28 @@
                     <tr id="reserve"><td><a rel="tooltip" title="RESERVE DE GRAINS :<br>La réserve de grains augmente la capacité de stockage du mal, de l'orge et du houblon.<br>
                     Orge,Malt,Houblon max + 35% / Prix + 40%">Reserve de grains</a></td><td><button id="achatNivreserve">Construire</button></td><td id="prixreserve">bois : 5000
                     </td></tr>
-                    <tr id="cave"><td><a rel="tooltip" title="CAVE :<br>Agrandir la cave permet de stocker plus de bière.<br>
+					<tr id="approvisionnement"><td><a rel="tooltip" title="APPROVISIONNEMENT :<br>L'apprivionnement permet d'augmenter le stock de ressources rares.<br>
+                    Levure,Grains crus max + 20% / Prix + 50%">Approvisionnement</a></td><td><button id="achatNivapprovisionnement">Construire</button></td><td id="prixapprovisionnement">bois : 6000
+                    </td></tr>
+					<tr id="receptacle"><td><a rel="tooltip" title="RECEPTACLE :<br>Augmenter la taille du receptacle permet de stocker plus d'âmes.<br>
+                    Âmes max + 20% / Prix + 300%">Receptacle</a></td><td><button id="achatNivreceptacle">Construire</button></td><td id="prixreceptacle">bois : 7500
+                    </td></tr>
+					<tr id="cimetiere"><td><a rel="tooltip" title="CIMETIERE :<br>Le cimetière offre un lieu pour le repos eternel des canrds... ou pas.<br>
+                    Canards morts max + 20% / Prix + 35%">Cimetiere</a></td><td><button id="achatNivcimetiere">Construire</button></td><td id="prixcimetiere">bois : 9000
+                    </td></tr>
+					<tr id="cave"><td><a rel="tooltip" title="CAVE :<br>Agrandir la cave permet de stocker plus de bière.<br>
                     Bière max + 55% / Prix + 60%">Cave</a></td><td><button id="achatNivcave">Construire</button></td><td id="prixcave">bois : 12500
                     </td></tr>
                     <tr id="coffre"><td><a rel="tooltip" title="COFFRE :<br>Le coffre permet de stocker plus d'or.<br>
                     Bois max + 40% / Prix + 100%">Coffre</a></td><td><button id="achatNivcoffre">Construire</button></td><td id="prixcoffre">bois : 150000
                     </td></tr>
-                    <tr id="approvisionnement"><td><a rel="tooltip" title="APPROVISIONNEMENT :<br>L'apprivionnement permet d'augmenter le stock de ressources rares.<br>
-                    Levure,Grains crus max + 20% / Prix + 50%">Approvisionnement</a></td><td><button id="achatNivapprovisionnement">Construire</button></td><td id="prixapprovisionnement">bois : 7500
-                    </td></tr>
-                    <tr id="receptacle"><td><a rel="tooltip" title="RECEPTACLE :<br>Augmenter la taille du receptacle permet de stocker plus d'âmes.<br>
-                    Âmes max + 20% / Prix + 300%">Receptacle</a></td><td><button id="achatNivreceptacle">Construire</button></td><td id="prixreceptacle">bois : 7500
-                    </td></tr>
-                    <tr id="habitation"><td><a rel="tooltip" title="HABITATION :<br>Débloque une nouvelle habitation dans le village.<br>
-                    Canards max + 20% / Prix + 40%">Habitation</a></td><td><button id="achatNivhabitation">Construire</button></td><td id="prixhabitation">bois : 2500
-                    </td></tr>
+                    
                     <!--<tr><td>Caserne</td><td><button id="achatNivBat9">Construire</button></td><td id="prixBat9">bois : 750</td></tr>-->
                     <!--<tr><td>Cimetiere</td><td><button id="achatNivBat10">Construire</button></td><td id="prixBat10">bois : 750</td></tr>-->
                 </table>
             </fieldset>
             </div>
-            <div id="ficheConstructions">
+            <div id="ficheconstructions">
 				<fieldset>
                 <table>
                     <tr id="nid"><td><a rel="tooltip" title="NID :<br>Améliorer le nid permet d'augmenter la production de canards.<br>
@@ -168,6 +199,9 @@
                     </td></tr>
                     <tr id="brasserie"><td><a rel="tooltip" title="BRASSERIE :<br>Débloque la brasserie dans la ville, permettant la création de bière.<br>
                     Brasserie + 1 / Prix + 700%">Brasserie</a></td><td><button id="achatNivbrasserie">Construire</button></td><td id="prixbrasserie">bois : 20000
+                    </td></tr>
+					<tr id="autel"><td><a rel="tooltip" title="AUTEL : un monument vaudon permettant de capturer l'âme des canards sacrifiés
+					Autel + 1 / Prix + 300%">Autel</a></td><td><button id="achatNivautel">Construire</button></td><td id="prixautel">bois : 50000
                     </td></tr>
                     <!--<tr><td>Caserne</td><td><button id="achatNivBat9">Construire</button></td><td id="prixBat9">bois : 750</td></tr>-->
                     <!--<tr><td>Cimetiere</td><td><button id="achatNivBat10">Construire</button></td><td id="prixBat10">bois : 750</td></tr>-->

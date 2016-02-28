@@ -1,12 +1,12 @@
 //-- ressources-travailleurs --//
 
-var ficheRessources = document.getElementById("ficheRessources");
+var ficheressources = document.getElementById("ficheressources");
 //var ficheTravailleurs = document.getElementById("ficheTravailleurs");
 
 var ressources = document.getElementById("btnressources");
 ressources.addEventListener("click",function(){
-    ficheRessources.style.cssText = "visibility : visible; display : inline_block;";
-    ficheTravailleurs.style.cssText = "visibility : hidden !imortant; display : none !imortant;";
+    ficheressources.style.cssText = "visibility : visible; display : inline_block;";
+    fichetravailleurs.style.cssText = "visibility : hidden !imortant; display : none !imortant;";
 });
 
 //var travailleurs = document.getElementById("btntravailleurs");
@@ -17,22 +17,33 @@ ressources.addEventListener("click",function(){
 
 //-- carte --//
 
-//var carteVille = document.getElementById("carteVille");
-var carteBrasserie = document.getElementById("carteBrasserie");
+var carteVille = document.getElementById("carteville");
+var carteBrasserie = document.getElementById("cartebrasserie");
+var carteAutel = document.getElementById("carteautel");
 //var cartePort = document.getElementById("cartePort");
 
-//var btnVille = document.getElementById("btnville");
-//btnVille.addEventListener("click", function(){
-//    carteVille.style.cssText = "visibility : visible; display : inline-block;";
-//    carteBrasserie.style.cssText = "visibility : hidden !imortant; display : none !imortant;";
-//    cartePort.style.cssText = "visibility : hidden !imortant; display : none !imortant;";
-//});
+var btnVille = document.getElementById("btnville");
+btnVille.addEventListener("click", function(){
+    carteVille.style.cssText = "visibility : visible; display : inline-block;";
+    carteBrasserie.style.cssText = "visibility : hidden !imortant; display : none !imortant;";
+    //cartePort.style.cssText = "visibility : hidden !imortant; display : none !imortant;";
+    carteAutel.style.cssText = "visibility : hidden !imortant; display : none !imortant;";
+});
 
-var btnBrasserie = document.getElementById("btnbrasserie");
-btnBrasserie.addEventListener("click", function(){
+var btnbrasserie = document.getElementById("btnbrasserie");
+btnbrasserie.addEventListener("click", function(){
     carteVille.style.cssText = "visibility : hidden !imortant; display : none !imortant;";
     carteBrasserie.style.cssText = "visibility : visible; display : inline-block;";
-    cartePort.style.cssText = "visibility : hidden !imortant; display : none !imortant;";
+    //cartePort.style.cssText = "visibility : hidden !imortant; display : none !imortant;";
+    carteAutel.style.cssText = "visibility : hidden !imortant; display : none !imortant;";
+});
+
+var btnautel = document.getElementById("btnautel");
+btnautel.addEventListener("click", function(){
+    carteVille.style.cssText = "visibility : hidden !imortant; display : none !imortant;";
+    carteAutel.style.cssText = "visibility : visible; display : inline-block;";
+    //cartePort.style.cssText = "visibility : hidden !imortant; display : none !imortant;";
+    carteBrasserie.style.cssText = "visibility : hidden !imortant; display : none !imortant;";
 });
 
 //var btnPort = document.getElementById("btnport");
@@ -44,21 +55,21 @@ btnBrasserie.addEventListener("click", function(){
 
 //-- batiments-conteneurs --//
 
-var ficheConteneurs = document.getElementById("ficheConteneurs");
-var ficheConstructions = document.getElementById("ficheConstructions");
+var ficheconteneurs = document.getElementById("ficheconteneurs");
+var ficheconstructions = document.getElementById("ficheconstructions");
 
 var conteneurs = document.getElementById("btnconteneurs");
 conteneurs.addEventListener("click",function(){
-    ficheConstructions.style.cssText = "visibility : hidden; display : none;";
-    ficheConteneurs.style.cssText = "visibility : visible; display : inline-block;";
+    ficheconstructions.style.cssText = "visibility : hidden; display : none;";
+    ficheconteneurs.style.cssText = "visibility : visible; display : inline-block;";
 });
 
 //-- batiments-consructions --//
 
 var constructions = document.getElementById("btnconstructions");
 constructions.addEventListener("click",function(){
-    ficheConstructions.style.cssText = "visibility : visible; display : inline-block;";
-    ficheConteneurs.style.cssText = "visibility : hidden; display : none;";
+    ficheconstructions.style.cssText = "visibility : visible; display : inline-block;";
+    ficheconteneurs.style.cssText = "visibility : hidden; display : none;";
 });
 
 window.setInterval(function(){ //timer 1 seconde
@@ -74,6 +85,7 @@ window.setInterval(function(){ //timer 1 seconde
 	champHoublon.affichage();
 	champOrge.affichage();
 	brasserie.affichage();
-	brasserie.afficheBatSpe();
+    autel.affichage();
+	cimetiere.affichage();
 
 }, 1000);
