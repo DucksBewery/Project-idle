@@ -1,13 +1,12 @@
 //--FONCTION KILL--//
-/*	action : Calcule le nombre de canards actifs au total dans la ville.
+/*
+* calcule le nombre de canards actifs au total dans la ville.
  Calcule le malus sur la nourriture pour chaque travailleur actif.
  Si le malus est supérieur à la création, le texte est affiché en rouge.
  conséquence : la ressource se décrémente, si elle atteint 0 en décrémentation,
  tous les canards actifs meurent, sauf ceux affectés à la nourriture.
- exception : -
- param : -
- retour : -
- conditions : calcul du malus > calcul incrémentation de nourriture.
+* param : -
+* return : -
  */
 function kill(){
     canTot = eau.canardAffect + bois.canardAffect + nourriture.canardAffect + malt.canardAffect + houblon.canardAffect + orge.canardAffect;
@@ -46,17 +45,12 @@ function kill(){
     }
 }
 
-// //--FONCTIONS BRASSERIE--//
-/*	action : Fonctions liées au bâtiment spécial : la brasserie.
- Chaque étape est nécéssaire à la création de la ressource bière.
- Les fonctions devront d'abbord être lancées les unes après les
- autres.
- exception : -
- param : -
- retour : -
- conditions : posséder suffisamment des ressources indiquée sur l'interface.
- */
 
+/*
+* verifie l'avancement d'une étape brasserie
+* param: le timer de l'étape, la div dans laquelle on affiche ce timer et l'identifiant de l'étape
+* return: -
+ */
 function reste(zetime, div, id) {
     if (zetime>0) {
         var heures = Math.floor(zetime / 3600);
@@ -75,6 +69,16 @@ function reste(zetime, div, id) {
         tabComplete[id] = true;
     }
 }
+
+// //--FONCTIONS BRASSERIE--//
+/*
+ * fonctions liées au bâtiment spécial : la brasserie.
+ Chaque étape est nécéssaire à la création de la ressource bière.
+ Les fonctions devront d'abbord être lancées les unes après les
+ autres.
+ * param : -
+ * retour : -
+ */
 
 function maltage(){
     if(tabComplete["completeBrass1"]==false && orge.quantite>orgeBrass && eau.quantite>eauBrass1){
@@ -121,6 +125,11 @@ function conditionnement(){
     }
 }
 
+/*
+* lorsque toutes les étapes sont terminées, on réinitialise les timer à 0
+* param: -
+* return: -
+ */
 function relance(){
     tabComplete["completeBrass1"] = false;
     tabComplete["completeBrass2"] = false;
@@ -135,13 +144,12 @@ function relance(){
 }
 
 //--TIMER--//
-/*	action : Timers servant à l'incrémentation automatique de toutes les ressources sur lequelles des canards sont affectés.
+/*
+* timers servant à l'incrémentation automatique de toutes les ressources sur lequelles des canards sont affectés.
  Gère aussi la génération de nouveaux canards.
  Pour chaque ressource, un coefficient est unique et varie en fonction du nombre de travailleurs actifs.
- exception : -
- param : -
- retour : -
- conditions : -
+* param : -
+* retour : -
  */
 window.setInterval(function(){ //timer 5 secondes
 

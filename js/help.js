@@ -1,3 +1,8 @@
+/*
+* affiche une pop-up faisant une présentation rapide du jeu
+* param: -
+* return: -
+ */
 function help(){
     var text = "BIENVENUE DANS THE DUCKS'BREWERY !!!" +
     "\n\nDans ce jeu vous incarnez un canard avide de pouvoir, d'argent et d'alcool !" +
@@ -9,6 +14,7 @@ function help(){
     window.alert(text);
 }
 
+//appel
 $(document).ready(function() {
     help();
 });

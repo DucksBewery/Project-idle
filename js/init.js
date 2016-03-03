@@ -50,6 +50,6 @@ var tempsBrass3 = 240;
 var tempsBrass4 = 900;
 var tempsBrass5 = 10;
 var tabComplete = {"completeBrass1":false,"completeBrass2":false,"completeBrass3":false,"completeBrass4":false,"completeBrass5":false};
-
+//--- autre ---//
 var canTot = 0;
 var timerCanard = 3000;

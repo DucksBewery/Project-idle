@@ -1,4 +1,4 @@
-//incrémenter une ressource//
+//-- INCRÉMENTER UNE RESSOURCE --//
 
 var clickEau = document.getElementById("eauClick");
 clickEau.addEventListener("click", function(){eau.incremente(1)});
@@ -34,7 +34,7 @@ clickGrain.addEventListener("click", function(){
     }
 });
 
-//affecter des cannards//
+//-- AFFECTER DES CANNARDS --//
 
 var canardAffectEau = document.getElementById("affectCanardEau");
 canardAffectEau.addEventListener("click", function(){eau.affectCanard(0.55)});
@@ -57,7 +57,7 @@ canardAffectOrge.addEventListener("click", function(){orge.affectCanard(0.42)});
 var canardAffectMort = document.getElementById("sacrificeClick");
 canardAffectMort.addEventListener("click", function(){canardMort.affectCanard(0.005)});
 
-//retirer des canards//
+//-- RETIRER DES CANARDS --//
 
 var canardRetEau = document.getElementById("retCanardEau");
 canardRetEau.addEventListener("click", function(){eau.retCanard(0.55)});
@@ -77,7 +77,7 @@ canardRetHoublon.addEventListener("click", function(){houblon.retCanard(0.03)});
 var canardRetOrge = document.getElementById("retCanardOrge");
 canardRetOrge.addEventListener("click", function(){orge.retCanard(0.42)});
 
-//achat niveau batiments Conteneurs//
+//-- ACHAT NIVEAU BATIMENTS : CONTENEURS--//
 
 var batAchatCiterne = document.getElementById("achatNivciterne");
 batAchatCiterne.addEventListener("click", function(){
@@ -137,7 +137,7 @@ batAchatHabitation.addEventListener("click", function(){
         habitation.augmenteStock(canard,1.2);
     }});
 
-//achat niveau batiments Constructions//
+//-- ACHAT NIVEAU BATIMENTS : CONSTRUCTIONS --//
 
 var batAchatPuit = document.getElementById("achatNivpuit");
 batAchatPuit.addEventListener("click", function(){
@@ -187,7 +187,7 @@ batAchatAutel.addEventListener("click", function(){
         autel.afficheBatSpe();
     }});
 	
-//etapes brasserie//
+//-- ETAPES BRASSERIE --//
 
 var etapeMaltage = document.getElementById("maltage");
 etapeMaltage.addEventListener("click",function(){maltage()});

@@ -1,4 +1,4 @@
-/* displays tests */
+/* --- AFFICHAGE ONGLETS --- */
 
 #fichetravailleurs{
     visibility: hidden;
@@ -29,13 +29,13 @@
     display: none;
 }
 
-/* displays tests inits */
+/* --- PROPRIETE NON GEREE --- */
 #nid{
 	visibility: hidden !important;
 	display: none !important;
 }
 
-/* Infobulle */
+/* --- INFOBULLE --- */
 #tooltip{
     position:absolute;
     z-index:9999;
@@ -46,6 +46,5 @@
     text-align: left;
     padding: 5px;
 }
-
-/* hack IE */
+/* IE */
 *html #tooltip .tipHeader {margin-bottom:-6px;}

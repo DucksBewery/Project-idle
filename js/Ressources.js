@@ -9,9 +9,11 @@ var Ressource = function(nom,nomMax,quantiteMax,canardAffectMax){
 };
 
 //--- INCREMENTER ---//
-// incrementer ressource
-// param: de combien on augmente la ressource
-// return: -
+/*
+* incrementer ressource
+* param: de combien on augmente la ressource
+* return: -
+ */
 Ressource.prototype.incremente = function(number){
     this.quantite = this.quantite + number;
     if(this.nom == "canard"){
@@ -32,9 +34,11 @@ Ressource.prototype.incremente = function(number){
 };
 
 //--- AFFECTER DES TRAVAILLEURS ---//
-// augmente le nombre de canards affectés à la ressource
-// param: le nombre de canards deja affectes a la ressource
-// return: -
+/*
+* augmente le nombre de canards affectés à la ressource
+* param: le nombre de canards deja affectes a la ressource
+* return: -
+ */
 Ressource.prototype.affectCanard = function(coef){
     if(canard.quantite > 0 && this.canardAffect < this.canardAffectMax) {
         canard.quantite = canard.quantite - 1;
@@ -49,9 +53,11 @@ Ressource.prototype.affectCanard = function(coef){
 };
 
 //--- RETIRER DES TRAVAILLEURS ---//
-// diminue le nombre de travailleurs affectes a la ressource
-// param: -
-// return: -
+/*
+* diminue le nombre de travailleurs affectes a la ressource
+* param: -
+* return: -
+ */
 Ressource.prototype.retCanard = function(coef){
     if(this.canardAffect > 0 && canard.quantite != canard.quantiteMax) {
         canard.quantite = canard.quantite + 1;

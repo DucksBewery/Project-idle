@@ -1,4 +1,4 @@
-//-- ressources-travailleurs --//
+//-- RESSOURCES-ET-TRAVAILLEURS --//
 
 var ficheressources = document.getElementById("ficheressources");
 //var ficheTravailleurs = document.getElementById("ficheTravailleurs");
@@ -15,7 +15,7 @@ ressources.addEventListener("click",function(){
 //    ficheTravailleurs.style.cssText = "visibility : visible; display : inline_block;";
 //});
 
-//-- carte --//
+//-- CARTE --//
 
 var carteVille = document.getElementById("carteville");
 var carteBrasserie = document.getElementById("cartebrasserie");
@@ -53,7 +53,7 @@ btnautel.addEventListener("click", function(){
 //    cartePort.style.cssText = "visibility : visible; display : inline-block;";
 //});
 
-//-- batiments-conteneurs --//
+//-- BATIMENTS --//
 
 var ficheconteneurs = document.getElementById("ficheconteneurs");
 var ficheconstructions = document.getElementById("ficheconstructions");
@@ -63,8 +63,6 @@ conteneurs.addEventListener("click",function(){
     ficheconstructions.style.cssText = "visibility : hidden; display : none;";
     ficheconteneurs.style.cssText = "visibility : visible; display : inline-block;";
 });
-
-//-- batiments-consructions --//
 
 var constructions = document.getElementById("btnconstructions");
 constructions.addEventListener("click",function(){
