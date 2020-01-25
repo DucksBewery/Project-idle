@@ -16,7 +16,14 @@ public class Building : MonoBehaviour
     public int bPriceCoefficient;
     public int bWorkers;
     public int bWorkersMax;
-    public Text textLumbermillLevel;
+    public float bBonus;
+    public float bBonusCoefficient;
+
+    private void Start()
+    {
+        bPrice = bPriceBase + ((bLevel -1) * bPriceCoefficient);
+        bBonus = 1 + ((bLevel - 1) * bBonusCoefficient);
+    }
 
     //Set the building level
     public void SetBuilding(int loadedLevel)
@@ -24,21 +31,18 @@ public class Building : MonoBehaviour
         bLevel = loadedLevel;
 
         //Formule a travailler
-        bPrice = bPriceBase + bLevel * bPriceCoefficient;
+        bPrice = bPriceBase + ((bLevel - 1) * bPriceCoefficient);
     }
 
     // Upgrade the building
-    public void Upgrade(int possessedGolds)
+    public void Upgrade()
     {
-        if (possessedGolds >= bPrice)
-        {
-            bLevel++;
-            //Formules a travailler
-            bPrice = bPriceBase + bLevel * bPriceCoefficient;
-            bWorkersMax++;
+        bLevel++;
+        bWorkersMax++;
+        //Formules a travailler
+        bPrice = bPriceBase + ((bLevel - 1) * bPriceCoefficient);
+        bBonus = 1 + ((bLevel - 1) * bBonusCoefficient);
 
-            textLumbermillLevel.text = "Lumbermill lvl " + bLevel;
-        }
     }
 
     public void AssignWorker()

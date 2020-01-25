@@ -13,34 +13,52 @@ public class Town : MonoBehaviour
 
     public int townLevel;
     public int townExp;
+
     public Resource golds;
     public Resource water;
     public Resource food;
     public Resource wood;
+    public Resource mana;
+
+    public Building bank;
     public Building lumbermill;
+    public Building well;
+    public Building manaWell;
+    public Building croutonFields;
+    public Building barleyFields;
+    public Building maltFields;
+    public Building hopFields;
 
     private Building[] buildings = new Building[1];  
 
     void Start()
     {
         buildings[0] = lumbermill;
-        StartCoroutine(Produce());
+        StartCoroutine(Idle());
     }
 
-    IEnumerator Produce()
+    IEnumerator Idle()
     {
         while(true)
         {
             yield return new WaitForSeconds(1.0f);
-            wood.Increment(lumbermill.bLevel);
+            golds.Increment((bank.bWorkers * bank.bBonus));
+            water.Increment((well.bWorkers * well.bBonus));
+            food.Increment((croutonFields.bWorkers * croutonFields.bBonus));
+            wood.Increment((lumbermill.bWorkers * lumbermill.bBonus));
+            mana.Increment((manaWell.bWorkers * manaWell.bBonus));
             ui.RefreshResources();
+
+            //Saving changes
+            //loadedSave.SaveTown();
         }
     }
 
     public void UpgradeBuilding(int buildingId)
     {
-        buildings[buildingId].Upgrade(golds.rAmount);
-        //On sauvegarde la montee en niveau !
+        if (golds.rAmount >= buildings[buildingId].bPrice) buildings[buildingId].Upgrade();
+
+        //Saving changes
         loadedSave.SaveTown();
     }
 
@@ -56,29 +74,58 @@ public class Town : MonoBehaviour
     public building seaport;
     */
 
-    public void SetTown(int loadedTownLevel, int loadedExp, int loadedGoldsAmount, int loadedWaterAmount, int loadedFoodAmount,
-                        int loadedWoodAmount)
-    /*int loadedNestLevel, int loadedLumbermillLevel, int loadedWellLevel,
-    int loadedFieldsLevel, int loadedBreweryLevel, int loadedAcademyLevel,
-    int loadedBarracksLevel, int loadedArmoryLevel, int loadedSeaportLevel)*/
+    public void UpgradeResource(Resource resource)
     {
+        if (golds.rAmount >= resource.rPrice) resource.Upgrade();
+
+        //Saving changes
+        loadedSave.SaveTown();
+    }
+
+    public void SetTown(int loadedTownLevel, int loadedTownExp,
+                        float loadedGoldsAmount, int loadedGoldsLevel,
+                        float loadedWaterAmount, int loadedWaterLevel,
+                        float loadedFoodAmount, int loadedFoodLevel,
+                        float loadedWoodAmount, int loadedWoodLevel,
+                        int loadedBankLevel, int loadedLumbermillLevel,
+                        int loadedWellLevel, int loadedManaWellLevel,
+                        int loadedCroutonFieldsLevel, int loadedBarleyFieldsLevel,
+                        int loadedMaltFieldsLevel, int loadedHopFieldsLevel)
+                        /*int loadedNestLevel, int loadedBreweryLevel,
+                         * int loadedAcademyLevel, int loadedBarracksLevel, 
+                         * int loadedArmoryLevel, int loadedSeaportLevel)*/
+    {
+        //Set town
         townLevel = loadedTownLevel;
-        townExp = loadedExp;
-        golds.SetRessource(1, loadedGoldsAmount);
-        water.SetRessource(loadedWaterAmount, 50);
-        food.SetRessource(loadedFoodAmount, 50);
-        wood.SetRessource(loadedWoodAmount, 50);
+        townExp = loadedTownExp;
+
+        //Set resources
+        golds.SetResource(loadedGoldsLevel, loadedGoldsAmount);
+        water.SetResource(loadedWaterLevel, loadedWaterAmount);
+        food.SetResource(loadedFoodLevel, loadedFoodAmount);
+        wood.SetResource(loadedWoodLevel, loadedWoodAmount);
+
+        //Set buildings
+        bank.SetBuilding(loadedBankLevel);
+        lumbermill.SetBuilding(loadedLumbermillLevel);
+        well.SetBuilding(loadedWellLevel);
+        manaWell.SetBuilding(loadedManaWellLevel);
+        croutonFields.SetBuilding(loadedCroutonFieldsLevel);
+        barleyFields.SetBuilding(loadedBarleyFieldsLevel);
+        maltFields.SetBuilding(loadedMaltFieldsLevel);
+        hopFields.SetBuilding(loadedHopFieldsLevel);
 
         /*
+        //les batiments speciaux
         nest.SetLevel(loadedNestLevel);
-        lumbermill.SetLevel(loadedLumbermillLevel);
-        well.SetLevel(loadedWellLevel);
-        fields.SetLevel(loadedFieldsLevel);
         brewery.SetLevel(loadedBreweryLevel);
         academy.SetLevel(loadedAcademyLevel);
         barracks.SetLevel(loadedBarracksLevel);
         armory.SetLevel(loadedArmoryLevel);
         seaport.SetLevel(loadedSeaportLevel);
         */
+
+        ui.RefreshResources();
+
     }
 }
