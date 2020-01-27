@@ -10,9 +10,9 @@ public class Resource : MonoBehaviour
     //Proprietes des ressources
     public string rName;
     public int rLevel;
-    public float rAmount;
-    public int rAmountMax;
-    public int rAmountMaxCoefficient;
+    public float Amount;
+    public int AmountMax;
+    public int AmountMaxCoefficient;
     public int rPrice;
     public int rPriceBase;
     public int rPriceCoefficient;
@@ -23,16 +23,16 @@ public class Resource : MonoBehaviour
     private void Start()
     {
         rPrice = rPriceBase + ((rLevel - 1) * rPriceCoefficient);
-        rAmountMax = rLevel * rAmountMaxCoefficient;
+        AmountMax = rLevel * AmountMaxCoefficient;
         rBonus = 1 + ((rLevel - 1) * rBonusCoefficient);
     }
 
     public void SetResource(int loadedLevel, float loadedAmount)
     {
         rLevel = loadedLevel;
-        rAmount = loadedAmount;
+        Amount = loadedAmount;
         rPrice = rPriceBase + ((rLevel - 1) * rPriceCoefficient);
-        rAmountMax = rLevel * rAmountMaxCoefficient;
+        AmountMax = rLevel * AmountMaxCoefficient;
         rBonus = 1 + ((rLevel - 1) * rBonusCoefficient);
     }
 
@@ -42,18 +42,18 @@ public class Resource : MonoBehaviour
         rLevel++;
         // Formule à revoir
         rPrice = rPriceBase + ((rLevel - 1) * rPriceCoefficient);
-        rAmountMax = rLevel * rAmountMaxCoefficient;
+        AmountMax = rLevel * AmountMaxCoefficient;
         rBonus = 1 + ((rLevel - 1) * rBonusCoefficient);
     }
 
     // Increment the resource amount
     public void Increment(float coef)
     {
-        if (rAmount < rAmountMax) CheckMax(rAmount += rBaseIncrement * coef * rBonus);// Formule à revoir
+        if (Amount < AmountMax) CheckMax(Amount += rBaseIncrement * coef * rBonus);// Formule à revoir
     }
 
     private void CheckMax(float value)
     {
-        if (Mathf.Round(value) >= rAmountMax) rAmount = rAmountMax;
+        if (Mathf.Round(value) >= AmountMax) Amount = AmountMax;
     }
 }
