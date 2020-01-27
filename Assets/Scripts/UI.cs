@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class UI : MonoBehaviour
@@ -24,9 +22,9 @@ public class UI : MonoBehaviour
 
     public void RefreshResources()
     {
-        textWoodAmount.text = "Bois : " + town.wood.rAmount + " / " + town.wood.rAmountMax;
-        textGoldAmount.text = "Or : " + town.golds.rAmount + " / " + town.golds.rAmountMax;
-        textWaterAmount.text = "Eau : " + town.water.rAmount + " / " + town.water.rAmountMax;
-        textFoodAmount.text = "Nourriture : " + town.food.rAmount + " / " + town.food.rAmountMax;
+        textWoodAmount.text = "Bois : " + town.wood.Amount + " / " + town.wood.AmountMax;
+        textGoldAmount.text = "Or : " + town.golds.Amount + " / " + town.golds.AmountMax;
+        textWaterAmount.text = "Eau : " + town.water.Amount + " / " + town.water.AmountMax;
+        textFoodAmount.text = "Nourriture : " + town.food.Amount + " / " + town.food.AmountMax;
     }
 }
