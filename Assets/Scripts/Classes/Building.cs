@@ -72,18 +72,51 @@ public class Building : MonoBehaviour
 
     public void AssignWorker(int targetSlot, Duck targetWorker)
     {
-        if (workers[targetSlot] != null)
+        if(targetWorker != null)
         {
-            UnassignWorker(targetSlot);
-            workers[targetSlot] = targetWorker;
-            workers[targetSlot].assignedJob = bName;
+            if (workers[targetSlot] != null)
+            {
+                //First, unasign any duck in this target slot
+                UnassignWorker(targetSlot);
+
+                //Second, look if this duck is already assigned
+                for (int i = 0; i < workers.Length; i++)
+                {
+                    if (workers[i] != null)
+                    {
+                        //If so, unassign this duck from its previous slot
+                        if (workers[i].dId == targetWorker.dId)
+                        {
+                            UnassignWorker(i);
+                            break;
+                        }
+                    }
+                }
+                //Then add the target duck to the target slot
+                workers[targetSlot] = targetWorker;
+                workers[targetSlot].assignedJob = bName;
+            }
+            else
+            {
+                //Second, look if this duck is already assigned
+                for (int i = 0; i < workers.Length; i++)
+                {
+                    if(workers[i] != null)
+                    {
+                        //If so, unassign this duck from its previous slot
+                        if (workers[i].dId == targetWorker.dId)
+                        {
+                            UnassignWorker(i);
+                            break;
+                        }
+                    }
+                }
+                //Then add the target duck to the target slot
+                workers[targetSlot] = targetWorker;
+                workers[targetSlot].assignedJob = bName;
+            }
+            CalculateCoeff();
         }
-        else
-        {
-            workers[targetSlot] = targetWorker;
-            workers[targetSlot].assignedJob = bName;
-        }
-        CalculateCoeff();
     }
 
     public void UnassignWorker(int targetSlot)
@@ -101,49 +134,49 @@ public class Building : MonoBehaviour
             case "Bank":
                 foreach (Duck worker in workers.Where(itm => itm != null))
                 {
-                    workersCoeffTemp += 1 + (1 * worker.expBanker / 100);
+                    workersCoeffTemp += 1 + (1 * worker.levelBanker);
                 }
                 break;
             case "Lumbermill":
                 foreach (Duck worker in workers.Where(itm => itm != null))
                 {
-                    workersCoeffTemp += 1 + (1 * worker.expWoodcutter / 100) + (1 * (worker.strength / 10));
+                    workersCoeffTemp += 1 + (1 * worker.levelWoodcutter) + (1 * (worker.strength / 10));
                 }
                 break;
             case "Well":
                 foreach (Duck worker in workers.Where(itm => itm != null))
                 {
-                    workersCoeffTemp += 1 + (1 * worker.expWaterCollector / 100) + (1 * (worker.agility / 10));
+                    workersCoeffTemp += 1 + (1 * worker.levelWaterCollector) + (1 * (worker.agility / 10));
                 }
                 break;
             case "ManaWell":
                 foreach (Duck worker in workers.Where(itm => itm != null))
                 {
-                    workersCoeffTemp += 1 + (1 * worker.expManaCollector / 100) + (1 * (worker.inteligence / 10));
+                    workersCoeffTemp += 1 + (1 * worker.levelManaCollector) + (1 * (worker.inteligence / 10));
                 }
                 break;
             case "CroutonFields":
                 foreach (Duck worker in workers.Where(itm => itm != null))
                 {
-                    workersCoeffTemp += 1 + (1 * worker.expCroutonFarmer / 100) + (1 * (worker.endurance / 10));
+                    workersCoeffTemp += 1 + (1 * worker.levelCroutonFarmer) + (1 * (worker.endurance / 10));
                 }
                 break;
             case "BarleyFields":
                 foreach (Duck worker in workers.Where(itm => itm != null))
                 {
-                    workersCoeffTemp += 1 + (1 * worker.expBarleyFarmer / 100) + (1 * (worker.endurance / 10));
+                    workersCoeffTemp += 1 + (1 * worker.levelBarleyFarmer) + (1 * (worker.endurance / 10));
                 }
                 break;
             case "MaltFields":
                 foreach (Duck worker in workers.Where(itm => itm != null))
                 {
-                    workersCoeffTemp += 1 + (1 * worker.expMaltFarmer / 100) + (1 * (worker.endurance / 10));
+                    workersCoeffTemp += 1 + (1 * worker.levelMaltFarmer) + (1 * (worker.endurance / 10));
                 }
                 break;
             case "HopFields":
                 foreach (Duck worker in workers.Where(itm => itm != null))
                 {
-                    workersCoeffTemp += 1 + (1 * worker.expHopFarmer / 100) + (1 * (worker.endurance / 10));
+                    workersCoeffTemp += 1 + (1 * worker.levelHopFarmer) + (1 * (worker.endurance / 10));
                 }
                 break;
         }

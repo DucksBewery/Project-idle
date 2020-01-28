@@ -23,11 +23,11 @@ public class AssignedCard : MonoBehaviour
         if (duck != null)
         {
             UILevel.text = duck.dLevel.ToString();
-            UILife.text = duck.life.ToString(); ;
-            UIStrength.text = duck.strength.ToString(); ;
-            UIEndurance.text = duck.endurance.ToString(); ;
-            UIAgility.text = duck.agility.ToString(); ;
-            UIInteligence.text = duck.inteligence.ToString(); ;
+            UILife.text = duck.life.ToString();
+            UIStrength.text = duck.strength.ToString();
+            UIEndurance.text = duck.endurance.ToString();
+            UIAgility.text = duck.agility.ToString();
+            UIInteligence.text = duck.inteligence.ToString();
             //UITargetJob.text = duck.ToString(); ;
             //UIActualJob.text = duck.dLevel.ToString();
         }
@@ -37,8 +37,9 @@ public class AssignedCard : MonoBehaviour
 
     public void TargetSlot()
     {
-        town.TargetSlot(Int32.Parse(gameObject.name));
         menu.GoToResourceBuildingsDuckSelectionView();
+        town.TargetSlot(Int32.Parse(gameObject.name));
+        if(duck != null) town.TargetAssignedDuck(duck);
         town.DisplayCards();
     }
 }
