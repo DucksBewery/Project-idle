@@ -52,13 +52,25 @@ public class Town : MonoBehaviour
     public Building targetBuilding;
     public int targetWorkerSlot = 0;
 
-    public GameObject cardGrid;
-    public GameObject cardComponent;
-    public List<Card> displayedDuckCards = new List<Card>();
-
+    //Components for Duck Selection View
+    //List of all active Assign Duck cards
+    public List<AssignedCard> displayedAssignedDuckCards = new List<AssignedCard>();
+    //Assigned Duck cards display
     public GameObject assignedCardGrid;
     public GameObject assignedCardComponent;
-    public List<AssignedCard> displayedAssignedDuckCards = new List<AssignedCard>();
+
+    //Components for Duck Selection View
+    //List of all active Duck cards
+    public List<Card> displayedDuckCards = new List<Card>();
+    //Currently assigned Duck
+    public GameObject assignedDuckCard;
+    private Duck targetAssignedDuck;
+    //Target Duck to assign
+    public GameObject targetDuckCard;
+    private Duck targetDuckToAssign;
+    //Duck Cards display
+    public GameObject cardGrid;
+    public GameObject cardComponent;
 
 
     void Start()
@@ -84,13 +96,10 @@ public class Town : MonoBehaviour
                         List<Duck> loadedDucksInWell, List<Duck> loadedDucksInManaWell, List<Duck> loadedDucksInCroutonFields,
                         List<Duck> loadedDucksInBarleyFields, List<Duck> loadedDucksInMaltFields, List<Duck> loadedDucksInHopFields)
     {
-        print(loadedDucksInTown.Count);
         //Set town
         tLevel = loadedTownLevel;
         tExp = loadedTownExp;
         ducks = loadedDucksInTown;
-        print(ducks.Count);
-
 
         //Set resources
         golds.SetResource(loadedGoldsLevel, loadedGoldsAmount);
@@ -148,9 +157,26 @@ public class Town : MonoBehaviour
         targetWorkerSlot = targetWorkerSlotToAssignTemp;
     }
 
-    public void AssignWorker(Duck targetWorker)
+    public void TargetAssignedDuck(Duck tempDuck)
     {
-        targetBuilding.AssignWorker(targetWorkerSlot, targetWorker);
+        assignedDuckCard.GetComponent<Card>().SetDuckCard(null,null);
+        targetDuckCard.GetComponent<Card>().SetDuckCard(null,null);
+        targetAssignedDuck = tempDuck;
+        assignedDuckCard.GetComponent<Card>().SetDuckCard(targetAssignedDuck, targetBuilding.bName);
+    }
+
+    public void TargetDuckToAssign(Duck tempDuck)
+    {
+        targetDuckToAssign = tempDuck;
+        targetDuckCard.GetComponent<Card>().SetDuckCard(targetDuckToAssign, targetBuilding.bName);
+    }
+
+    public void AssignWorker()
+    {
+        assignedDuckCard.GetComponent<Card>().SetDuckCard(null, null);
+        targetDuckCard.GetComponent<Card>().SetDuckCard(null, null);
+        targetBuilding.AssignWorker(targetWorkerSlot, targetDuckToAssign);
+        targetDuckToAssign = null;
     }
 
     public void UnassignWorker(Duck targetWorker)
@@ -197,8 +223,7 @@ public class Town : MonoBehaviour
 
     public void DisplayCards()
     {
-        print("test");
-        print(ducks.Count);
+        print("there is "+ducks.Count+" ducks to display");
         foreach (Duck duck in ducks)
         {
             //Setting Card on scene
@@ -206,8 +231,7 @@ public class Town : MonoBehaviour
             newCard.name = duck.dId.ToString();
 
             //Adding Card script and selected Duck
-            newCard.GetComponent<Card>().duck = duck;
-            displayedDuckCards.Add(newCard.GetComponent<Card>());
+            newCard.GetComponent<Card>().SetDuckCard(duck, targetBuilding.name);
         }
     }
 
@@ -267,5 +291,7 @@ public class Town : MonoBehaviour
         {
             GameObject.Destroy(child.gameObject);
         }
+        //GameObject.Destroy(assignedDuckCard.GetComponent<Card>());
+        //GameObject.Destroy(targetDuckCard.GetComponent<Card>());
     }
 }

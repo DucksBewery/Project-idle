@@ -37,8 +37,13 @@ public class Save_Manager : MonoBehaviour
         {
             Duck duckTemp = new Duck(0);
             duckTemp.dId = PlayerPrefs.GetInt("duck_" + i + "_dId_" + slot);
-            duckTemp.dLevel = PlayerPrefs.GetInt("duck_" + i + "_dLevel_" + slot);
+            duckTemp.dLevel = PlayerPrefs.GetInt("duck_" + i + "_levelDuck_" + slot);
             duckTemp.dExp = PlayerPrefs.GetFloat("duck_" + i + "_dExp_" + slot);
+            duckTemp.life = PlayerPrefs.GetFloat("duck_" + i + "_life_" + slot);
+            duckTemp.strength = PlayerPrefs.GetFloat("duck_" + i + "_strength_" + slot);
+            duckTemp.agility = PlayerPrefs.GetFloat("duck_" + i + "_agility_" + slot);
+            duckTemp.endurance = PlayerPrefs.GetFloat("duck_" + i + "_endurance_" + slot);
+            duckTemp.inteligence = PlayerPrefs.GetFloat("duck_" + i + "_inteligence_" + slot);
             duckTemp.expBanker = PlayerPrefs.GetFloat("duck_" + i + "_expBanker_" + slot);
             duckTemp.expWoodcutter = PlayerPrefs.GetFloat("duck_" + i + "_expWoodcutter_" + slot);
             duckTemp.expWaterCollector = PlayerPrefs.GetFloat("duck_" + i + "_expWaterCollector_" + slot);
@@ -47,12 +52,15 @@ public class Save_Manager : MonoBehaviour
             duckTemp.expBarleyFarmer = PlayerPrefs.GetFloat("duck_" + i + "_expBarleyFarmer_" + slot);
             duckTemp.expMaltFarmer = PlayerPrefs.GetFloat("duck_" + i + "_expMaltFarmer_" + slot);
             duckTemp.expHopFarmer = PlayerPrefs.GetFloat("duck_" + i + "_expHopFarmer_" + slot);
+            duckTemp.levelBanker = PlayerPrefs.GetInt("duck_" + i + "_levelBanker_" + slot);
+            duckTemp.levelWoodcutter = PlayerPrefs.GetInt("duck_" + i + "_levelWoodcutter_" + slot);
+            duckTemp.levelWaterCollector = PlayerPrefs.GetInt("duck_" + i + "_levelWaterCollector_" + slot);
+            duckTemp.levelManaCollector = PlayerPrefs.GetInt("duck_" + i + "_levelManaCollector_" + slot);
+            duckTemp.levelCroutonFarmer = PlayerPrefs.GetInt("duck_" + i + "_levelCroutonFarmer_" + slot);
+            duckTemp.levelBarleyFarmer = PlayerPrefs.GetInt("duck_" + i + "_levelBarleyFarmer_" + slot);
+            duckTemp.levelMaltFarmer = PlayerPrefs.GetInt("duck_" + i + "_levelMaltFarmer_" + slot);
+            duckTemp.levelHopFarmer = PlayerPrefs.GetInt("duck_" + i + "_levelHopFarmer_" + slot);
             duckTemp.assignedJob = PlayerPrefs.GetString("duck_" + i + "_assignedJob_" + slot);
-            duckTemp.life = PlayerPrefs.GetFloat("duck_" + i + "_life_" + slot);
-            duckTemp.strength = PlayerPrefs.GetFloat("duck_" + i + "_strength_" + slot);
-            duckTemp.agility = PlayerPrefs.GetFloat("duck_" + i + "_agility_" + slot);
-            duckTemp.endurance = PlayerPrefs.GetFloat("duck_" + i + "_endurance_" + slot);
-            duckTemp.inteligence = PlayerPrefs.GetFloat("duck_" + i + "_inteligence_" + slot);
             ducksInTownTemp.Add(duckTemp);
 
             print(duckTemp.life);
@@ -156,6 +164,11 @@ public class Save_Manager : MonoBehaviour
             PlayerPrefs.SetInt("duck_" + duckTemp.dId + "_dId_" + slot, duckTemp.dId);
             PlayerPrefs.SetInt("duck_" + duckTemp.dId + "_levelDuck_" + slot, duckTemp.dLevel);
             PlayerPrefs.SetFloat("duck_" + duckTemp.dId + "_dExp_" + slot, duckTemp.dExp);
+            PlayerPrefs.SetFloat("duck_" + duckTemp.dId + "_life_" + slot, duckTemp.life);
+            PlayerPrefs.SetFloat("duck_" + duckTemp.dId + "_strength_" + slot, duckTemp.strength);
+            PlayerPrefs.SetFloat("duck_" + duckTemp.dId + "_agility_" + slot, duckTemp.agility);
+            PlayerPrefs.SetFloat("duck_" + duckTemp.dId + "_endurance_" + slot, duckTemp.endurance);
+            PlayerPrefs.SetFloat("duck_" + duckTemp.dId + "_inteligence_" + slot, duckTemp.inteligence);
             PlayerPrefs.SetFloat("duck_" + duckTemp.dId + "_expBanker_" + slot, duckTemp.expBanker);
             PlayerPrefs.SetFloat("duck_" + duckTemp.dId + "_expWoodcutter_" + slot, duckTemp.expWoodcutter);
             PlayerPrefs.SetFloat("duck_" + duckTemp.dId + "_expWaterCollector_" + slot, duckTemp.expWaterCollector);
@@ -164,12 +177,15 @@ public class Save_Manager : MonoBehaviour
             PlayerPrefs.SetFloat("duck_" + duckTemp.dId + "_expBarleyFarmer_" + slot, duckTemp.expBarleyFarmer);
             PlayerPrefs.SetFloat("duck_" + duckTemp.dId + "_expMaltFarmer_" + slot, duckTemp.expMaltFarmer);
             PlayerPrefs.SetFloat("duck_" + duckTemp.dId + "_expHopFarmer_" + slot, duckTemp.expHopFarmer);
+            PlayerPrefs.SetInt("duck_" + duckTemp.dId + "_levelBanker_" + slot, duckTemp.levelBanker);
+            PlayerPrefs.SetInt("duck_" + duckTemp.dId + "_levelWoodcutter_" + slot, duckTemp.levelWoodcutter);
+            PlayerPrefs.SetInt("duck_" + duckTemp.dId + "_levelWaterCollector_" + slot, duckTemp.levelWaterCollector);
+            PlayerPrefs.SetInt("duck_" + duckTemp.dId + "_levelManaCollector_" + slot, duckTemp.levelManaCollector);
+            PlayerPrefs.SetInt("duck_" + duckTemp.dId + "_levelCroutonFarmer_" + slot, duckTemp.levelCroutonFarmer);
+            PlayerPrefs.SetInt("duck_" + duckTemp.dId + "_levelBarleyFarmer_" + slot, duckTemp.levelBarleyFarmer);
+            PlayerPrefs.SetInt("duck_" + duckTemp.dId + "_levelMaltFarmer_" + slot, duckTemp.levelMaltFarmer);
+            PlayerPrefs.SetInt("duck_" + duckTemp.dId + "_levelHopFarmer_" + slot, duckTemp.levelHopFarmer);
             PlayerPrefs.SetString("duck_" + duckTemp.dId + "_assignedJob_" + slot, duckTemp.assignedJob);
-            PlayerPrefs.SetFloat("duck_" + duckTemp.dId + "_life_" + slot, duckTemp.life);
-            PlayerPrefs.SetFloat("duck_" + duckTemp.dId + "_strength_" + slot, duckTemp.strength);
-            PlayerPrefs.SetFloat("duck_" + duckTemp.dId + "_agility_" + slot, duckTemp.agility);
-            PlayerPrefs.SetFloat("duck_" + duckTemp.dId + "_endurance_" + slot, duckTemp.endurance);
-            PlayerPrefs.SetFloat("duck_" + duckTemp.dId + "_inteligence_" + slot, duckTemp.inteligence);
         }
         PlayerPrefs.SetInt("ducksInTown_" + slot, town.ducks.Count);
 

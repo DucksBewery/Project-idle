@@ -48,6 +48,7 @@ public class Menu_Manager : MonoBehaviour
     {
         ResourceBuildingsAssignView.SetActive(true);
     }
+
     public void CloseRessourceBuildingAssignView()
     {
         ResourceBuildingsAssignView.SetActive(false);
@@ -57,6 +58,7 @@ public class Menu_Manager : MonoBehaviour
     {
         ResourceBuildingsDuckSelectionView.SetActive(true);
     }
+
     public void CloseResourceBuildingsDuckSelectionView()
     {
         ResourceBuildingsDuckSelectionView.SetActive(false);
