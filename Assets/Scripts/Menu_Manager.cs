@@ -2,7 +2,9 @@
 
 public class Menu_Manager : MonoBehaviour
 {
-    public GameObject Town;
+    public Town town;
+
+    public GameObject TownOverview;
     public GameObject BuildingsOverview;
     public GameObject ResourceBuildingsView;
     public GameObject ResourceBuildingsAssignView;
@@ -12,7 +14,7 @@ public class Menu_Manager : MonoBehaviour
 
     private void DisableAll()
     {
-        Town.SetActive(false);
+        TownOverview.SetActive(false);
         BuildingsOverview.SetActive(false);
         ResourceBuildingsView.SetActive(false);
         ResourceBuildingsAssignView.SetActive(false);
@@ -24,17 +26,20 @@ public class Menu_Manager : MonoBehaviour
     public void GoToTown()
     {
         DisableAll();
-        FindObjectOfType<Town>().DestroyDisplayedCards();
-        FindObjectOfType<Town>().DestroyDisplayedAssignedCards();
-        Town.SetActive(true);       
+        town.DestroyDisplayedDuckCards();
+        town.DestroyDisplayedAssignedDuckCards();
+        town.DestroyDisplayedBuildingCards();
+        TownOverview.SetActive(true);       
     }
 
     public void GoToBuildings()
     {
         DisableAll();
         BuildingsOverview.SetActive(true);
-        FindObjectOfType<Town>().DestroyDisplayedCards();
-        FindObjectOfType<Town>().DestroyDisplayedAssignedCards();
+        town.DestroyDisplayedDuckCards();
+        town.DestroyDisplayedAssignedDuckCards();
+        town.DestroyDisplayedBuildingCards();
+        town.DisplayBuildingCards();
         GoToResouceBuildingsView();
     }
 
@@ -48,6 +53,7 @@ public class Menu_Manager : MonoBehaviour
     {
         ResourceBuildingsAssignView.SetActive(true);
     }
+
 
     public void CloseRessourceBuildingAssignView()
     {
@@ -73,8 +79,9 @@ public class Menu_Manager : MonoBehaviour
     public void GoToOverview()
     {
         DisableAll();
-        FindObjectOfType<Town>().DestroyDisplayedCards();
-        FindObjectOfType<Town>().DestroyDisplayedAssignedCards();
+        town.DestroyDisplayedDuckCards();
+        town.DestroyDisplayedAssignedDuckCards();
+        town.DestroyDisplayedBuildingCards();
         Overview.SetActive(true);
     }
 }

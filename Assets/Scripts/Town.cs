@@ -56,7 +56,7 @@ public class Town : MonoBehaviour
     //List of all active Assign Duck cards
     public List<AssignedCard> displayedAssignedDuckCards = new List<AssignedCard>();
     //Assigned Duck cards display
-    public GameObject assignedCardGrid;
+    public GameObject assignedGrid;
     public GameObject assignedCardComponent;
 
     //Components for Duck Selection View
@@ -69,8 +69,12 @@ public class Town : MonoBehaviour
     public GameObject targetDuckCard;
     private Duck targetDuckToAssign;
     //Duck Cards display
-    public GameObject cardGrid;
-    public GameObject cardComponent;
+    public GameObject duckGrid;
+    public GameObject duckCardComponent;
+
+    //Components for Ressource Building view
+    public GameObject buildingGrid;
+    public GameObject buildingCardComponent;
 
 
     void Start()
@@ -149,12 +153,14 @@ public class Town : MonoBehaviour
     public void TargetBuildingAssignView(int targetBuildingToAssignTemp)
     {
         targetBuilding = buildings[targetBuildingToAssignTemp];
-        DisplayAssignedCards();
+        DisplayAssignedDuckCards();
     }
 
     public void TargetSlot(int targetWorkerSlotToAssignTemp)
     {
         targetWorkerSlot = targetWorkerSlotToAssignTemp;
+        DestroyDisplayedDuckCards();
+        DisplayDuckCards();
     }
 
     public void TargetAssignedDuck(Duck tempDuck)
@@ -175,8 +181,43 @@ public class Town : MonoBehaviour
     {
         assignedDuckCard.GetComponent<Card>().SetDuckCard(null, null);
         targetDuckCard.GetComponent<Card>().SetDuckCard(null, null);
+
+       
+
+            switch (targetDuckToAssign.assignedJob)
+        {
+            case "Bank":
+                buildings[0].UnassignWorker(targetDuckToAssign);
+                break;
+            case "Lumbermill":
+                buildings[1].UnassignWorker(targetDuckToAssign);
+                break;
+            case "Well":
+                buildings[2].UnassignWorker(targetDuckToAssign);
+                break;
+            case "ManaWell":
+                buildings[3].UnassignWorker(targetDuckToAssign);
+                break;
+            case "CroutonFields":
+                buildings[4].UnassignWorker(targetDuckToAssign);
+                break;
+            case "BarleyFields":
+                buildings[5].UnassignWorker(targetDuckToAssign);
+                break;
+            case "MaltFields":
+                buildings[6].UnassignWorker(targetDuckToAssign);
+                break;
+            case "HopFields":
+                buildings[7].UnassignWorker(targetDuckToAssign);
+                break;
+            default:
+                break;
+        }
+
         targetBuilding.AssignWorker(targetWorkerSlot, targetDuckToAssign);
         targetDuckToAssign = null;
+        DestroyDisplayedAssignedDuckCards();
+        DisplayAssignedDuckCards();
     }
 
     public void UnassignWorker(Duck targetWorker)
@@ -221,13 +262,26 @@ public class Town : MonoBehaviour
         }
     }
 
-    public void DisplayCards()
+    public void DisplayBuildingCards()
+    {
+        for(int i=0; i<buildings.Length; i++)
+        {
+            //Setting card on scene
+            GameObject newCard = Instantiate(buildingCardComponent, buildingGrid.transform);
+            newCard.name = buildings[i].bName;
+
+            //Adding Card script and selected Duck
+            newCard.GetComponent<BuildingCard>().SetBuildingCard(buildings[i]);
+        }
+    }
+
+    public void DisplayDuckCards()
     {
         print("there is "+ducks.Count+" ducks to display");
         foreach (Duck duck in ducks)
         {
             //Setting Card on scene
-            GameObject newCard = Instantiate(cardComponent, cardGrid.transform);
+            GameObject newCard = Instantiate(duckCardComponent, duckGrid.transform);
             newCard.name = duck.dId.ToString();
 
             //Adding Card script and selected Duck
@@ -235,7 +289,7 @@ public class Town : MonoBehaviour
         }
     }
 
-    public void DisplayAssignedCards()
+    public void DisplayAssignedDuckCards()
     {
         //TO DO : A modif pour afficher un les cards en fonction de leur position
         /*
@@ -259,7 +313,7 @@ public class Town : MonoBehaviour
             if (targetBuilding.workers[i] != null)
             {
                 //Setting Card on scene
-                GameObject newAssignedCard = Instantiate(assignedCardComponent, assignedCardGrid.transform);
+                GameObject newAssignedCard = Instantiate(assignedCardComponent, assignedGrid.transform);
                 newAssignedCard.name = i.ToString();
 
                 //Adding Card script and selected Duck
@@ -269,7 +323,7 @@ public class Town : MonoBehaviour
             else
             {
                 //Setting Card on scene
-                GameObject newAssignedCard = Instantiate(assignedCardComponent, assignedCardGrid.transform);
+                GameObject newAssignedCard = Instantiate(assignedCardComponent, assignedGrid.transform);
                 newAssignedCard.name = i.ToString();
                 //Adding Card script and selected Duck
                 displayedAssignedDuckCards.Add(newAssignedCard.GetComponent<AssignedCard>());
@@ -277,21 +331,27 @@ public class Town : MonoBehaviour
         }
     }
 
-    public void DestroyDisplayedCards()
+    public void DestroyDisplayedBuildingCards()
     {
-        foreach (Card child in cardGrid.GetComponentsInChildren<Card>())
+        foreach (BuildingCard child in buildingGrid.GetComponentsInChildren<BuildingCard>())
         {
             GameObject.Destroy(child.gameObject);
         }
     }
 
-    public void DestroyDisplayedAssignedCards()
+    public void DestroyDisplayedDuckCards()
     {
-        foreach (AssignedCard child in assignedCardGrid.GetComponentsInChildren<AssignedCard>())
+        foreach (Card child in duckGrid.GetComponentsInChildren<Card>())
         {
             GameObject.Destroy(child.gameObject);
         }
-        //GameObject.Destroy(assignedDuckCard.GetComponent<Card>());
-        //GameObject.Destroy(targetDuckCard.GetComponent<Card>());
+    }
+
+    public void DestroyDisplayedAssignedDuckCards()
+    {
+        foreach (AssignedCard child in assignedGrid.GetComponentsInChildren<AssignedCard>())
+        {
+            GameObject.Destroy(child.gameObject);
+        }
     }
 }

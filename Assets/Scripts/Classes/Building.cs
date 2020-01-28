@@ -35,10 +35,7 @@ public class Building : MonoBehaviour
     //Set the building level
     public void SetBuilding(int loadedLevel, List<Duck> loadedworkers)
     {
-        print(bName + ": " +loadedworkers.Count);
         bLevel = loadedLevel;
-
-        
         //workers = loadedworkers.ToArray();
 
         //Formule a travailler
@@ -50,7 +47,6 @@ public class Building : MonoBehaviour
         for (int i=0; i < loadedworkers.Count; i++)
         {
             workers[i] = loadedworkers[i];
-            print(workers[i].strength);
         }
         CalculateCoeff();
     }
@@ -77,7 +73,7 @@ public class Building : MonoBehaviour
             if (workers[targetSlot] != null)
             {
                 //First, unasign any duck in this target slot
-                UnassignWorker(targetSlot);
+                UnassignWorkerFromSlot(targetSlot);
 
                 //Second, look if this duck is already assigned
                 for (int i = 0; i < workers.Length; i++)
@@ -87,7 +83,7 @@ public class Building : MonoBehaviour
                         //If so, unassign this duck from its previous slot
                         if (workers[i].dId == targetWorker.dId)
                         {
-                            UnassignWorker(i);
+                            UnassignWorkerFromSlot(i);
                             break;
                         }
                     }
@@ -106,7 +102,7 @@ public class Building : MonoBehaviour
                         //If so, unassign this duck from its previous slot
                         if (workers[i].dId == targetWorker.dId)
                         {
-                            UnassignWorker(i);
+                            UnassignWorkerFromSlot(i);
                             break;
                         }
                     }
@@ -119,7 +115,20 @@ public class Building : MonoBehaviour
         }
     }
 
-    public void UnassignWorker(int targetSlot)
+    public void UnassignWorker(Duck targetDuck)
+    {
+        for(int i = 0; i<workers.Length; i++)
+        { 
+            if(workers[i] != null && workers[i].dId == targetDuck.dId)
+            {
+                workers[i].assignedJob = "";
+                workers[i] = null;
+            }
+        }
+        CalculateCoeff();
+    }
+
+    public void UnassignWorkerFromSlot(int targetSlot)
     {
         workers[targetSlot].assignedJob = "";
         workers[targetSlot] = null;
