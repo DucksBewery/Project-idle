@@ -55,49 +55,49 @@ public class Card : MonoBehaviour
                         UITargetJobName.text = tempBuildingName;
                         UITargetJobLevel.text = duck.levelBanker.ToString();
                         UITargetJobExp.text = duck.expBanker + "%";
-                        UITargetJobCoeff.text = 1 + (1 * duck.levelBanker) + "/s";
+                        UITargetJobCoeff.text = town.golds.rBaseIncrement + (1 * duck.levelBanker) + "/s";
                         break;
                     case "Lumbermill":
                         UITargetJobName.text = tempBuildingName;
                         UITargetJobLevel.text = duck.levelWoodcutter.ToString();
                         UITargetJobExp.text = "(" + duck.expWoodcutter + "%)";
-                        UITargetJobCoeff.text = (1 + (1 * duck.levelWoodcutter) + 1 * (duck.strength / 10)) + "/s";
+                        UITargetJobCoeff.text = (town.wood.rBaseIncrement + (1 * duck.levelWoodcutter) + 1 * (duck.strength / 10)) + "/s";
                         break;
                     case "Well":
                         UITargetJobName.text = tempBuildingName;
                         UITargetJobLevel.text = duck.levelWaterCollector.ToString();
                         UITargetJobExp.text = duck.expWaterCollector + "%";
-                        UITargetJobCoeff.text = (1 + (1 * duck.levelWaterCollector) + 1 * (duck.agility / 10)) + "/s";
+                        UITargetJobCoeff.text = (town.water.rBaseIncrement + (1 * duck.levelWaterCollector) + 1 * (duck.agility / 10)) + "/s";
                         break;
                     case "ManaWell":
                         UITargetJobName.text = tempBuildingName;
                         UITargetJobLevel.text = duck.levelManaCollector.ToString();
                         UITargetJobExp.text = duck.expManaCollector + "%";
-                        UITargetJobCoeff.text = (1 + (1 * duck.levelManaCollector) + 1 * (duck.inteligence / 10)) + "/s";
+                        UITargetJobCoeff.text = (town.mana.rBaseIncrement + (1 * duck.levelManaCollector) + 1 * (duck.inteligence / 10)) + "/s";
                         break;
                     case "CroutonFields":
                         UITargetJobName.text = tempBuildingName;
                         UITargetJobLevel.text = duck.levelCroutonFarmer.ToString();
                         UITargetJobExp.text = duck.expCroutonFarmer + "%";
-                        UITargetJobCoeff.text = (1 + (1 * duck.levelCroutonFarmer) + 1 * (duck.endurance / 10)) + "/s";
+                        UITargetJobCoeff.text = (town.food.rBaseIncrement + (1 * duck.levelCroutonFarmer) + 1 * (duck.endurance / 10)) + "/s";
                         break;
                     case "BarleyFields":
                         UITargetJobName.text = tempBuildingName;
                         UITargetJobLevel.text = duck.levelBarleyFarmer.ToString();
                         UITargetJobExp.text = duck.expBarleyFarmer + "%";
-                        UITargetJobCoeff.text = (1 + (1 * duck.levelBarleyFarmer) + 1 * (duck.endurance / 10)) + "/s";
+                        UITargetJobCoeff.text = (town.barley.rBaseIncrement + (1 * duck.levelBarleyFarmer) + 1 * (duck.endurance / 10)) + "/s";
                         break;
                     case "MaltFields":
                         UITargetJobName.text = tempBuildingName;
                         UITargetJobLevel.text = duck.levelMaltFarmer.ToString();
                         UITargetJobExp.text = duck.expMaltFarmer + "%";
-                        UITargetJobCoeff.text = (1 + (1 * duck.levelMaltFarmer) + 1 * (duck.endurance / 10)) + "/s";
+                        UITargetJobCoeff.text = (town.malt.rBaseIncrement + (1 * duck.levelMaltFarmer) + 1 * (duck.endurance / 10)) + "/s";
                         break;
                     case "HopFields":
                         UITargetJobName.text = tempBuildingName;
                         UITargetJobLevel.text = duck.levelHopFarmer.ToString();
                         UITargetJobExp.text = duck.expHopFarmer + "%";
-                        UITargetJobCoeff.text = (1 + (1 * duck.levelHopFarmer) + 1 * (duck.endurance / 10)) + "/s";
+                        UITargetJobCoeff.text = (town.hop.rBaseIncrement + (1 * duck.levelHopFarmer) + 1 * (duck.endurance / 10)) + "/s";
                         break;
                     default:
                         UITargetJobName.text = "";
@@ -117,49 +117,49 @@ public class Card : MonoBehaviour
                         UIActualJobName.text = duck.assignedJob.ToString();
                         UIActualJobLevel.text = duck.levelBanker.ToString();
                         UIActualJobExp.text = duck.expBanker + "%";
-                        UIActualJobCoeff.text = 1 + (1 * duck.levelBanker) + "/s";
+                        UIActualJobCoeff.text = town.golds.rBaseIncrement + (1 * duck.levelBanker) + "/s";
                         break;
                     case "Lumbermill":
                         UIActualJobName.text = duck.assignedJob.ToString();
                         UIActualJobLevel.text = duck.levelWoodcutter.ToString();
                         UIActualJobExp.text = duck.expWoodcutter + "%";
-                        UIActualJobCoeff.text = (1 + (1 * duck.levelWoodcutter) + 1 * (duck.strength / 10)) + "/s";
+                        UIActualJobCoeff.text = (town.wood.rBaseIncrement + (1 * duck.levelWoodcutter) + 1 * (duck.strength / 10)) + "/s";
                         break;
                     case "Well":
                         UIActualJobName.text = duck.assignedJob.ToString();
                         UIActualJobLevel.text = duck.levelWaterCollector.ToString();
                         UIActualJobExp.text = duck.expWaterCollector + "%";
-                        UIActualJobCoeff.text = (1 + (1 * duck.levelWaterCollector) + 1 * (duck.agility / 10)) + "/s";
+                        UIActualJobCoeff.text = (town.water.rBaseIncrement + (1 * duck.levelWaterCollector) + 1 * (duck.agility / 10)) + "/s";
                         break;
                     case "ManaWell":
                         UIActualJobName.text = duck.assignedJob.ToString();
                         UIActualJobLevel.text = duck.levelManaCollector.ToString();
                         UIActualJobExp.text = duck.expManaCollector + "%";
-                        UIActualJobCoeff.text = (1 + (1 * duck.levelManaCollector) + 1 * (duck.inteligence / 10)) + "/s";
+                        UIActualJobCoeff.text = (town.mana.rBaseIncrement + (1 * duck.levelManaCollector) + 1 * (duck.inteligence / 10)) + "/s";
                         break;
                     case "CroutonFields":
                         UIActualJobName.text = duck.assignedJob.ToString();
                         UIActualJobLevel.text = duck.levelCroutonFarmer.ToString();
                         UIActualJobExp.text = duck.expCroutonFarmer + "%";
-                        UIActualJobCoeff.text = (1 + (1 * duck.levelCroutonFarmer) + 1 * (duck.endurance / 10)) + "/s";
+                        UIActualJobCoeff.text = (town.food.rBaseIncrement + (1 * duck.levelCroutonFarmer) + 1 * (duck.endurance / 10)) + "/s";
                         break;
                     case "BarleyFields":
                         UIActualJobName.text = duck.assignedJob.ToString();
                         UIActualJobLevel.text = duck.levelBarleyFarmer.ToString();
                         UIActualJobExp.text = duck.expBarleyFarmer + "%";
-                        UIActualJobCoeff.text = (1 + (1 * duck.levelBarleyFarmer) + 1 * (duck.endurance / 10)) + "/s";
+                        UIActualJobCoeff.text = (town.barley.rBaseIncrement + (1 * duck.levelBarleyFarmer) + 1 * (duck.endurance / 10)) + "/s";
                         break;
                     case "MaltFields":
                         UIActualJobName.text = duck.assignedJob.ToString();
                         UIActualJobLevel.text = duck.levelMaltFarmer.ToString();
                         UIActualJobExp.text = duck.expMaltFarmer + "%";
-                        UIActualJobCoeff.text = (1 + (1 * duck.levelMaltFarmer) + 1 * (duck.endurance / 10)) + "/s";
+                        UIActualJobCoeff.text = (town.malt.rBaseIncrement + (1 * duck.levelMaltFarmer) + 1 * (duck.endurance / 10)) + "/s";
                         break;
                     case "HopFields":
                         UIActualJobName.text = duck.assignedJob.ToString();
                         UIActualJobLevel.text = duck.levelHopFarmer.ToString();
                         UIActualJobExp.text = duck.expHopFarmer + "%";
-                        UIActualJobCoeff.text = (1 + (1 * duck.levelHopFarmer) + 1 * (duck.endurance / 10)) + "/s";
+                        UIActualJobCoeff.text = (town.hop.rBaseIncrement + (1 * duck.levelHopFarmer) + 1 * (duck.endurance / 10)) + "/s";
                         break;
                     default:
                         UIActualJobName.text = "No Job";

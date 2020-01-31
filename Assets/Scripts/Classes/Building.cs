@@ -8,9 +8,9 @@ using System.Linq;
 public class Building : MonoBehaviour
 {
     //Ce script est sur un GameObject vide sur la scene
+    public Town town;
 
     //Proprietes des buildings
-    
     public string bName;
     public int bLevel;
     public int bPrice;
@@ -32,7 +32,6 @@ public class Building : MonoBehaviour
         bBonus = 1 + ((bLevel - 1) * bBonusCoefficient);
     }
 
-    //Set the building level
     public void SetBuilding(int loadedLevel, List<Duck> loadedworkers)
     {
         bLevel = loadedLevel;
@@ -51,7 +50,6 @@ public class Building : MonoBehaviour
         CalculateCoeff();
     }
 
-    // Upgrade the building
     public void Upgrade()
     {
         bLevel++;
@@ -143,49 +141,49 @@ public class Building : MonoBehaviour
             case "Bank":
                 foreach (Duck worker in workers.Where(itm => itm != null))
                 {
-                    workersCoeffTemp += 1 + (1 * worker.levelBanker);
+                    workersCoeffTemp += town.golds.rBaseIncrement + (1 * worker.levelBanker);
                 }
                 break;
             case "Lumbermill":
                 foreach (Duck worker in workers.Where(itm => itm != null))
                 {
-                    workersCoeffTemp += 1 + (1 * worker.levelWoodcutter) + (1 * (worker.strength / 10));
+                    workersCoeffTemp += town.wood.rBaseIncrement + (1 * worker.levelWoodcutter) + (1 * (worker.strength / 10));
                 }
                 break;
             case "Well":
                 foreach (Duck worker in workers.Where(itm => itm != null))
                 {
-                    workersCoeffTemp += 1 + (1 * worker.levelWaterCollector) + (1 * (worker.agility / 10));
+                    workersCoeffTemp += town.water.rBaseIncrement + (1 * worker.levelWaterCollector) + (1 * (worker.agility / 10));
                 }
                 break;
             case "ManaWell":
                 foreach (Duck worker in workers.Where(itm => itm != null))
                 {
-                    workersCoeffTemp += 1 + (1 * worker.levelManaCollector) + (1 * (worker.inteligence / 10));
+                    workersCoeffTemp += town.mana.rBaseIncrement + (1 * worker.levelManaCollector) + (1 * (worker.inteligence / 10));
                 }
                 break;
             case "CroutonFields":
                 foreach (Duck worker in workers.Where(itm => itm != null))
                 {
-                    workersCoeffTemp += 1 + (1 * worker.levelCroutonFarmer) + (1 * (worker.endurance / 10));
+                    workersCoeffTemp += town.food.rBaseIncrement + (1 * worker.levelCroutonFarmer) + (1 * (worker.endurance / 10));
                 }
                 break;
             case "BarleyFields":
                 foreach (Duck worker in workers.Where(itm => itm != null))
                 {
-                    workersCoeffTemp += 1 + (1 * worker.levelBarleyFarmer) + (1 * (worker.endurance / 10));
+                    workersCoeffTemp += town.barley.rBaseIncrement + (1 * worker.levelBarleyFarmer) + (1 * (worker.endurance / 10));
                 }
                 break;
             case "MaltFields":
                 foreach (Duck worker in workers.Where(itm => itm != null))
                 {
-                    workersCoeffTemp += 1 + (1 * worker.levelMaltFarmer) + (1 * (worker.endurance / 10));
+                    workersCoeffTemp += town.malt.rBaseIncrement + (1 * worker.levelMaltFarmer) + (1 * (worker.endurance / 10));
                 }
                 break;
             case "HopFields":
                 foreach (Duck worker in workers.Where(itm => itm != null))
                 {
-                    workersCoeffTemp += 1 + (1 * worker.levelHopFarmer) + (1 * (worker.endurance / 10));
+                    workersCoeffTemp += town.hop.rBaseIncrement + (1 * worker.levelHopFarmer) + (1 * (worker.endurance / 10));
                 }
                 break;
         }

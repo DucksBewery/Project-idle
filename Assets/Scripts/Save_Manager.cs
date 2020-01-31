@@ -21,9 +21,6 @@ public class Save_Manager : MonoBehaviour
 
         //Getting all Duck data into ducksInTownTemp tab
         int ducksInTown = PlayerPrefs.GetInt("ducksInTown_" + slot);
-
-        print("There is " + ducksInTown + " ducks to load in Town");
-
         List<Duck> ducksInTownTemp = new List<Duck>();
         List<Duck> ducksInBankTemp = new List<Duck>();
         List<Duck> ducksInLumbermillTemp = new List<Duck>();
@@ -33,6 +30,8 @@ public class Save_Manager : MonoBehaviour
         List<Duck> ducksInBarleyFieldsTemp = new List<Duck>();
         List<Duck> ducksInMaltFieldsTemp = new List<Duck>();
         List<Duck> ducksInHopFieldsTemp = new List<Duck>();
+
+        //Setting Duck data
         for (int i = 0; i < ducksInTown; i++)
         {
             Duck duckTemp = new Duck(0);
@@ -63,7 +62,6 @@ public class Save_Manager : MonoBehaviour
             duckTemp.assignedJob = PlayerPrefs.GetString("duck_" + i + "_assignedJob_" + slot);
             ducksInTownTemp.Add(duckTemp);
 
-            print(duckTemp.life);
             //Copy of selected Duck to its assigned Building's worker list
             switch (duckTemp.assignedJob)
             {
@@ -104,12 +102,20 @@ public class Save_Manager : MonoBehaviour
             //Getting Resource saved data
             PlayerPrefs.GetFloat("amountGolds_" + slot),
             PlayerPrefs.GetInt("levelGolds_" + slot),
-            PlayerPrefs.GetFloat("amountWater_" + slot),
-            PlayerPrefs.GetInt("levelWater_" + slot),
-            PlayerPrefs.GetFloat("amountFood_" + slot),
-            PlayerPrefs.GetInt("levelFood_" + slot),
             PlayerPrefs.GetFloat("amountWood_" + slot),
             PlayerPrefs.GetInt("levelWood_" + slot),
+            PlayerPrefs.GetFloat("amountWater_" + slot),
+            PlayerPrefs.GetInt("levelWater_" + slot),
+            PlayerPrefs.GetFloat("amountMana_" + slot),
+            PlayerPrefs.GetInt("levelMana_" + slot),
+            PlayerPrefs.GetFloat("amountFood_" + slot),
+            PlayerPrefs.GetInt("levelFood_" + slot),
+            PlayerPrefs.GetFloat("amountBarley_" + slot),
+            PlayerPrefs.GetInt("levelBarley_" + slot),
+            PlayerPrefs.GetFloat("amountMalt_" + slot),
+            PlayerPrefs.GetInt("levelMalt_" + slot),
+            PlayerPrefs.GetFloat("amountHop_" + slot),
+            PlayerPrefs.GetInt("levelHop_" + slot),
 
             //Getting Building saved data
             PlayerPrefs.GetInt("levelBank_" + slot),
@@ -121,17 +127,15 @@ public class Save_Manager : MonoBehaviour
             PlayerPrefs.GetInt("levelMaltFields_" + slot),
             PlayerPrefs.GetInt("levelHopFields_" + slot),
 
+            //Getting all Building's worker lists
             ducksInTownTemp, ducksInBankTemp, ducksInLumbermillTemp, 
             ducksInWellTemp, ducksInManaWellTemp, ducksInCroutonFieldsTemp, 
             ducksInBarleyFieldsTemp, ducksInMaltFieldsTemp, ducksInHopFieldsTemp);
     }
 
-    //TO DO : Sauvegarder canard en ville
     public void SaveTown()
     {
         int slot = 0;
-
-        //print("There is "+town.ducks.Count+" ducks in Town when saving");
 
         //Saving Town data
         PlayerPrefs.SetInt("levelTown_" + slot, town.tLevel);
@@ -140,12 +144,20 @@ public class Save_Manager : MonoBehaviour
         //Saving Resource data
         PlayerPrefs.SetFloat("amountGolds_" + slot, town.golds.Amount);
         PlayerPrefs.SetInt("levelGolds_" + slot, town.golds.rLevel);
-        PlayerPrefs.SetFloat("amountWater_" + slot, town.water.Amount);
-        PlayerPrefs.SetInt("levelWater_" + slot, town.water.rLevel);
-        PlayerPrefs.SetFloat("amountFood_" + slot, town.food.Amount);
-        PlayerPrefs.SetInt("levelFood_" + slot, town.food.rLevel);
         PlayerPrefs.SetFloat("amountWood_" + slot, town.wood.Amount);
         PlayerPrefs.SetInt("levelWood_" + slot, town.wood.rLevel);
+        PlayerPrefs.SetFloat("amountWater_" + slot, town.water.Amount);
+        PlayerPrefs.SetInt("levelWater_" + slot, town.water.rLevel);
+        PlayerPrefs.SetFloat("amountMana_" + slot, town.mana.Amount);
+        PlayerPrefs.SetInt("levelMana_" + slot, town.mana.rLevel);
+        PlayerPrefs.SetFloat("amountFood_" + slot, town.food.Amount);
+        PlayerPrefs.SetInt("levelFood_" + slot, town.food.rLevel);
+        PlayerPrefs.SetFloat("amountBarley_" + slot, town.barley.Amount);
+        PlayerPrefs.SetInt("levelBarley_" + slot, town.barley.rLevel);
+        PlayerPrefs.SetFloat("amountMalt_" + slot, town.malt.Amount);
+        PlayerPrefs.SetInt("levelMalt_" + slot, town.malt.rLevel);
+        PlayerPrefs.SetFloat("amountHop_" + slot, town.hop.Amount);
+        PlayerPrefs.SetInt("levelHop_" + slot, town.hop.rLevel);
 
         // Saving Builgin data
         PlayerPrefs.SetInt("levelBank_" + slot, town.bank.bLevel);
@@ -158,7 +170,6 @@ public class Save_Manager : MonoBehaviour
         PlayerPrefs.SetInt("levelHopFields_" + slot, town.hopFields.bLevel);
 
         //Saving Duck data
-
         foreach(Duck duckTemp in town.ducks)
         {
             PlayerPrefs.SetInt("duck_" + duckTemp.dId + "_dId_" + slot, duckTemp.dId);
@@ -189,7 +200,7 @@ public class Save_Manager : MonoBehaviour
         }
         PlayerPrefs.SetInt("ducksInTown_" + slot, town.ducks.Count);
 
-        //On enregistre les modifications
+        //Saving modifications
         PlayerPrefs.Save();
     }
 }
