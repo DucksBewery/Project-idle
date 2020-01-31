@@ -30,11 +30,7 @@ public class Duck
     public float agility;
     public float endurance;
     public float inteligence;
-
-    public void Start()
-    {
-    }
-
+    
     public Duck(int id)
     {
         dId = id;

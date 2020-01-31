@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using System.Linq;
+using System;
 
 public class Town : MonoBehaviour
 {
@@ -12,8 +13,6 @@ public class Town : MonoBehaviour
     //Le fichier de sauvegarde afin d'y enregistrer les donnees
     public Save_Manager loadedSave;
     public UI ui;
-
-    
 
     //Town
     public int tLevel;
@@ -26,6 +25,9 @@ public class Town : MonoBehaviour
     public Resource food;
     public Resource wood;
     public Resource mana;
+    public Resource barley;
+    public Resource malt;
+    public Resource hop;
 
     //TO DO : Manage buildings in buildings[]
     //Buildings
@@ -48,34 +50,32 @@ public class Town : MonoBehaviour
     public building armory;
     public building seaport;
     */
-    //To know witch building's worker slot to target
-    public Building targetBuilding;
-    public int targetWorkerSlot = 0;
-
-    //Components for Duck Selection View
-    //List of all active Assign Duck cards
-    public List<AssignedCard> displayedAssignedDuckCards = new List<AssignedCard>();
-    //Assigned Duck cards display
-    public GameObject assignedGrid;
-    public GameObject assignedCardComponent;
-
-    //Components for Duck Selection View
-    //List of all active Duck cards
-    public List<Card> displayedDuckCards = new List<Card>();
-    //Currently assigned Duck
-    public GameObject assignedDuckCard;
-    private Duck targetAssignedDuck;
-    //Target Duck to assign
-    public GameObject targetDuckCard;
-    private Duck targetDuckToAssign;
-    //Duck Cards display
-    public GameObject duckGrid;
-    public GameObject duckCardComponent;
-
+    
     //Components for Ressource Building view
     public GameObject buildingGrid;
     public GameObject buildingCardComponent;
+    private List<GameObject> displayedBuildingCards = new List<GameObject>();
+    //To know witch building to target
+    public Building targetBuilding;
 
+    //Components for Building Assign view 
+    public GameObject assignedGrid;
+    public GameObject assignedCardComponent;
+    private List<GameObject> displayedAssignedDuckCards = new List<GameObject>();
+    //To know witch building's worker slot to target
+    public int targetWorkerSlot = 0;
+
+    //Components for Duck selection view
+    public GameObject duckGrid;
+    public GameObject duckCardComponent;
+    private List<GameObject> displayedDuckCards = new List<GameObject>();
+    //Currently assigned Ducks
+    public GameObject assignedDuckCard;
+    private Duck targetAssignedDuck;
+    //List of all active Assigned Duck cards
+    //Target Duck to assign
+    public GameObject targetDuckCard;
+    private Duck targetDuckToAssign;
 
     void Start()
     {
@@ -91,8 +91,10 @@ public class Town : MonoBehaviour
     }
 
     public void SetTown(int loadedTownLevel, int loadedTownExp, float loadedGoldsAmount, int loadedGoldsLevel,
-                        float loadedWaterAmount, int loadedWaterLevel, float loadedFoodAmount, int loadedFoodLevel,
-                        float loadedWoodAmount, int loadedWoodLevel, int loadedBankLevel, int loadedLumbermillLevel,
+                        float loadedWoodAmount, int loadedWoodLevel, float loadedWaterAmount, int loadedWaterLevel,
+                        float loadedManaAmount, int loadedManaLevel,  float loadedFoodAmount, int loadedFoodLevel,
+                        float loadedBarleyAmount, int loadedBarleyLevel, float loadedMaltAmount, int loadedMaltLevel, 
+                        float loadedHopAmount, int loadedHopLevel, int loadedBankLevel, int loadedLumbermillLevel,
                         int loadedWellLevel, int loadedManaWellLevel, int loadedCroutonFieldsLevel, int loadedBarleyFieldsLevel,
                         int loadedMaltFieldsLevel, int loadedHopFieldsLevel, /*int loadedNestLevel, int loadedBreweryLevel,
                          * int loadedAcademyLevel, int loadedBarracksLevel, int loadedArmoryLevel, int loadedSeaportLevel)*/
@@ -107,9 +109,13 @@ public class Town : MonoBehaviour
 
         //Set resources
         golds.SetResource(loadedGoldsLevel, loadedGoldsAmount);
-        water.SetResource(loadedWaterLevel, loadedWaterAmount);
-        food.SetResource(loadedFoodLevel, loadedFoodAmount);
         wood.SetResource(loadedWoodLevel, loadedWoodAmount);
+        water.SetResource(loadedWaterLevel, loadedWaterAmount);
+        mana.SetResource(loadedManaLevel, loadedManaAmount);
+        food.SetResource(loadedFoodLevel, loadedFoodAmount);
+        barley.SetResource(loadedBarleyLevel, loadedBarleyAmount);
+        malt.SetResource(loadedMaltLevel, loadedMaltAmount);
+        hop.SetResource(loadedHopLevel, loadedHopAmount);
 
         //Set buildings
         bank.SetBuilding(loadedBankLevel, loadedDucksInBank);
@@ -149,7 +155,6 @@ public class Town : MonoBehaviour
         loadedSave.SaveTown();
     }
 
-    //TO DO : Recuperer infos de quelle case/quel building au toucher
     public void TargetBuildingAssignView(int targetBuildingToAssignTemp)
     {
         targetBuilding = buildings[targetBuildingToAssignTemp];
@@ -182,10 +187,10 @@ public class Town : MonoBehaviour
         assignedDuckCard.GetComponent<Card>().SetDuckCard(null, null);
         targetDuckCard.GetComponent<Card>().SetDuckCard(null, null);
 
-       
-
-            switch (targetDuckToAssign.assignedJob)
+        if (targetDuckToAssign != null)
         {
+            switch (targetDuckToAssign.assignedJob)
+            {
             case "Bank":
                 buildings[0].UnassignWorker(targetDuckToAssign);
                 break;
@@ -212,12 +217,13 @@ public class Town : MonoBehaviour
                 break;
             default:
                 break;
+            }
+            targetBuilding.AssignWorker(targetWorkerSlot, targetDuckToAssign);
+            targetDuckToAssign = null;
+            DestroyDisplayedAssignedDuckCards();
+            DisplayAssignedDuckCards();
         }
-
-        targetBuilding.AssignWorker(targetWorkerSlot, targetDuckToAssign);
-        targetDuckToAssign = null;
-        DestroyDisplayedAssignedDuckCards();
-        DisplayAssignedDuckCards();
+        DestroyDisplayedDuckCards();
     }
 
     public void UnassignWorker(Duck targetWorker)
@@ -245,23 +251,6 @@ public class Town : MonoBehaviour
         loadedSave.SaveTown();
     }
 
-    IEnumerator Idle()
-    {
-        while(true)
-        {
-            yield return new WaitForSeconds(1.0f);
-            if (bank.workers.Length > 0)            golds.Increment((bank.workersCoefficient));
-            if (well.workers.Length > 0)            water.Increment((well.workersCoefficient));
-            if (croutonFields.workers.Length > 0)   food.Increment((croutonFields.workersCoefficient));
-            if (lumbermill.workers.Length > 0)      wood.Increment((lumbermill.workersCoefficient));
-            if (manaWell.workers.Length > 0)        mana.Increment((manaWell.workersCoefficient));
-            ui.RefreshResources();
-
-            //Saving changes
-            loadedSave.SaveTown();
-        }
-    }
-
     public void DisplayBuildingCards()
     {
         for(int i=0; i<buildings.Length; i++)
@@ -272,12 +261,16 @@ public class Town : MonoBehaviour
 
             //Adding Card script and selected Duck
             newCard.GetComponent<BuildingCard>().SetBuildingCard(buildings[i]);
+            displayedBuildingCards.Add(newCard);
         }
     }
 
     public void DisplayDuckCards()
     {
-        print("there is "+ducks.Count+" ducks to display");
+        duckGrid.GetComponent<RectTransform>().sizeDelta = new Vector2(
+            duckGrid.GetComponent<RectTransform>().rect.width,
+            (Mathf.Ceil(Convert.ToSingle(ducks.Count) / Convert.ToSingle(4))) * 410);
+
         foreach (Duck duck in ducks)
         {
             //Setting Card on scene
@@ -286,27 +279,13 @@ public class Town : MonoBehaviour
 
             //Adding Card script and selected Duck
             newCard.GetComponent<Card>().SetDuckCard(duck, targetBuilding.name);
+            displayedDuckCards.Add(newCard);
         }
     }
 
     public void DisplayAssignedDuckCards()
     {
         //TO DO : A modif pour afficher un les cards en fonction de leur position
-        /*
-        int i = 0;
-        foreach (Duck duck in targetBuilding.workers.Where(itm => itm != null))
-        {
-            //Setting Card on scene
-            GameObject newAssignedCard = Instantiate(assignedCardComponent, assignedCardGrid.transform);
-            newAssignedCard.name = duck.dId.ToString();
-
-            //Adding Card script and selected Duck
-            newAssignedCard.GetComponent<AssignedCard>().duck = duck;
-            newAssignedCard.GetComponent<AssignedCard>().targetSlot = i;
-            displayedAssignedDuckCards.Add(newAssignedCard.GetComponent<AssignedCard>());
-
-            i++;
-        }*/
         
         for (int i=0; i<targetBuilding.workers.Length; i++)
         {
@@ -318,7 +297,7 @@ public class Town : MonoBehaviour
 
                 //Adding Card script and selected Duck
                 newAssignedCard.GetComponent<AssignedCard>().duck = targetBuilding.workers[i];
-                displayedAssignedDuckCards.Add(newAssignedCard.GetComponent<AssignedCard>());
+                displayedAssignedDuckCards.Add(newAssignedCard);
             }
             else
             {
@@ -326,32 +305,51 @@ public class Town : MonoBehaviour
                 GameObject newAssignedCard = Instantiate(assignedCardComponent, assignedGrid.transform);
                 newAssignedCard.name = i.ToString();
                 //Adding Card script and selected Duck
-                displayedAssignedDuckCards.Add(newAssignedCard.GetComponent<AssignedCard>());
+                displayedAssignedDuckCards.Add(newAssignedCard);
             }
         }
     }
 
     public void DestroyDisplayedBuildingCards()
     {
-        foreach (BuildingCard child in buildingGrid.GetComponentsInChildren<BuildingCard>())
+        foreach (GameObject child in displayedBuildingCards)
         {
-            GameObject.Destroy(child.gameObject);
+            GameObject.Destroy(child);
         }
     }
 
     public void DestroyDisplayedDuckCards()
     {
-        foreach (Card child in duckGrid.GetComponentsInChildren<Card>())
+        foreach (GameObject child in displayedDuckCards)
         {
-            GameObject.Destroy(child.gameObject);
+            GameObject.Destroy(child);
         }
     }
 
     public void DestroyDisplayedAssignedDuckCards()
     {
-        foreach (AssignedCard child in assignedGrid.GetComponentsInChildren<AssignedCard>())
+        foreach (GameObject child in displayedAssignedDuckCards)
         {
-            GameObject.Destroy(child.gameObject);
+            GameObject.Destroy(child);
+        }
+    }
+    IEnumerator Idle()
+    {
+        while(true)
+        {
+            yield return new WaitForSeconds(1.0f);
+            if (bank.workers.Length > 0)            golds.Increment((bank.workersCoefficient));
+            if (lumbermill.workers.Length > 0)      wood.Increment((lumbermill.workersCoefficient));
+            if (well.workers.Length > 0)            water.Increment((well.workersCoefficient));
+            if (manaWell.workers.Length > 0)        mana.Increment((manaWell.workersCoefficient));
+            if (croutonFields.workers.Length > 0)   food.Increment((croutonFields.workersCoefficient));
+            if (barleyFields.workers.Length > 0)   food.Increment((barleyFields.workersCoefficient));
+            if (maltFields.workers.Length > 0)   food.Increment((maltFields.workersCoefficient));
+            if (hopFields.workers.Length > 0)   food.Increment((hopFields.workersCoefficient));
+            ui.RefreshResources();
+
+            //Saving changes
+            loadedSave.SaveTown();
         }
     }
 }

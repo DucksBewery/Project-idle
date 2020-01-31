@@ -13,20 +13,19 @@ public class BuildingCard : MonoBehaviour
     public Text UILevel;
     public Text UIWorkersCoefficient;
 
-    // Start is called before the first frame update
     void Start()
     {
         menu = FindObjectOfType<Menu_Manager>();
         town = FindObjectOfType<Town>();
     }
 
-    // Update is called once per frame
     public void SetBuildingCard(Building tempBuilding)
     {
+        print("There is "+ tempBuilding.workers.Length + " in the "+tempBuilding.bName);
         building = tempBuilding;
         UIName.text = building.bName;
-        UILevel.text = building.bLevel.ToString();
-        UIWorkersCoefficient.text = building.workersCoefficient.ToString();
+        UILevel.text = " lvl."+building.bLevel.ToString();
+        UIWorkersCoefficient.text = building.workersCoefficient.ToString()+"/s";
     }
 
     public void GoToAssignView()
@@ -35,6 +34,7 @@ public class BuildingCard : MonoBehaviour
         town.targetBuilding = building;
         town.DisplayAssignedDuckCards();
     }
+
     public void GoToUpgradeView()
     {
         

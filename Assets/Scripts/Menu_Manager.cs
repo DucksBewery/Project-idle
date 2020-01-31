@@ -55,6 +55,7 @@ public class Menu_Manager : MonoBehaviour
     }
 
 
+
     public void CloseRessourceBuildingAssignView()
     {
         ResourceBuildingsAssignView.SetActive(false);

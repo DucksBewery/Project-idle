@@ -49,7 +49,7 @@ public class Resource : MonoBehaviour
     // Increment the resource amount
     public void Increment(float coef)
     {
-        if (Amount < AmountMax) CheckMax(Amount += rBaseIncrement * coef * rBonus);// Formule à revoir
+        if (Amount < AmountMax) CheckMax(Amount += coef * rBonus);// Formule à revoir
     }
 
     private void CheckMax(float value)
