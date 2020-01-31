@@ -139,9 +139,13 @@ public class Town : MonoBehaviour
         ui.RefreshResources();
     }
     
-    public void UpgradeBuilding(int buildingId)
+    public void UpgradeBuilding()
     {
-        if (golds.Amount >= buildings[buildingId].bPrice) buildings[buildingId].Upgrade();
+        if (golds.Amount >= targetBuilding.bPrice)
+        {
+            targetBuilding.Upgrade();
+            // TODO : refresh l'UI de la building card
+        }
 
         //Saving changes
         loadedSave.SaveTown();
@@ -260,7 +264,7 @@ public class Town : MonoBehaviour
             newCard.name = buildings[i].bName;
 
             //Adding Card script and selected Duck
-            newCard.GetComponent<BuildingCard>().SetBuildingCard(buildings[i]);
+            newCard.GetComponent<BuildingCard>().SetBuildingCard(buildings[i], this);
             displayedBuildingCards.Add(newCard);
         }
     }
@@ -347,6 +351,14 @@ public class Town : MonoBehaviour
             if (maltFields.workers.Length > 0)   food.Increment((maltFields.workersCoefficient));
             if (hopFields.workers.Length > 0)   food.Increment((hopFields.workersCoefficient));
             ui.RefreshResources();
+
+            foreach(GameObject card in displayedBuildingCards)
+            {
+                if (card)
+                {
+                    card.GetComponent<BuildingCard>().RefreshAmount(this);
+                }  
+            }
 
             //Saving changes
             loadedSave.SaveTown();

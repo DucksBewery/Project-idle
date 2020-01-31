@@ -52,6 +52,7 @@ public class Building : MonoBehaviour
 
     public void Upgrade()
     {
+        print("Building.UPGRADE");
         bLevel++;
         //Formules a travailler
         workersMax = bLevel * workersMaxCoefficient;
@@ -61,7 +62,6 @@ public class Building : MonoBehaviour
 
         bPrice = bPriceBase + ((bLevel - 1) * bPriceCoefficient);
         bBonus = 1 + ((bLevel - 1) * bBonusCoefficient);
-
     }
 
     public void AssignWorker(int targetSlot, Duck targetWorker)

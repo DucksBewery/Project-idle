@@ -9,6 +9,7 @@ public class Menu_Manager : MonoBehaviour
     public GameObject ResourceBuildingsView;
     public GameObject ResourceBuildingsAssignView;
     public GameObject ResourceBuildingsDuckSelectionView;
+    public GameObject ResourceBuildingsUpgradeView;
     public GameObject SpecialBuildingsView;
     public GameObject Overview;
 
@@ -54,8 +55,6 @@ public class Menu_Manager : MonoBehaviour
         ResourceBuildingsAssignView.SetActive(true);
     }
 
-
-
     public void CloseRessourceBuildingAssignView()
     {
         ResourceBuildingsAssignView.SetActive(false);
@@ -69,6 +68,16 @@ public class Menu_Manager : MonoBehaviour
     public void CloseResourceBuildingsDuckSelectionView()
     {
         ResourceBuildingsDuckSelectionView.SetActive(false);
+    }
+
+    public void GoToResourceBuildingsUpgradeView()
+    {
+        ResourceBuildingsUpgradeView.SetActive(true);
+    }
+
+    public void CloseResourceBuildingsUpgradeView()
+    {
+        ResourceBuildingsUpgradeView.SetActive(false);
     }
 
     public void GoToSpecialBuildingsView()
